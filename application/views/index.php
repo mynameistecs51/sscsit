@@ -35,7 +35,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="active"><a href="index.html">หน้าหลัก</a></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
@@ -71,8 +71,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Powerful and Responsive Web Design</h2>
-                                    <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                    <h2 class="animation animated-item-1"><?php echo "Student Symposium";?> </h2>
+                                    <p class="animation animated-item-2">โครงงานสัมนาทางวิชาการ ของสาขาวิขาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ.</p>
                                 </div>
                             </div>
                         </div>
@@ -395,7 +395,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="#">หน้าหลัก</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Faq</a></li>
                         <li><a href="#">Contact Us</a></li>
