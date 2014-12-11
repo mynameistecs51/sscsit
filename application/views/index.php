@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Student Symposium</title>
+    <title>Home | Flat Theme</title>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>css/prettyPhoto.css" rel="stylesheet">
@@ -59,14 +59,14 @@
             </div>
         </div>
     </header><!--/header-->
-    <section id="main-slider" class="no-margin" data-autoplay="true">
+    <section id="main-slider" class="no-margin">
         <div class="carousel slide wet-asphalt">
             <ol class="carousel-indicators">
-                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-                <li data-target="#main-slider" data-slide-to="1"></li>
-                <li data-target="#main-slider" data-slide-to="2"></li>
+                <li data-target="<?php echo base_url();?>#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="<?php echo base_url();?>#main-slider" data-slide-to="1"></li>
+                <li data-target="<?php echo base_url();?>#main-slider" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-inner" data-autoplay="true">
+            <div class="carousel-inner">
                 <div class="item active" style="background-image: url(<?php echo base_url();?>images/slider/bg1.jpg)">
                     <div class="container">
                         <div class="row">
@@ -119,7 +119,7 @@
             <i class="icon-angle-left"></i>
         </a> -->
         <?php echo anchor(base_url().'#main-slider',' <i class="icon-angle-left"></i>','class="prev hidden-xs"  data-slide="prev" ');?>
-        <a class="next hidden-xs" href='<?php echo base_url()."#main-slider";?>' data-slide="next">
+        <a class="next hidden-xs" href="<?php echo base_url().'#main-slider';?>" data-slide="next">
             <i class="icon-angle-right"></i>
         </a>
     </section><!--/#main-slider-->
@@ -133,7 +133,7 @@
                             <i class="icon-desktop icon-md"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Twitter Marketing</h3>
+                            <h3 class="media-heading">เงื่อนไขการส่งโครงงาน</h3>
                             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
                         </div>
                     </div>
