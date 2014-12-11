@@ -15,11 +15,11 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="<?php echo base_url();?>images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url();?>images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 <body>
     <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
@@ -31,11 +31,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php/main"><img src="images/logo.png" alt="logo"></a>
+                <?php echo anchor('main','<img src="'.base_url().'images/logo.png" alt="logo"/>','class="navbar-brand"');?>
+                <!-- <a class="navbar-brand" href="index.php/main"><img src="images/logo.png" alt="logo"></a> -->
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">หน้าหลัก</a></li>
+                    <li class="active"><?php echo anchor('main','หน้าหลัก');?></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
@@ -61,12 +62,12 @@
     <section id="main-slider" class="no-margin">
         <div class="carousel slide wet-asphalt">
             <ol class="carousel-indicators">
-                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-                <li data-target="#main-slider" data-slide-to="1"></li>
-                <li data-target="#main-slider" data-slide-to="2"></li>
+                <li data-target="https://github.com/twbs/bootstrap.git#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="https://github.com/twbs/bootstrap.git#main-slider" data-slide-to="1"></li>
+                <li data-target="https://github.com/twbs/bootstrap.git#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="item active" style="background-image: url(images/slider/bg1.jpg)">
+                <div class="item active" style="background-image: url(<?php echo base_url();?>images/slider/bg1.jpg)">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
@@ -78,7 +79,7 @@
                         </div>
                     </div>
                 </div><!--/.item-->
-                <div class="item" style="background-image: url(images/slider/bg2.jpg)">
+                <div class="item" style="background-image: url(<?php echo base_url();?>images/slider/bg2.jpg)">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
@@ -92,7 +93,7 @@
                         </div>
                     </div>
                 </div><!--/.item-->
-                <div class="item" style="background-image: url(images/slider/bg3.jpg)">
+                <div class="item" style="background-image: url(<?php echo base_url();?>images/slider/bg3.jpg)">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6">
@@ -114,10 +115,11 @@
                 </div><!--/.item-->
             </div><!--/.carousel-inner-->
         </div><!--/.carousel-->
-        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+       <!--  <a class="prev hidden-xs" href="<?php echo base_url().'#main-slider';?>" data-slide="prev">
             <i class="icon-angle-left"></i>
-        </a>
-        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+        </a> -->
+        <?php echo anchor(base_url().'#main-slider',' <i class="icon-angle-left"></i>','class="prev hidden-xs"  data-slide="prev" ');?>
+        <a class="next hidden-xs" href="<?php echo base_url().'#main-slider';?>" data-slide="next">
             <i class="icon-angle-right"></i>
         </a>
     </section><!--/#main-slider-->
@@ -128,7 +130,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="media">
                         <div class="pull-left">
-                            <i class="icon-twitter icon-md"></i>
+                            <i class="icon-desktop icon-md"></i>
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Twitter Marketing</h3>
@@ -166,11 +168,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <h3>Our Latest Project Test</h3>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <h3>โครงงาน Student Sympsium</h3>
+                    <p>โครงงานทั้งหมดของนักศึกษาที่ส่งเข้าร่วมในการนำเสนอผลงาน</p>
                     <div class="btn-group">
-                        <a class="btn btn-danger" href="#scroller" data-slide="prev"><i class="icon-angle-left"></i></a>
-                        <a class="btn btn-danger" href="#scroller" data-slide="next"><i class="icon-angle-right"></i></a>
+                        <a class="btn btn-danger" href="<?php echo base_url().'#scroller';?>" data-slide="prev"><i class="icon-angle-left"></i></a>
+                        <a class="btn btn-danger" href="<?php echo base_url();?>#scroller" data-slide="next"><i class="icon-angle-right"></i></a>
                     </div>
                     <p class="gap"></p>
                 </div>
@@ -182,12 +184,12 @@
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
-                                                <img class="img-responsive" src="images/portfolio/recent/item1.png" alt="">
+                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item1.png" alt="">
                                                 <h5>
                                                     Nova - Corporate site template
                                                 </h5>
                                                 <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -195,12 +197,12 @@
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
-                                                <img class="img-responsive" src="images/portfolio/recent/item3.png" alt="">
+                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item3.png" alt="">
                                                 <h5>
                                                     Fornax - Apps site template
                                                 </h5>
                                                 <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -208,12 +210,12 @@
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
-                                                <img class="img-responsive" src="images/portfolio/recent/item2.png" alt="">
+                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item2.png" alt="">
                                                 <h5>
                                                     Flat Theme - Business Theme
                                                 </h5>
                                                 <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,12 +227,12 @@
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
-                                                <img class="img-responsive" src="images/portfolio/recent/item2.png" alt="">
+                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item2.png" alt="">
                                                 <h5>
                                                     Flat Theme - Business Theme
                                                 </h5>
                                                 <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -238,12 +240,12 @@
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
-                                                <img class="img-responsive" src="images/portfolio/recent/item1.png" alt="">
+                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item1.png" alt="">
                                                 <h5>
                                                     Nova - Corporate site template
                                                 </h5>
                                                 <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -251,12 +253,12 @@
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
-                                                <img class="img-responsive" src="images/portfolio/recent/item3.png" alt="">
+                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item3.png" alt="">
                                                 <h5>
                                                     Fornax - Apps site template
                                                 </h5>
                                                 <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -337,7 +339,7 @@
                     <div>
                         <div class="media">
                             <div class="pull-left">
-                                <img src="images/blog/thumb1.jpg" alt="">
+                                <img src="<?php echo base_url();?>images/blog/thumb1.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
@@ -346,7 +348,7 @@
                         </div>
                         <div class="media">
                             <div class="pull-left">
-                                <img src="images/blog/thumb2.jpg" alt="">
+                                <img src="<?php echo base_url();?>images/blog/thumb2.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
@@ -355,7 +357,7 @@
                         </div>
                         <div class="media">
                             <div class="pull-left">
-                                <img src="images/blog/thumb3.jpg" alt="">
+                                <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
                             </div>
                             <div class="media-body">
                                 <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
