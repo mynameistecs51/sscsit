@@ -352,10 +352,10 @@ body > section {
   width: 100%;
   display: block !important;
   height: 600px;
-  -webkit-transition: opacity ease-in-out 500ms;
-  -moz-transition: opacity ease-in-out 500ms;
-  -o-transition: opacity ease-in-out 500ms;
-  transition: opacity ease-in-out 500ms;
+  -webkit-transition: opacity ease-in-out 300ms;
+  -moz-transition: opacity ease-in-out 300ms;
+  -o-transition: opacity ease-in-out 300ms;
+  transition: opacity ease-in-out 300ms;
 }
 #main-slider .carousel .item:first-child {
   top: auto;

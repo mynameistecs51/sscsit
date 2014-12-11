@@ -3,7 +3,8 @@ jQuery(function($) {
 	//#main-slider
 	$(function(){
 		$('#main-slider.carousel').carousel({
-			interval: 8000
+			autoplay: true,
+			interval: 8000,
 		});
 	});
 
