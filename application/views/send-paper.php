@@ -59,15 +59,28 @@
                             </div>
                         </div>
                         <div class="form-group"> 
-                              <label for="inputProjectName_TH" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาไทย)</label>
+                            <label for="inputProjectName_TH" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาไทย)</label>
                             <div class="col-sm-7">                           
                                 <input type="text" class="form-control" id="inputProjectName_TH" name="inputProjectName_TH" placeholder="ชื่อโปรเจ็คภาษาไทย">
                             </div>
                         </div>
-                          <div class="form-group"> 
-                              <label for="inputProjectName_ENG" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาอังกฤษ)</label>
+                        <div class="form-group"> 
+                            <label for="inputProjectName_ENG" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาอังกฤษ)</label>
                             <div class="col-sm-7">                           
                                 <input type="text" class="form-control" id="inputProjectName_ENG" name="inputProjectName_ENG" placeholder="ชื่อโปรเจ็คภาษาอังกฤษ">
+                            </div>
+                        </div>
+                        <div class="form-group"> 
+                            <label for="inputGroup" class="col-sm-3 control-label">ประเภทโครงงาน</label>
+                            <div class="col-sm-7">                           
+                                <select  class="form-control">
+                                    <option>---- ประเภทโครงงาน ----</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
