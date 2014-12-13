@@ -25,7 +25,8 @@
                     <h4 class="glyphicon glyphicon-file">  โครงงาน</h4>
                 </div>
                 <div class="panel panel-body"> <!-- strat body panel -->
-                    <form class="form-horizontal col-sm-10 pull-left" role="form">    <!--   start form -->
+                   <!--  <form class="form-horizontal col-sm-10 pull-left" role="form">   -->  <!--   start form -->
+                    <?php echo form_open_multipart('main/add_project','class="form-horizontal col-sm-10 pull-left" role="form"');?>
                         <div class="form-group">
                             <label for="inputName1" class="col-sm-3 control-label">ผู้ส่งโครงงาน 1</label>
                             <div class="col-sm-7">
@@ -38,7 +39,7 @@
                                             <input type="radio" value="female" name="sex" id="female">
                                         </label>
                                     </div>
-                                    <input type="text" class="form-control" name="inputName1" id="inputName1" placeholder="ชื่อสกุล  ผู้ส่งโครงงาน 1">
+                                    <input type="text" class="form-control " name="inputName1" id="inputName1" placeholder="ชื่อสกุล  ผู้ส่งโครงงาน 1"  onfocus="" />
                                 </div>
                             </div>
                         </div>
@@ -104,7 +105,7 @@
                         <div class="form-group pull-right">
                             <!-- <div class="col-sm-offset-2 col-sm-10"> -->
                             <button type="reset" class="btn btn-warning">Cancel </button>
-                            <button type="submit" class="btn btn-success">Sign in</button>
+                            <button type="submit" class="btn btn-success">Send  </button>
                             <!-- </div> -->
                         </div>
                     </form>  <!-- end form -->

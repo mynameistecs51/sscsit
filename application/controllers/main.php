@@ -10,8 +10,20 @@ class Main extends CI_Controller {
 		$this->load->view('index');
 	}
 
-	public function send_paper(){
+	public function send_page(){
 		$this->load->view('send-paper');
+	}
+
+	public function add_project(){
+		$insert_paper = array(
+			'sex' => $this->input->post(),
+			'inputName1' => $this->input->post(),
+		);
+		print_r($insert_paper);
+	}
+
+	public function status_pages(){
+		$this->load->view('services');
 	}
 }
 

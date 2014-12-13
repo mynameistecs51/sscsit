@@ -37,7 +37,8 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li ><?php echo anchor('main','หน้าหลัก');?></li>
-                    <li><?php echo anchor("main/send_paper",'ส่งผลงาน');?></li>
+                    <li><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
+                    <li><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li class="dropdown">
