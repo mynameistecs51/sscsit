@@ -18,9 +18,20 @@
         </div>
     </footer><!--/#footer-->
 
-    <script src="<?php echo base_url();?>js/jquery.js"></script>
-    <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>js/jquery.prettyPhoto.js"></script>
-    <script src="<?php echo base_url();?>js/main.js"></script>
+
+    <!-- Initialize the plugin: -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#select_paper').multiselect();
+    });
+    </script>
+
+    <!-- end multi select -->
+
+    <script  type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
+    <script  type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
+    <script  type="text/javascript" src="<?php echo base_url();?>js/jquery.prettyPhoto.js"></script>
+    <script  type="text/javascript" src="<?php echo base_url();?>js/main.js"></script>    
+    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-multiselect.js"></script>
 </body>
 </html>

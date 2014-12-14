@@ -74,7 +74,7 @@
                         <div class="form-group"> 
                             <label for="inputGroup" class="col-sm-3 control-label">ประเภทโครงงาน</label>
                             <div class="col-sm-7">                           
-                                <select  class="form-control">
+                                <select  class="form-control" multiple id="select_paper">
                                     <option>---- ประเภทโครงงาน ----</option>
                                     <option>1</option>
                                     <option>2</option>

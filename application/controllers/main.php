@@ -22,8 +22,12 @@ class Main extends CI_Controller {
 		print_r($insert_paper);
 	}
 
-	public function status_pages(){
+	public function status_page(){
 		$this->load->view('services');
+	}
+
+	public function  admin(){
+		$this->load->view('admin/index');
 	}
 }
 
