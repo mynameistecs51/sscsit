@@ -27,6 +27,12 @@ class Main extends CI_Controller {
 				'fb_data' => $fb_data,
 				);
 			$this->load->view('admin/index',$data);
+			echo $fb_data['me']['id']."<br/>";
+			echo $fb_data['me']['name']."<br/>";
+			echo $fb_data['me']['first_name']."<br/>";
+			echo $fb_data['me']['last_name']."<br/>";
+			echo $fb_data['me']['email']."<br/>";
+			echo $fb_data['me']['gender']."<br/>";
 		}
 	}
 

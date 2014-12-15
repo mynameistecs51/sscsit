@@ -5,12 +5,12 @@ class Facebook_model extends CI_model{
     public function __construct() {
         parent::__construct();
         $config = array(
-            'appId'  => '820131761362365',
-            'secret' => 'bf4c7c0bb6b831d89391333b49c2084b',
+            'appId'  => '426623594158671',
+            'secret' => '934e8f174aed9dc529db63003620330c',
             'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 
-        $this->load->library('facebook/facebook', $config);
+        $this->load->library('facebook', $config);
 
         $user = $this->facebook->getUser();
 
