@@ -3,11 +3,27 @@
 class Main extends CI_Controller {
 	public function __constrct(){
 		parent::__constrct();
+		$this->load->model('facebook_model','',TRUE);
 	}
 
-	public function index()
-	{
-		$this->load->view('index');
+	public function index(){
+		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
+ 
+        if((!$fb_data['uid']) or (!$fb_data['me']))
+        {
+            // If this is a protected section that needs user authentication
+            // you can redirect the user somewhere else
+            // or take any other action you need
+            $data['fb_data'] = $fb_data;
+            $this->load->view('login',$data);
+        }
+		else
+		{
+			$data  = array(
+				'fb_data' => $fb_data,
+			);
+			$this->load->view('admin/index',$data);
+		}
 	}
 
 	public function send_page(){
@@ -43,6 +59,7 @@ class Main extends CI_Controller {
 	public function  admin(){
 		$this->load->view('admin/index');
 	}
+
 }
 
 /* End of file welcome.php */
