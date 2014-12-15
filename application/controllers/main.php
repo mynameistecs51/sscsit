@@ -8,20 +8,24 @@ class Main extends CI_Controller {
 
 	public function index(){
 		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
- 
-        if((!$fb_data['uid']) or (!$fb_data['me']))
-        {
+
+		if((!$fb_data['uid']) or (!$fb_data['me']))
+		{
             // If this is a protected section that needs user authentication
             // you can redirect the user somewhere else
             // or take any other action you need
-            $data['fb_data'] = $fb_data;
-            $this->load->view('login',$data);
-        }
+			$data = array(
+				'title' => "SCI NEWS..[1]",	
+				'fb_data' => $fb_data,
+				);	
+			$this->load->view('login',$data);			
+			//redirect('sci_con/list_news/','refresh');
+		}
 		else
 		{
 			$data  = array(
 				'fb_data' => $fb_data,
-			);
+				);
 			$this->load->view('admin/index',$data);
 		}
 	}
@@ -36,7 +40,7 @@ class Main extends CI_Controller {
 		$select_paper = $this->input->post('select_paper');
 		foreach ($select_paper as $key_select_paper => $data_select) {
 			$data_paper .= $data_select.",";	//หาค่า select paper จาก array
-			}
+		}
 
 		$insert_paper = array(
 			'sex' => $this->input->post('sex'),
@@ -48,8 +52,8 @@ class Main extends CI_Controller {
 			'select_paper' => substr($data_paper, 0,-1),
 			'fileProject' => $this->input->post('fileProject'),
 			'filePictureProject' => $this->input->post('filePictureProject'),
-		);
-			
+			);
+
 	}
 
 	public function status_page(){
