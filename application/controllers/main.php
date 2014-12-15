@@ -15,7 +15,7 @@ class Main extends CI_Controller {
             // you can redirect the user somewhere else
             // or take any other action you need
 			$data = array(
-				'title' => "SCI NEWS..[1]",	
+				'title' => "Student Symposium",	
 				'fb_data' => $fb_data,
 				);	
 			$this->load->view('login',$data);			
