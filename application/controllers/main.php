@@ -28,7 +28,7 @@ class Main extends CI_Controller {
 			'sex2' => $tihs->input->post('sex2'),
 			'inputName2' => $tihs->input->post('inputName2'),
 			'inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
-			'inputProjectName_ENG' => $ths->input->post('inputProjectName_ENG'),
+			'inputProjectName_EN' => $ths->input->post('inputProjectName_EN'),
 			'select_paper' => substr($data_paper, 0,-1),
 			'fileProject' => $this->input->post('fileProject'),
 			'filePictureProject' => $this->input->post('filePictureProject'),

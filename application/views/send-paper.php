@@ -66,9 +66,9 @@
                     </div>
                 </div>
                 <div class="form-group"> 
-                    <label for="inputProjectName_ENG" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาอังกฤษ)</label>
+                    <label for="inputProjectName_EN" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาอังกฤษ)</label>
                     <div class="col-sm-7">                           
-                        <input type="text" class="form-control" id="inputProjectName_ENG" name="inputProjectName_ENG" placeholder="ชื่อโปรเจ็คภาษาอังกฤษ">
+                        <input type="text" class="form-control" id="inputProjectName_EN" name="inputProjectName_EN" placeholder="ชื่อโปรเจ็คภาษาอังกฤษ">
                     </div>
                 </div>
                 <div class="form-group"> 
