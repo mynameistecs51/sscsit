@@ -1,15 +1,17 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Facebook_model extends CI_Model {
-    public function __construct()
-    {
+<?php if (! defined('BASEPATH')) exit("No direct script access allowed");
+
+class Facebook_model extends CI_model{
+
+    public function __construct() {
         parent::__construct();
         $config = array(
-                        'appId'  => '1384268911869946',
-                        'secret' => '808b681770a0757c89c2c7d9d7761845',
-                        'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
-                        );
- 
-         $this->load->library('facebook/facebook', $config);
+            'appId'  => '1384268911869946',
+            'secret' => '808b681770a0757c89c2c7d9d7761845',
+            'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
+        );
+
+
+        $this->load->library('facebook/facebook', $config);
 
         $user = $this->facebook->getUser();
 
