@@ -27,12 +27,14 @@ class Main extends CI_Controller {
 				'fb_data' => $fb_data,
 				);
 			$this->load->view('admin/index',$data);
+			echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" />';
 			echo $fb_data['me']['id']."<br/>";
 			echo $fb_data['me']['name']."<br/>";
 			echo $fb_data['me']['first_name']."<br/>";
 			echo $fb_data['me']['last_name']."<br/>";
 			echo $fb_data['me']['email']."<br/>";
 			echo $fb_data['me']['gender']."<br/>";
+			echo anchor('main/logout','logout');
 		}
 	}
 
@@ -70,7 +72,22 @@ class Main extends CI_Controller {
 		$this->load->view('admin/index');
 	}
 
+	public function logout() {
+		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
+
+		$this->session->sess_destroy();
+		
+		setcookie('PHPSESSID', '', time()-10, "/");
+		$this->session->unset_userdata($fb_data);
+		//$this->facebook->getLogoutUrl(array('next' => site_url('user/logout'));
+		//redirect('sci_con/', 'refresh');  //redirect to the home page
+
+		//redirect($fb_data['logoutUrl'],'refresh');
+		redirect('main','refresh');
+	}
+
 }
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
+?>

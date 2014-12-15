@@ -36,11 +36,11 @@ class Facebook_model extends CI_model{
             'uid' => $user,
             'loginUrl' => $this->facebook->getLoginUrl(
                 array(
-                                'scope' => 'public_profile,email', // app permissions
-                                'redirect_uri' => base_url(), // URL where you want to redirect your users after a successful login
-                                )
+                        'scope' => 'public_profile,email', // app permissions
+                        'redirect_uri' => base_url(), // URL where you want to redirect your users after a successful login
+                        )
                 ),
-            'logoutUrl' => $this->facebook->getLogoutUrl(),
+            'logoutUrl' => $this->facebook->getLogoutUrl(array('redirect_uri' => base_url(),)),
             );
 
         $this->session->set_userdata('fb_data', $fb_data);
