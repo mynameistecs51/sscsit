@@ -18,30 +18,72 @@ class Main extends CI_Controller {
 		$data = array(
 			'title' => "Send paper",
 			'paper_group' => $this->db->get('paper_group')->result(),//$this->main_m->get_paper_group(),
-		);
+			);
 		$this->load->view('send-paper',$data);
 	}
 
 	public function add_project(){
-		$data_paper ="";
+		$rand = rand(1111,9999);
+		$date = date("Y_m_d_H_i");
+		$file_project = "";
+		$file_pictrue ="";
+		if($_FILES['fileProject'] != null)
+		{
+			$config['upload_path'] = 'images/file_project_doc';
+			$config['allowed_types'] ='doc|docx|pdf';
+			$config['max_size'] = '5000';	//kb
+			$config['file_name'] = $this->input->post('inputProjectName_EN');		//fiel_name
+			$config['remove_spaces'] = TRUE;
+			$file_project .=$config['file_name'];			//name file project
 
-		$select_paper = $this->input->post('select_paper');
-		foreach ($select_paper as $key_select_paper => $data_select) {
-			$data_paper .= $data_select.",";	//หาค่า select paper จาก array
+			$this->load->library("upload",$config);		//library upload
+			if($this->upload->do_upload('fileProject'))	//ถ้า upload ไม่มีปัญหา
+			{
+				$data_fileProject = $this->upload->data();
+			}
+			else
+			{
+				echo $this->upload->display_errors();
+			}
+
+		}
+		if($_FILES['filePictureProject'] != null){
+
+			$config['upload_path'] = 'images/file_project_picture';
+			$config['allowed_types'] ='jpg|png|gif|jpeg';
+			$config['max_size'] = '5000';	//kb
+			$config['file_name'] = $this->input->post('inputProjectName_EN');		//fiel_name
+			$config['remove_spaces'] = TRUE;
+			$file_pictrue .= $config['file_name'];		//name picture  project
+
+			$this->load->library('upload',$config);
+			if($this->upload->do_upload('filePictureProject'))
+			{
+				$data_filePictureProject = $this->upload->data();
+			}
+			else
+			{
+				echo $this->upload->display_errors()."picture";
+			}
 		}
 
 		$insert_paper = array(
-			'sex' => $this->input->post('sex'),
-			'inputName1' => $this->input->post('inputName1'),
-			'sex2' => $tihs->input->post('sex2'),
-			'inputName2' => $tihs->input->post('inputName2'),
-			'inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
-			'inputProjectName_EN' => $ths->input->post('inputProjectName_EN'),
-			'select_group' => substr($data_paper, 0,-1),
-			'fileProject' => $this->input->post('fileProject'),
-			'filePictureProject' => $this->input->post('filePictureProject'),
+			'paper_id' => '',
+			'paper_sex' => $this->input->post('sex'),
+			'paper_inputName1' => $this->input->post('inputName1'),
+			'paper_sex2' => $this->input->post('sex2'),
+			'paper_inputName2' => $this->input->post('inputName2'),
+			'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
+			'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
+			'paper_group' => $this->input->post('select_group'),
+			'paper_fileProject' => $file_project,
+			'paper_filePictureProject' => $file_pictrue,
+			'paper_date' => $date,
+			'paper_user' => '1',//$fb_data['me']['id'],
 			);
-
+		// $this->db->insert('paper',$insert_paper);
+		// redirect('main','refresh');
+		//print_r($insert_paper);
 	}
 
 	public function status_page(){
@@ -71,11 +113,11 @@ class Main extends CI_Controller {
 
 	}
 
-	 public function id_check($fb_data){
-     $query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id'])->num_rows();
+	public function id_check($fb_data){
+		$query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id'])->num_rows();
 
-     return $query_faceboo_id;
- } 
+		return $query_faceboo_id;
+	} 
 
 }
 

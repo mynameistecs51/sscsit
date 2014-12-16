@@ -96,8 +96,8 @@
                 <label for="inputPictureProject" class="col-sm-3 control-label">รูปภาพโปรเจ็ค</label>
                 <div class="col-sm-7">
                     <div class="input-group">
-                        <input type="file" name="filePictureProject" id="filePicture" />
-                        <p class="help-block">สามารถอัพโหลดไฟล์ .png .jpg .JPG<br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                            
+                        <input type="file" name="filePictureProject" id="filePictureProject" />
+                        <p class="help-block">สามารถอัพโหลดไฟล์ .png .jpg <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                            
                     </div>
                 </div>
             </div>                    
