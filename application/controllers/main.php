@@ -17,6 +17,8 @@ class Main extends CI_Controller {
 			$data = array(
 				'title' => "Student Symposium",	
 				'fb_data' => $fb_data,
+				'data_toggle' => 'data-toggle="modal"',
+				'data_target' => ' data-target=".bs-example-modal-lg"',
 				);	
 			$this->load->view('login',$data);			
 			//redirect('sci_con/list_news/','refresh');

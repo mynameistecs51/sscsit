@@ -32,6 +32,7 @@
     <script  type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
     <script  type="text/javascript" src="<?php echo base_url();?>js/jquery.prettyPhoto.js"></script>
     <script  type="text/javascript" src="<?php echo base_url();?>js/main.js"></script>    
-    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-multiselect.js"></script> 
+
 </body>
 </html>
