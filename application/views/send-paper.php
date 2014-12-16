@@ -73,43 +73,43 @@
                 </div>
                 <div class="form-group"> 
                     <label for="inputGroup" class="col-sm-3 control-label">ประเภทโครงงาน</label>
-                    <div class="col-sm-7">                           
-                    <select  class="form-control "  id="select_paper" name="select_paper[]" multiple>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                    <div class="col-sm-7">  
+                     <select  class="form-control "  id="select_group" name="select_group" >   <!--  เลือกประเภทของโครงงาน   -->
+                     <?php
+                        foreach ($paper_group as $key => $row_group) {
+                            echo '<option value="'.$row_group->group_id.'">'.$row_group->group_name.'</option>';
+                         }
+                     ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputFileProject" class="col-sm-3 control-label">ไฟล์โปรเจ็ค</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <input type="file" name="fileProject" id="fileProject" />
+                        <p class="help-block">สามารถอัพโหลดไฟล์ .doc .docx .pdf <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                               
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputFileProject" class="col-sm-3 control-label">ไฟล์โปรเจ็ค</label>
-                    <div class="col-sm-7">
-                        <div class="input-group">
-                            <input type="file" name="fileProject" id="fileProject" />
-                            <p class="help-block">สามารถอัพโหลดไฟล์ .doc .docx .pdf <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                               
-                        </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPictureProject" class="col-sm-3 control-label">รูปภาพโปรเจ็ค</label>
+                <div class="col-sm-7">
+                    <div class="input-group">
+                        <input type="file" name="filePictureProject" id="filePicture" />
+                        <p class="help-block">สามารถอัพโหลดไฟล์ .png .jpg .JPG<br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                            
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputPictureProject" class="col-sm-3 control-label">รูปภาพโปรเจ็ค</label>
-                    <div class="col-sm-7">
-                        <div class="input-group">
-                            <input type="file" name="filePictureProject" id="filePicture" />
-                            <p class="help-block">สามารถอัพโหลดไฟล์ .png .jpg .JPG<br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                            
-                        </div>
-                    </div>
-                </div>                    
-                <div class="form-group pull-right">
-                    <!-- <div class="col-sm-offset-2 col-sm-10"> -->
-                    <button type="reset" class="btn btn-warning">Cancel </button>
-                    <button type="submit" class="btn btn-success">Send  </button>
-                    <!-- </div> -->
-                </div>
-            </form>  <!-- end form -->
-        </div>  <!-- end panel body -->
-    </div> <!-- end panel -->
+            </div>                    
+            <div class="form-group pull-right">
+                <!-- <div class="col-sm-offset-2 col-sm-10"> -->
+                <button type="reset" class="btn btn-warning">Cancel </button>
+                <button type="submit" class="btn btn-success">Send  </button>
+                <!-- </div> -->
+            </div>
+        </form>  <!-- end form -->
+    </div>  <!-- end panel body -->
+</div> <!-- end panel -->
 </div>
 </div><!--/.row-->
 

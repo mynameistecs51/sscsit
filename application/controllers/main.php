@@ -3,45 +3,23 @@
 class Main extends CI_Controller {
 	public function __constrct(){
 		parent::__constrct();
+		$this->load->model('main_m','',TRUE);
 		$this->load->model('facebook_model','',TRUE);
 	}
 
 	public function index(){
-		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
-
-		if((!$fb_data['uid']) or (!$fb_data['me']))
-		{
-            // If this is a protected section that needs user authentication
-            // you can redirect the user somewhere else
-            // or take any other action you need
-			$data = array(
-				'title' => "Student Symposium",	
-				'fb_data' => $fb_data,
-				'data_toggle' => 'data-toggle="modal"',
-				'data_target' => ' data-target=".bs-example-modal-lg"',
-				);	
-			$this->load->view('login',$data);			
-			//redirect('sci_con/list_news/','refresh');
-		}
-		else
-		{
-			$data  = array(
-				'fb_data' => $fb_data,
-				);
-			$this->load->view('admin/index',$data);
-			echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" />';
-			echo $fb_data['me']['id']."<br/>";
-			echo $fb_data['me']['name']."<br/>";
-			echo $fb_data['me']['first_name']."<br/>";
-			echo $fb_data['me']['last_name']."<br/>";
-			echo $fb_data['me']['email']."<br/>";
-			echo $fb_data['me']['gender']."<br/>";
-			echo anchor('main/logout','logout');
-		}
+		$data = array(
+			'title' => "Student Symposium",
+			);
+		$this->load->view('index',$data);
 	}
 
 	public function send_page(){
-		$this->load->view('send-paper');
+		$data = array(
+			'title' => "Send paper",
+			'paper_group' => $this->db->get('paper_group')->result(),//$this->main_m->get_paper_group(),
+		);
+		$this->load->view('send-paper',$data);
 	}
 
 	public function add_project(){
@@ -59,7 +37,7 @@ class Main extends CI_Controller {
 			'inputName2' => $tihs->input->post('inputName2'),
 			'inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
 			'inputProjectName_EN' => $ths->input->post('inputProjectName_EN'),
-			'select_paper' => substr($data_paper, 0,-1),
+			'select_group' => substr($data_paper, 0,-1),
 			'fileProject' => $this->input->post('fileProject'),
 			'filePictureProject' => $this->input->post('filePictureProject'),
 			);
@@ -87,6 +65,17 @@ class Main extends CI_Controller {
 		//redirect($fb_data['logoutUrl'],'refresh');
 		redirect('main','refresh');
 	}
+
+	public function get_paper_group(){
+		$paper_group = $this->m_main->get_paper_group();
+
+	}
+
+	 public function id_check($fb_data){
+     $query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id'])->num_rows();
+
+     return $query_faceboo_id;
+ } 
 
 }
 
