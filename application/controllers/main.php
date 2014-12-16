@@ -81,6 +81,7 @@ class Main extends CI_Controller {
 			'paper_date' => $date,
 			'paper_user' => '1',//$fb_data['me']['id'],
 			);
+		print_r($insert_paper)."<br/>";
 		// $this->db->insert('paper',$insert_paper);
 		// redirect('main','refresh');
 		//print_r($insert_paper);
