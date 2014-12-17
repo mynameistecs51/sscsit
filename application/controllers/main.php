@@ -32,16 +32,24 @@
 			$date = date("Y_m_d_H_i");
 			$file_project = "";
 			$file_pictrue ="";
-			if($_FILES['fileProject'] != null)
-			{
-				// ---------- upload file project --------------//
-				$this->m_main->upload_fileproject();
 
+			for($i = 1 ; $i <= count($_FILES) ; $i++)
+			{
+				print_r($_FILES);
+				echo "<br/>------------";
+				echo $_FILES['fileProject']['type'];
 			}
-			if($_FILES['filePictureProject'] != null){
-				// -------- upload pictuer project ---------------//
-				$file_pictrue = $file_project = $this->m_main->upload_picture_project();
-			}
+
+			// if($_FILES['fileProject'] != null)
+			// {
+			// 	// ---------- upload file project --------------//
+			// 	//$this->m_main->upload_fileproject();
+
+			// }
+			// if($_FILES['filePictureProject'] != null){
+			// 	// -------- upload pictuer project ---------------//
+			// 	//$file_pictrue = $file_project = $this->m_main->upload_picture_project();
+			// }
 
 			$insert_paper = array(
 				'paper_id' => '',
@@ -57,7 +65,7 @@
 				'paper_date' => $date,
 			'paper_user' => '1',//$fb_data['me']['id'],
 			);
-			print_r($insert_paper)."<br/>";
+			//print_r($insert_paper)."<br/>";
 		// $this->db->insert('paper',$insert_paper);
 		// redirect('main','refresh');
 		//print_r($insert_paper);
