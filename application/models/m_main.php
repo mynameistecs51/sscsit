@@ -28,7 +28,7 @@
 			$this->load->library("upload",$config);		//library upload
 			if($this->upload->do_upload('fileProject'))	//ถ้า upload ไม่มีปัญหา
 			{
-				 $data_fileProject = $this->upload->data();
+				$data_fileProject = $this->upload->data();
 				 // print_r($data_fileProject);
 				return $data_fileProject;
 
@@ -53,7 +53,7 @@
 			$this->load->library('upload',$config);
 			if($this->upload->do_upload('filePictureProject'))
 			{
-				 $data_filePictureProject = $this->upload->data();
+				$data_filePictureProject = $this->upload->data();
 				 //print_r($data_filePictureProject);
 				return $file_pictrue;
 			}
@@ -62,6 +62,29 @@
 				echo $this->upload->display_errors()."picture";
 			}
 			return true;
+		}
+
+		public function get_paper(){
+			$query_paper = $this->db->query("SELECT
+				`paper`.`paper_id`,
+				`paper`.`paper_sex`,
+				`paper`.`paper_inputName1`,
+				`paper`.`paper_sex2`,
+				`paper`.`paper_inputName2`,
+				`paper`.`paper_inputProjectName_TH`,
+				`paper`.`paper_inputProjectName_EN`,
+				`paper`.`paper_group`,
+				`paper`.`paper_fileProject`,
+				`paper`.`paper_filePictureProject`,
+				`paper`.`paper_date`,
+				`paper`.`paper_user`,
+				`paper_group`.`group_name`
+				FROM
+				`paper`
+				INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
+				ORDER BY `paper`.`paper_id` DESC
+				");
+			return $query_paper->result();
 		}
 	}
 	?>

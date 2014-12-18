@@ -33,7 +33,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <label for="male">Male
-                                    <input type="radio"  value="male" name="sex" id="male"/>
+                                    <input type="radio"  value="male" name="sex" id="male" checked="true" />
                                 </label>
                                 <label for="female">Female
                                     <input type="radio" value="female" name="sex" id="female">
@@ -49,7 +49,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <label for="male2">Male
-                                    <input type="radio" value="male" name="sex2" id="male2"/>
+                                    <input type="radio" value="male" name="sex2" id="male2" checked="true" />
                                 </label>
                                 <label for="female">Female
                                     <input type="radio" value="female" name="sex2" id="female2">

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 18, 2014 at 01:39 AM
--- Server version: 5.6.21
--- PHP Version: 5.5.19
+-- Host: 127.0.0.1
+-- Generation Time: Dec 18, 2014 at 02:11 PM
+-- Server version: 5.5.39
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,14 +39,14 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `paper_user` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `paper`
 --
 
 INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `paper_user`) VALUES
-(9, 'male', 'tt', 'male', 'tt', 'ทดสอบ', 'tt tt', 1, 'กิจกรรมงบกลาง.doc', 'null', '2014-12-17 15:25:00', 1);
+(10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', 1);
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `paper_group`
@@ -66,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `paper_group` (
 INSERT INTO `paper_group` (`group_id`, `group_name`) VALUES
 (1, 'โปรแกรมเพื่อความบันเทิง'),
 (2, 'โปรแกรมส่งเสริมการเรียนรู้'),
-(3, 'โปรแกรมเพื่อความบันเทิง'),
 (4, 'โปรแกรมส่งเสริมการเรียนรู้'),
 (5, 'โปรแกรมช่วยเหลือคนพิการและผู้สูงอายุ'),
 (6, 'โปรแกรมเพื่องานพัฒนาด้านวิทยาศาสตร์และเทคโนโลยี'),
@@ -118,7 +117,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `paper`
 --
 ALTER TABLE `paper`
-MODIFY `paper_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `paper_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `paper_group`
 --

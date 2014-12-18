@@ -35,8 +35,10 @@
 
 			if($_FILES['fileProject'] != null)
 			{
-				$this->m_main->upload_fileproject();
+				$file_project = $this->m_main->upload_fileproject();
 			}
+
+			//echo $file_project['file_name']."<br/>";
 			// if($_FILES['filePictureProject'] != null){
 			// 	// -------- upload pictuer project ---------------//
 			// 	//$file_pictrue = $file_project = $this->m_main->upload_picture_project();
@@ -51,20 +53,23 @@
 				'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
 				'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
 				'paper_group' => $this->input->post('select_group'),
-				'paper_fileProject' => $file_project,
+				'paper_fileProject' => $file_project['file_name'],
 				'paper_filePictureProject' => "null",
 				'paper_date' => $date,
 			'paper_user' => '1',//$fb_data['me']['id'],
 			);
-			//echo trim($this->input->post('inputProjectName_EN'));
-			//print_r($insert_paper)."<br/>";
-		//	$this->db->insert('paper',$insert_paper);
-			//redirect('main','refresh');
+			
+			$this->db->insert('paper',$insert_paper);
+			redirect('main','refresh');
 		//print_r($insert_paper);
 		}
 
 		public function status_page(){
-			$this->load->view('services');
+			$data = array(
+				'title' => 'Status Paper',
+				'get_paper' => $this->m_main->get_paper(),
+			);
+			$this->load->view('status_paper',$data);
 		}
 
 		public function  admin(){
@@ -94,26 +99,6 @@
 		$query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id'])->num_rows();
 
 		return $query_faceboo_id;
-	} 
-	function download_paper(){
-		$paper = $this->db->get('paper')->result();
-		foreach ($paper as $key_paper => $row_paper) {
-			echo force_download(base_url().'image/file_project_doc/'.$row_paper->paper_fileProject);
-		}
-	}
-	public function read_file(){
-		header('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
-		$this->load->helper('download');
-		$this->load->view('header');
-		$paper = $this->db->get('paper')->result();
-		foreach ($paper as $key_paper => $row_paper) {
-			echo $row_paper->paper_fileProject."<br/>";
-			$data = file_get_contents( base_url().'image/file_project_doc/'.$row_paper->paper_fileProject); // Read the file's contents
-			$name = 'กิจกรรมงบกลาง.doc';
-
-			force_download($name, $data); 
-		}
-		$this->load->view('footer');
 	}
 }
 
