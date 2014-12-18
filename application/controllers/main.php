@@ -36,7 +36,7 @@
 			if($_FILES['fileProject'] != null)
 			{
 				// ---------- upload file project --------------//
-				$file_project .= $this->m_main->upload_fileproject();
+			$file_project .= $this->m_main->upload_fileproject();
 
 			}
 			// if($_FILES['filePictureProject'] != null){
@@ -58,9 +58,10 @@
 				'paper_date' => $date,
 			'paper_user' => '1',//$fb_data['me']['id'],
 			);
+			//echo trim($this->input->post('inputProjectName_EN'));
 			//print_r($insert_paper)."<br/>";
-			$this->db->insert('paper',$insert_paper);
-			redirect('main','refresh');
+		//	$this->db->insert('paper',$insert_paper);
+			//redirect('main','refresh');
 		//print_r($insert_paper);
 		}
 

@@ -87,7 +87,7 @@
                 <label for="inputFileProject" class="col-sm-3 control-label">ไฟล์โปรเจ็ค</label>
                 <div class="col-sm-7">
                     <div class="input-group">
-                    <input type="file" name="fileProject" id="fileProject"   />
+                    <input type="file" name="fileProject" id="fileProject"  accept=".doc, .docx, .pdf"  />
                         <p class="help-block">สามารถอัพโหลดไฟล์ .doc .docx .pdf <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>   
                   </div>
               </div>

@@ -20,22 +20,22 @@
 
 			$config['upload_path'] = 'images/file_project_doc';
 			$config['allowed_types'] = 'doc|docx|pdf';
-			$config['max_size'] = '7000';	//kb
-			$config['file_name'] = trim($_FILES['fileProject']['name']);		//fiel_name
+			$config['max_size'] = '7000';	// 7mb
+			$config['file_name'] = $this->input->post('inputProjectName_EN');		//fiel_name
 			$config['remove_spaces'] = TRUE;
-			$file_project =$config['file_name'];			//name file project
+			$file_project = $config['file_name'];		//name file project
 
 			$this->load->library("upload",$config);		//library upload
 			if($this->upload->do_upload('fileProject'))	//ถ้า upload ไม่มีปัญหา
 			{
 				 $data_fileProject = $this->upload->data();
-				 //print_r($data_fileProject);
+				 print_r($data_fileProject);
 				return $file_project;
 
 			}
 			else
 			{
-				echo $this->upload->display_errors()."doc";
+				echo $this->upload->display_errors()."error_doc";
 			}
 
 			return true;
@@ -48,13 +48,13 @@
 			$config['max_size'] = '5000';	//kb
 			$config['file_name'] = $this->input->post('inputProjectName_EN');		//fiel_name
 			$config['remove_spaces'] = TRUE;
-			$file_pictrue = $config['file_name'];		//name picture  project
+			$file_pictrue = rename($config['file_name'],$this->input->post('inputProjectName_EN').$config['file_ext']);		//name picture  project
 
 			$this->load->library('upload',$config);
 			if($this->upload->do_upload('filePictureProject'))
 			{
 				 $data_filePictureProject = $this->upload->data();
-				 print_r($data_filePictureProject);
+				 //print_r($data_filePictureProject);
 				return $file_pictrue;
 			}
 			else
