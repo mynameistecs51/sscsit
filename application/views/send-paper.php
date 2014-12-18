@@ -87,26 +87,12 @@
                 <label for="inputFileProject" class="col-sm-3 control-label">ไฟล์โปรเจ็ค</label>
                 <div class="col-sm-7">
                     <div class="input-group">
-                    <input type="file" name="fileProject" id="fileProject"  accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword" />
-                        <p class="help-block">สามารถอัพโหลดไฟล์ .doc .docx .pdf <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>  
-                        <script type="text/javascript" language="javascript">
-                            function checkfile(sender) {
-                                var validExts = new Array(".xlsx", ".xls", ".csv");
-                                var fileExt = sender.value;
-                                fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
-                                if (validExts.indexOf(fileExt) < 0) {
-                                  alert("ขออภัยไฟล์ที่คุณเลือกไม่ตรงกับ " +
-                                   validExts.toString() + " types.");  
-                                  document.getElamentByID('fileProject').innerHTML='';                        
-                                  return false;
-                              }
-                              else return true;
-                          }
-                      </script>                   
+                    <input type="file" name="fileProject" id="fileProject"   />
+                        <p class="help-block">สามารถอัพโหลดไฟล์ .doc .docx .pdf <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>   
                   </div>
               </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="inputPictureProject" class="col-sm-3 control-label">รูปภาพโปรเจ็ค</label>
             <div class="col-sm-7">
                 <div class="input-group">
@@ -114,7 +100,7 @@
                     <p class="help-block">สามารถอัพโหลดไฟล์ .png .jpg <br/>*ควรตั้งชื่อเป็นภาษาอังกฤษ</p>                                            
                 </div>
             </div>
-        </div>                    
+        </div>           -->          
         <div class="form-group pull-right">
             <!-- <div class="col-sm-offset-2 col-sm-10"> -->
             <button type="reset" class="btn btn-warning">Cancel </button>

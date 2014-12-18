@@ -33,19 +33,12 @@
 			$file_project = "";
 			$file_pictrue ="";
 
-			for($i = 1 ; $i <= count($_FILES) ; $i++)
+			if($_FILES['fileProject'] != null)
 			{
-				print_r($_FILES);
-				echo "<br/>------------";
-				echo $_FILES['fileProject']['type'];
+				// ---------- upload file project --------------//
+				$file_project .= $this->m_main->upload_fileproject();
+
 			}
-
-			// if($_FILES['fileProject'] != null)
-			// {
-			// 	// ---------- upload file project --------------//
-			// 	//$this->m_main->upload_fileproject();
-
-			// }
 			// if($_FILES['filePictureProject'] != null){
 			// 	// -------- upload pictuer project ---------------//
 			// 	//$file_pictrue = $file_project = $this->m_main->upload_picture_project();
@@ -61,13 +54,13 @@
 				'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
 				'paper_group' => $this->input->post('select_group'),
 				'paper_fileProject' => $file_project,
-				'paper_filePictureProject' => $file_pictrue,
+				'paper_filePictureProject' => "null",
 				'paper_date' => $date,
 			'paper_user' => '1',//$fb_data['me']['id'],
 			);
 			//print_r($insert_paper)."<br/>";
-		// $this->db->insert('paper',$insert_paper);
-		// redirect('main','refresh');
+			$this->db->insert('paper',$insert_paper);
+			redirect('main','refresh');
 		//print_r($insert_paper);
 		}
 
@@ -103,7 +96,26 @@
 
 		return $query_faceboo_id;
 	} 
+	function download_paper(){
+		$paper = $this->db->get('paper')->result();
+		foreach ($paper as $key_paper => $row_paper) {
+			echo force_download(base_url().'image/file_project_doc/'.$row_paper->paper_fileProject);
+		}
+	}
+	public function read_file(){
+		header('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
+		$this->load->helper('download');
+		$this->load->view('header');
+		$paper = $this->db->get('paper')->result();
+		foreach ($paper as $key_paper => $row_paper) {
+			echo $row_paper->paper_fileProject."<br/>";
+			$data = file_get_contents( base_url().'image/file_project_doc/'.$row_paper->paper_fileProject); // Read the file's contents
+			$name = 'กิจกรรมงบกลาง.doc';
 
+			force_download($name, $data); 
+		}
+		$this->load->view('footer');
+	}
 }
 
 /* End of file welcome.php */
