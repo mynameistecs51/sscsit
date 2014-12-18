@@ -35,9 +35,7 @@
 
 			if($_FILES['fileProject'] != null)
 			{
-				// ---------- upload file project --------------//
-			$file_project .= $this->m_main->upload_fileproject();
-
+				$this->m_main->upload_fileproject();
 			}
 			// if($_FILES['filePictureProject'] != null){
 			// 	// -------- upload pictuer project ---------------//

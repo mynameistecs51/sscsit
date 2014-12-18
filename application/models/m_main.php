@@ -18,19 +18,19 @@
 
 		function upload_fileproject(){
 
-			$config['upload_path'] = 'images/file_project_doc';
+			$config['upload_path'] = './images/file_project_doc';
 			$config['allowed_types'] = 'doc|docx|pdf';
 			$config['max_size'] = '7000';	// 7mb
 			$config['file_name'] = $this->input->post('inputProjectName_EN');		//fiel_name
 			$config['remove_spaces'] = TRUE;
-			$file_project = $config['file_name'];		//name file project
+			//$file_project = $config['file_name'];		//name file project
 
 			$this->load->library("upload",$config);		//library upload
 			if($this->upload->do_upload('fileProject'))	//ถ้า upload ไม่มีปัญหา
 			{
 				 $data_fileProject = $this->upload->data();
-				 print_r($data_fileProject);
-				return $file_project;
+				 // print_r($data_fileProject);
+				return $data_fileProject;
 
 			}
 			else
