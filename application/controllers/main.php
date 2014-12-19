@@ -73,7 +73,11 @@
 		}
 
 		public function  admin(){
-			$this->load->view('admin/index');
+			$data = array(
+				'title' => 'Admin student symposim',
+				'get_paper' => $this->m_main->get_paper(),
+				);
+			$this->load->view('admin/index',$data);
 		}
 
 		public function logout() {
