@@ -12,8 +12,6 @@
     <link href="<?php echo base_url();?>css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/animate.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-multiselect.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-multiselect.css" type="text/css"/>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>

@@ -9,19 +9,19 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-3 col-md-6">
-                <a href="#">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>New Comments!</div>
+            <a href="#">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">26</div>
+                                <div>New Comments!</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -31,76 +31,76 @@
             </a>
         </div>
         <div class="col-lg-3 col-md-6">
-                <a href="#">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
+            <a href="#">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">12</div>
+                                <div>New Tasks!</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
-            </div>
-                </a>
+                </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6">
-                <a href="#">
-            <div class="panel panel-yellow">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
+            <a href="#">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">124</div>
+                                <div>New Orders!</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
-            </div>
-                </a>
+                </div>
+            </a>
         </div>
         <div class="col-lg-3 col-md-6">
-                <a href="#">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
-                            <div>Support Tickets!</div>
+            <a href="#">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-support fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">13</div>
+                                <div>Support Tickets!</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
-            </div>
-                </a>
+                </div>
+            </a>
         </div>
     </div>  <!-- /.row -->
-  
+
     <div class="row">
         <div class="col-lg-16">
-           <div class="panel panel-default">
+         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-bar-chart-o fa-fw"></i> project
                 <div class="pull-right">
@@ -139,25 +139,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php 
+                                    <?php 
                                     foreach ($get_paper as $key_papger => $row_paper) {
-                                        
-                                ?>
-                                    <tr>
-                                        <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                                        <td><?php echo $row_paper->group_name;?></td>
-                                        <td><?php echo $row_paper->paper_inputName1;?></td>
-                                        <td><?php echo $row_paper->paper_date;?></td>
-                                        <td>accept</td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.col-lg-4 (nested) -->
-                    <div class="col-lg-8">
+
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                                            <td><?php echo $row_paper->group_name;?></td>
+                                            <td><?php echo $row_paper->paper_inputName1;?></td>
+                                            <td><?php echo $row_paper->paper_date;?></td>
+                                            <td>
+                                                <!-- Build your select: -->
+                                                <select  class="selectpicker"  multiple data-live-search="true" data-actions-box="true" title="เลือกกรรมการ">
+                                                    <optgroup label="filter1">
+                                                      <option>option1</option>
+                                                      <option>option2</option>
+                                                      <option>option3</option>
+                                                      <option>option4</option>
+                                                  </optgroup>
+                                                  <optgroup label="filter2">
+                                                      <option>option1</option>
+                                                      <option>option2</option>
+                                                      <option>option3</option>
+                                                      <option>option4</option>
+                                                  </optgroup>
+                                                  <optgroup label="filter3">
+                                                      <option>option1</option>
+                                                      <option>option2</option>
+                                                      <option>option3</option>
+                                                      <option>option4</option>
+                                                  </optgroup>
+                                              </select>
+                                          </td>
+                                      </tr>
+                                      <?php } ?>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <!-- /.table-responsive -->
+                      </div>
+                      <!-- /.col-lg-4 (nested) -->
+                      <div class="col-lg-8">
                         <div id="morris-bar-chart"></div>
                     </div>
                     <!-- /.col-lg-8 (nested) -->
@@ -168,7 +190,7 @@
         </div>
     </div>
     <!-- /.col-lg-16 -->
-    
+
 </div>
 <!-- /.row -->
 </div>

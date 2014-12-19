@@ -1,5 +1,18 @@
- <!-- jQuery -->
- <script src="<?php echo base_url();?>js/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+      var mySelect = $('#first-disabled2');
+
+      $('#special').on('click', function () {
+        mySelect.find('option:selected').attr('disabled', 'disabled');
+        mySelect.selectpicker('refresh');
+      });
+
+      var $basic2 = $('#basic2').selectpicker({
+        liveSearch: true,
+        maxOptions: 1
+      });
+    });
+  </script>
 
  <!-- Bootstrap Core JavaScript -->
  <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
