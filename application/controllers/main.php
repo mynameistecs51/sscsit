@@ -7,6 +7,7 @@
 		{
         // Call the controll constructor
 			parent::__construct();
+			date_default_timezone_set("Asia/Bangkok");
 			$this->load->model('m_main','',TRUE);
 			$this->load->model('facebook_model','',TRUE);
 		}
@@ -99,11 +100,27 @@
 
 	}
 
+	public function send_paper(){
+		$committee = $this->input->post('select_committee');
+		$select_committee ="";
+		foreach ($committee as $key => $value) 		// อ่านค่าจาก multi  select
+		{
+			$select_committee .= $value.",";
+		}
+		$data = array(
+			'paper_id' => $this->input->post('paper_id'),
+			'committee_id' => substr($select_committee,0,-1),
+		);
+
+		print_r($data);
+	}
+
 	public function id_check($fb_data){
 		$query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id'])->num_rows();
 
 		return $query_faceboo_id;
 	}
+
 }
 
 /* End of file welcome.php */

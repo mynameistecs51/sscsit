@@ -14,11 +14,11 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-comments fa-5x"></i>
+                                <i class="fa fa-file-text fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">26</div>
-                                <div>New Comments!</div>
+                                <div class="huge"><?php echo count($get_paper);?></div>
+                                <div>โปรเจ็คทั้งหมด</div>
                             </div>
                         </div>
                     </div>
@@ -36,11 +36,11 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-tasks fa-5x"></i>
+                                <i class="fa fa-share-square fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">12</div>
-                                <div>New Tasks!</div>
+                                <div>ส่งให้กรรมการแล้ว</div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">124</div>
-                                <div>New Orders!</div>
+                                <div>ตรวจแล้ว</div>
                             </div>
                         </div>
                     </div>
@@ -134,14 +134,16 @@
                                      <td><?php echo $row_paper->paper_inputName1;?></td>
                                      <td><?php echo $row_paper->paper_date;?></td>
                                      <td>
-                                       <!--  <select id="maxOption2" class="selectpicker show-menu-arrow form-control" multiple data-max-options="4"> -->
-                                       <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[][<?php echo $row_paper->paper_id;?>]" title="เลือกกรรมการ">
+                                    <?php echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');?>
+                                        <input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">
+                                       <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
                                           <option>chicken</option>
                                           <option>turkey</option>
                                           <option >duck</option>
                                           <option>goose</option>
                                       </select>
-                                      <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-send" title="send"></i></button>
+                                      <button type="submit" class="btn btn-success">ส่ง</i></button>
+                                    </form>
                                   </td>
                               </tr>
                               <?php } ;?>
