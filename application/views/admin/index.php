@@ -112,6 +112,7 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
+                                        <th>ที่</th>
                                         <th>โปรเจ็ค</th>
                                         <th>ประเภท</th>
                                         <th>หัวหน้าโครงงาน</th>
@@ -121,17 +122,25 @@
                                 </thead>
                                 <tbody>
                                     <?php 
+                                    $number =""; 
+                                    for($i = 1; $i<=  count($get_paper); $i++)
+                                        {  
+                                            $number = $i;
+
                                     foreach ($get_paper as $key_papger => $row_paper) {
 
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                                            <td><?php echo $row_paper->group_name;?></td>
-                                            <td><?php echo $row_paper->paper_inputName1;?></td>
-                                            <td><?php echo $row_paper->paper_date;?></td>
-                                            <td>
+
+                                    }
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $number;?></td>
+                                        <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                                        <td><?php echo $row_paper->group_name;?></td>
+                                        <td><?php echo $row_paper->paper_inputName1;?></td>
+                                        <td><?php echo $row_paper->paper_date;?></td>
+                                        <td>
                                            <!--  <select id="maxOption2" class="selectpicker show-menu-arrow form-control" multiple data-max-options="4"> -->
-                                           <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
+                                           <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[][<?php echo $row_paper->paper_id;?>]" title="เลือกกรรมการ">
                                               <option>chicken</option>
                                               <option>turkey</option>
                                               <option >duck</option>

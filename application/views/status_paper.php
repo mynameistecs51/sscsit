@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="center gap">
                     <h2>โครงงานทั้งหมด</h2>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <p>โครงงาน สัมนาทางวิชาการของนักศึกษาสาขาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
                 </div>                
             </div>
         </div>
