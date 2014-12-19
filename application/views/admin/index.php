@@ -102,7 +102,7 @@
         <div class="col-lg-16">
            <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> project                
+            <i class="fa fa-file-text fa-fx"></i> project                
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -121,49 +121,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
-                                    $number =""; 
-                                    for($i = 1; $i<=  count($get_paper); $i++)
-                                        {  
-                                            $number = $i;
+                                   <tr>
+                                    <?php
+                                    $number = 1;
 
                                     foreach ($get_paper as $key_papger => $row_paper) {
 
-
-                                    }
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $number;?></td>
-                                        <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                                        <td><?php echo $row_paper->group_name;?></td>
-                                        <td><?php echo $row_paper->paper_inputName1;?></td>
-                                        <td><?php echo $row_paper->paper_date;?></td>
-                                        <td>
-                                           <!--  <select id="maxOption2" class="selectpicker show-menu-arrow form-control" multiple data-max-options="4"> -->
-                                           <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[][<?php echo $row_paper->paper_id;?>]" title="เลือกกรรมการ">
-                                              <option>chicken</option>
-                                              <option>turkey</option>
-                                              <option >duck</option>
-                                              <option>goose</option>
-                                          </select>
-                                      </td>
-                                  </tr>
-                                  <?php } ?>
-                              </tbody>
-                          </table>
-                      </div>
-                      <!-- /.table-responsive -->
+                                     ?>
+                                     <td><?php echo $number++;?></td>
+                                     <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                                     <td><?php echo $row_paper->group_name;?></td>
+                                     <td><?php echo $row_paper->paper_inputName1;?></td>
+                                     <td><?php echo $row_paper->paper_date;?></td>
+                                     <td>
+                                       <!--  <select id="maxOption2" class="selectpicker show-menu-arrow form-control" multiple data-max-options="4"> -->
+                                       <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[][<?php echo $row_paper->paper_id;?>]" title="เลือกกรรมการ">
+                                          <option>chicken</option>
+                                          <option>turkey</option>
+                                          <option >duck</option>
+                                          <option>goose</option>
+                                      </select>
+                                  </td>
+                              </tr>
+                              <?php } ;?>
+                          </tbody>
+                      </table>
                   </div>
-                  <!-- /.col-lg-4 (nested) -->
-                  <div class="col-lg-8">
-                    <div id="morris-bar-chart"></div>
-                </div>
-                <!-- /.col-lg-8 (nested) -->
+                  <!-- /.table-responsive -->
+              </div>
+              <!-- /.col-lg-4 (nested) -->
+              <div class="col-lg-8">
+                <div id="morris-bar-chart"></div>
             </div>
-            <!-- /.row -->
+            <!-- /.col-lg-8 (nested) -->
         </div>
-        <!-- /.panel-body -->
+        <!-- /.row -->
     </div>
+    <!-- /.panel-body -->
+</div>
 </div>
 <!-- /.col-lg-16 -->
 
