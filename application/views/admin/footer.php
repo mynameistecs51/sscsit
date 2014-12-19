@@ -1,18 +1,5 @@
-<script>
-    $(document).ready(function () {
-      var mySelect = $('#first-disabled2');
-
-      $('#special').on('click', function () {
-        mySelect.find('option:selected').attr('disabled', 'disabled');
-        mySelect.selectpicker('refresh');
-      });
-
-      var $basic2 = $('#basic2').selectpicker({
-        liveSearch: true,
-        maxOptions: 1
-      });
-    });
-  </script>
+ <!-- jQuery -->
+ <script src="<?php echo base_url();?>js/jquery.js"></script>
 
  <!-- Bootstrap Core JavaScript -->
  <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
@@ -28,6 +15,10 @@
  <!-- Custom Theme JavaScript -->
  <script src="<?php echo base_url();?>js/sb-admin-2.js"></script>
 
+ <!-- js multi select -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-select.js"></script>
+ <!-- ./end js multi select -->
 </body>
 
 </html>

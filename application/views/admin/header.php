@@ -29,20 +29,15 @@
     <!-- Custom Fonts -->
     <link href="<?php echo base_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Include the plugin's CSS and JS: -->
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap-select.css">
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-select.js"></script>
-  <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
-    <!-- ./end multi select -->
-
+    <!-- Multi  select -->
+     <link href="<?php echo base_url();?>css/bootstrap-select.css"rel="stylesheet" type="text/css">
+    <!-- ./ end mulit select -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
     </head>
 
     <body>
@@ -289,12 +284,12 @@
                             <li>
                                 <a class="active" href="index.html"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
                             </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
                         </ul>
-                    </div>
-                    <!-- /.sidebar-collapse -->
-                </div>
-                <!-- /.navbar-static-side -->
-            </nav>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>

@@ -100,28 +100,9 @@
 
     <div class="row">
         <div class="col-lg-16">
-         <div class="panel panel-default">
+           <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> project
-                <div class="pull-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            Actions
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a href="#">Action</a>
-                            </li>
-                            <li><a href="#">Another action</a>
-                            </li>
-                            <li><a href="#">Something else here</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <i class="fa fa-bar-chart-o fa-fw"></i> project                
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -149,47 +130,33 @@
                                             <td><?php echo $row_paper->paper_inputName1;?></td>
                                             <td><?php echo $row_paper->paper_date;?></td>
                                             <td>
-                                                <!-- Build your select: -->
-                                                <select  class="selectpicker"  multiple data-live-search="true" data-actions-box="true" title="เลือกกรรมการ">
-                                                    <optgroup label="filter1">
-                                                      <option>option1</option>
-                                                      <option>option2</option>
-                                                      <option>option3</option>
-                                                      <option>option4</option>
-                                                  </optgroup>
-                                                  <optgroup label="filter2">
-                                                      <option>option1</option>
-                                                      <option>option2</option>
-                                                      <option>option3</option>
-                                                      <option>option4</option>
-                                                  </optgroup>
-                                                  <optgroup label="filter3">
-                                                      <option>option1</option>
-                                                      <option>option2</option>
-                                                      <option>option3</option>
-                                                      <option>option4</option>
-                                                  </optgroup>
-                                              </select>
-                                          </td>
-                                      </tr>
-                                      <?php } ?>
-                                  </tbody>
-                              </table>
-                          </div>
-                          <!-- /.table-responsive -->
+                                           <!--  <select id="maxOption2" class="selectpicker show-menu-arrow form-control" multiple data-max-options="4"> -->
+                                           <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
+                                              <option>chicken</option>
+                                              <option>turkey</option>
+                                              <option >duck</option>
+                                              <option>goose</option>
+                                          </select>
+                                      </td>
+                                  </tr>
+                                  <?php } ?>
+                              </tbody>
+                          </table>
                       </div>
-                      <!-- /.col-lg-4 (nested) -->
-                      <div class="col-lg-8">
-                        <div id="morris-bar-chart"></div>
-                    </div>
-                    <!-- /.col-lg-8 (nested) -->
+                      <!-- /.table-responsive -->
+                  </div>
+                  <!-- /.col-lg-4 (nested) -->
+                  <div class="col-lg-8">
+                    <div id="morris-bar-chart"></div>
                 </div>
-                <!-- /.row -->
+                <!-- /.col-lg-8 (nested) -->
             </div>
-            <!-- /.panel-body -->
+            <!-- /.row -->
         </div>
+        <!-- /.panel-body -->
     </div>
-    <!-- /.col-lg-16 -->
+</div>
+<!-- /.col-lg-16 -->
 
 </div>
 <!-- /.row -->
