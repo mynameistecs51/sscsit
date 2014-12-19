@@ -123,12 +123,12 @@
                                 <tbody>
                                    <tr>
                                     <?php
-                                    $number = 1;
+                                    $number = count($get_paper);
 
                                     foreach ($get_paper as $key_papger => $row_paper) {
 
                                      ?>
-                                     <td><?php echo $number++;?></td>
+                                     <td><?php echo $number--;?></td>
                                      <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
                                      <td><?php echo $row_paper->group_name;?></td>
                                      <td><?php echo $row_paper->paper_inputName1;?></td>
@@ -141,6 +141,7 @@
                                           <option >duck</option>
                                           <option>goose</option>
                                       </select>
+                                      <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-send" title="send"></i></button>
                                   </td>
                               </tr>
                               <?php } ;?>
