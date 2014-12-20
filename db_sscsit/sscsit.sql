@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2014 at 02:03 PM
+-- Generation Time: Dec 20, 2014 at 10:34 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `paper_user` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper`
@@ -72,7 +72,8 @@ CREATE TABLE IF NOT EXISTS `paper` (
 
 INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `paper_user`) VALUES
 (10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', 1),
-(11, 'male', 'ไชยวัฒน์', 'male', 'หอมแสง', 'โครงงาน', 'project', 2, 'project_.doc', 'null', '2014-12-19 13:13:00', 1);
+(11, 'male', 'ไชยวัฒน์', 'male', 'หอมแสง', 'โครงงาน', 'project', 2, 'project_.doc', 'null', '2014-12-19 13:13:00', 1),
+(13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,6 @@ CREATE TABLE IF NOT EXISTS `paper_group` (
 INSERT INTO `paper_group` (`group_id`, `group_name`) VALUES
 (1, 'โปรแกรมเพื่อความบันเทิง'),
 (2, 'โปรแกรมส่งเสริมการเรียนรู้'),
-(4, 'โปรแกรมส่งเสริมการเรียนรู้'),
 (5, 'โปรแกรมช่วยเหลือคนพิการและผู้สูงอายุ'),
 (6, 'โปรแกรมเพื่องานพัฒนาด้านวิทยาศาสตร์และเทคโนโลยี'),
 (7, 'โปรแกรมเพื่อประยุกต์ใช้งานสำหรับลินุกซ์');
@@ -163,7 +163,7 @@ MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `paper`
 --
 ALTER TABLE `paper`
-MODIFY `paper_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `paper_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `paper_group`
 --
