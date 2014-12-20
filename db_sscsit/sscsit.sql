@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 19, 2014 at 05:29 PM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Host: localhost
+-- Generation Time: Dec 20, 2014 at 02:03 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `sscsit`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `committee`
+--
+
+CREATE TABLE IF NOT EXISTS `committee` (
+`comm_id` int(11) NOT NULL,
+  `user_facebook_id` char(255) NOT NULL,
+  `paper_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `committee`
+--
+
+INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
+(1, '02', 10),
+(2, '03', 11),
+(3, 'chicken', 11),
+(4, 'turkey', 11),
+(5, '03', 10),
+(6, 'chicken', 10),
+(7, 'turkey', 10);
 
 -- --------------------------------------------------------
 
@@ -39,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `paper_user` int(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper`
@@ -58,7 +83,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper_group`
@@ -89,8 +114,23 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `user_last_name`, `user_email`, `user_gender`, `user_status`) VALUES
+('01', 'te', 'te', 'te', 'te@hotmail.com', 'male', 'admin'),
+('02', 'ch', 'ch', 'ch', 'ch@hotmail.com', 'male', 'committee'),
+('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'committee');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `committee`
+--
+ALTER TABLE `committee`
+ ADD PRIMARY KEY (`comm_id`);
 
 --
 -- Indexes for table `paper`
@@ -114,6 +154,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `committee`
+--
+ALTER TABLE `committee`
+MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `paper`
 --
