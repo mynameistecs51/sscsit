@@ -137,6 +137,10 @@
                                     <?php echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');?>
                                         <input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">
                                        <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
+                                        <?php foreach ($get_committee as $key_commt => $row_users) {
+                                           echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_fb_name.'</option>';
+                                        }
+                                        ?>
                                           <option>chicken</option>
                                           <option>turkey</option>
                                           <option >duck</option>
@@ -144,6 +148,7 @@
                                       </select>
                                       <button type="submit" class="btn btn-success">ส่ง</i></button>
                                     </form>
+                                     
                                   </td>
                               </tr>
                               <?php } ;?>

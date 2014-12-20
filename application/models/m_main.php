@@ -86,5 +86,32 @@
 				");
 			return $query_paper->result();
 		}
+
+		public function get_committee(){
+			$this->db->where('user_status','committee');
+			$get_committee = $this->db->get('users');
+			return  $get_committee->result();
+		}
+
+		public function send_paper(){
+			$committee = $this->input->post('select_committee');
+		$paper_id = $this->input->post('paper_id');
+		$select_committee = array();
+		foreach ($committee as $key => $value_select_committee) 		// อ่านค่าจาก multi  select
+		{
+			$select_committee[] .= $value_select_committee;		//เก็บจำนวน กรรมการว่ามีใครบ้าง
+
+		}
+		for($i=0;	$i < count($select_committee); $i++)
+		{
+			$data = array(
+				'comm_id' => '',
+				'user_facebook_id' => $select_committee[$i],
+				'paper_id' => $paper_id,
+				);
+			$this->db->insert('committee',$data);
+		}		
+		return true;
+		}
 	}
 	?>

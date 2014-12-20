@@ -69,14 +69,16 @@
 			$data = array(
 				'title' => 'Status Paper',
 				'get_paper' => $this->m_main->get_paper(),
-			);
+				);
 			$this->load->view('status_paper',$data);
 		}
 
-		public function  admin(){
+		public function  admin()			// admin page
+		{
 			$data = array(
 				'title' => 'Admin student symposim',
 				'get_paper' => $this->m_main->get_paper(),
+				'get_committee' => $this->m_main->get_committee(),
 				);
 			$this->load->view('admin/index',$data);
 		}
@@ -100,19 +102,10 @@
 
 	}
 
-	public function send_paper(){
-		$committee = $this->input->post('select_committee');
-		$select_committee ="";
-		foreach ($committee as $key => $value) 		// อ่านค่าจาก multi  select
-		{
-			$select_committee .= $value.",";
-		}
-		$data = array(
-			'paper_id' => $this->input->post('paper_id'),
-			'committee_id' => substr($select_committee,0,-1),
-		);
-
-		print_r($data);
+	public function send_paper(){			//send project for committee reading 
+		$this->m_main->send_paper();
+		redirect('main/admin','refresh');  
+		
 	}
 
 	public function id_check($fb_data){
