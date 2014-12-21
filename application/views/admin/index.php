@@ -138,7 +138,7 @@
                                         <input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">
                                        <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
                                         <?php foreach ($get_committee as $key_commt => $row_users) {
-                                           echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_fb_name.'</option>';
+                                           echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
                                         }
                                         ?>
                                           <option>chicken</option>
