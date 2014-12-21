@@ -113,5 +113,10 @@
 		}		
 		return true;
 		}
+
+		public function get_users(){
+			$get_users = $this->db->get('users');
+			return $get_users->result();
+		}
 	}
 	?>

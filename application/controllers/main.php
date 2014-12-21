@@ -94,7 +94,12 @@
 			$this->load->view('admin/admin_status_paper',$data);
 		}
 		public function login(){
-			$this->load->view('login');
+			$data = array(
+				'title' => "Login",
+				'user_name' => $this->m_main->get_users(),
+				);
+			$this->load->view('login',$data);
+			//print_r($data['user_name'][0]);
 		}
 		public function logout() {
 		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
