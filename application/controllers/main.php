@@ -85,10 +85,17 @@
 		}
 
 		public function admin_status_paper(){
-			
-			$this->load->view('status_paper');
+			$data = array(
+				'title' => "Status Paper",
+				'get_paper' => $this->m_main->get_paper(),
+				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),
+			);
+		
+			$this->load->view('admin/admin_status_paper',$data);
 		}
-
+		public function login(){
+			$this->load->view('login');
+		}
 		public function logout() {
 		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
 
