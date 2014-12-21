@@ -84,6 +84,11 @@
 			$this->load->view('admin/index',$data);
 		}
 
+		public function admin_status_paper(){
+			
+			$this->load->view('status_paper');
+		}
+
 		public function logout() {
 		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
 
