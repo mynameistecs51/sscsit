@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 21, 2014 at 07:56 AM
--- Server version: 5.6.21
--- PHP Version: 5.5.19
+-- Host: 127.0.0.1
+-- Generation Time: Dec 21, 2014 at 03:31 PM
+-- Server version: 5.5.39
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `committee`
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 
 INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
 (1, '02', 10),
-(2, '03', 11),
+(2, '02', 11),
 (3, 'chicken', 11),
 (4, 'turkey', 11),
 (5, '03', 10),
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `paper_user` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `paper`
@@ -84,7 +84,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `paper_group`
