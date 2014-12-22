@@ -123,18 +123,17 @@
                                 <tbody>
                                     <?php
                                     $selected = array();
-                                    $committe_name = "";
                                     foreach ($get_send_committee as $key_committee => $value_committee) {
                                        // echo $value_committee->user_first_name."  ".$value_committee->user_last_name."<br/>";
-                                        if( !isset($selected[$value_committee->user_first_name."  ".$value_committee->user_last_name])){
-                                            $selected[$value_committee->user_first_name."  ".$value_committee->user_last_name] = [];
+                                        if( !isset($selected[$value_committee->paper_id])){
+                                            $selected[$value_committee->paper_id] = [];
                                         }
-                                        array_push($selected[$value_committee->user_first_name."  ".$value_committee->user_last_name], $value_committee->user_first_name."  ".$value_committee->user_last_name);
+                                        array_push($selected[$value_committee->paper_id], $value_committee->user_first_name."  ".$value_committee->user_last_name);
                                         //echo 'hello';
 
                                     }
                                     // echo '--------------------';
-                                    print_r($selected);
+                                  //  print_r($selected);
                                     // echo '--------------------';
                                     $number = count($get_paper);                               
                                     foreach ($get_paper as $key_papger => $row_paper) {                                        
@@ -149,9 +148,8 @@
                                              <?php 
                                            //ถ้าส่งให้กรรมการแล้ว ไม่ให้ขึ้น select แต่ขึ้นเป็นชื่อ กรรมการแทน
 
-                                            if( !empty( $selected[$value_committee->user_first_name."  ".$value_committee->user_last_name])){       //join array $select = $row_paper->paper_id
-                                                echo join(",",  $selected[$value_committee->user_first_name."  ".$value_committee->user_last_name])."----> ส่งแล้ว";
-                                                //print_r($selected[$value_committee->user_first_name."  ".$value_committee->user_last_name);                                                         //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
+                                            if( !empty( $selected[$row_paper->paper_id])){       //join array $select = $row_paper->paper_id
+                                                echo join(",", $selected[$row_paper->paper_id])."----> ส่งแล้ว";                                                         //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
                                             }
                                             else{   //ถ้าไม่เท่ากัน ให้แสดง selected
                                              echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');
