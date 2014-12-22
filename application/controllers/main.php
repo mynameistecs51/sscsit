@@ -57,7 +57,7 @@
 				'paper_fileProject' => $file_project['file_name'],
 				'paper_filePictureProject' => "null",
 				'paper_date' => $date,
-			'paper_user' => '1',//$fb_data['me']['id'],
+			'user_facebook_id' => '01',//$fb_data['me']['id'],
 			);
 			
 			$this->db->insert('paper',$insert_paper);
@@ -77,10 +77,10 @@
 		{
 			$data = array(
 				'title' => 'Admin student symposim',
-				'get_paper' => $this->m_main->get_paper(),
-				'get_user_committee' => $this->m_main->get_user_committee(),
-				'get_paper_committee' => $this->db->get('committee')->result(),
-				'get_send_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
+				'get_paper' => $this->m_main->get_paper(),		//all paper
+				'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
+				'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
+				'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
 				);
 			$this->load->view('admin/index',$data);
 		}

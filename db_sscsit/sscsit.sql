@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 21, 2014 at 11:03 PM
--- Server version: 5.6.21
--- PHP Version: 5.5.19
+-- Host: 127.0.0.1
+-- Generation Time: Dec 22, 2014 at 05:01 PM
+-- Server version: 5.5.39
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `committee`
@@ -39,11 +39,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
 (1, '02', 10),
 (2, '02', 11),
-(3, 'chicken', 11),
-(4, 'turkey', 11),
-(5, '03', 10),
-(6, 'chicken', 10),
-(7, 'turkey', 10);
+(5, '03', 10);
 
 -- --------------------------------------------------------
 
@@ -63,17 +59,17 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_fileProject` text NOT NULL,
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
-  `paper_user` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `user_facebook_id` char(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `paper`
 --
 
-INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `paper_user`) VALUES
-(10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', 1),
-(11, 'male', 'ไชยวัฒน์', 'male', 'หอมแสง', 'โครงงาน', 'project', 2, 'project_.doc', 'null', '2014-12-19 13:13:00', 1),
-(13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', 1);
+INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `user_facebook_id`) VALUES
+(10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', '01'),
+(11, 'male', 'ไชยวัฒน์', 'male', 'หอมแสง', 'โครงงาน', 'project', 2, 'project_.doc', 'null', '2014-12-19 13:13:00', '01'),
+(13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', '01');
 
 -- --------------------------------------------------------
 
@@ -84,7 +80,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `paper_group`
@@ -121,7 +117,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_name`, `user_first_name`, `user_last_name`, `user_email`, `user_gender`, `user_status`) VALUES
 ('01', 'te', '', 'te', 'te', 'te@hotmail.com', 'male', 'admin'),
 ('02', 'ch', '', 'ch', 'ch', 'ch@hotmail.com', 'male', 'committee'),
-('03', 'chaiwat', '', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'committee');
+('03', 'chaiwat', '', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'committee'),
+('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'subper_admin'),
+('05', 'homsang', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'user');
 
 --
 -- Indexes for dumped tables
@@ -159,7 +157,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `committee`
 --
 ALTER TABLE `committee`
-MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `paper`
 --

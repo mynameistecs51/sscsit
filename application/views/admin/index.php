@@ -39,7 +39,7 @@
                                 <i class="fa fa-share-square fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo count($get_send_paper_committee);?></div>
+                                <div class="huge"><?php echo count($get_count_paper_committee);?></div>
                                 <div>ส่งให้กรรมการแล้ว</div>
                             </div>
                         </div>
@@ -123,22 +123,24 @@
                                 <tbody>
                                     <?php
                                     $selected = array();
-                                    foreach ($get_paper_committee as $key_committee => $value_committee) {
-                                        //echo $value_committee->paper_id."<br/>";
-                                        if( !isset($selected[$value_committee->paper_id])){
-                                            $selected[$value_committee->paper_id] = [];
+                                    $committe_name = "";
+                                    foreach ($get_send_committee as $key_committee => $value_committee) {
+                                       // echo $value_committee->user_first_name."  ".$value_committee->user_last_name."<br/>";
+                                        if( !isset($selected[$value_committee->user_first_name."  ".$value_committee->user_last_name])){
+                                            $selected[$value_committee->user_first_name."  ".$value_committee->user_last_name] = [];
                                         }
-                                        array_push($selected[$value_committee->paper_id], $value_committee->user_facebook_id);
+                                        array_push($selected[$value_committee->user_first_name."  ".$value_committee->user_last_name], $value_committee->user_first_name."  ".$value_committee->user_last_name);
                                         //echo 'hello';
+
                                     }
                                     // echo '--------------------';
-                                    //print_r($selected);
+                                    print_r($selected);
                                     // echo '--------------------';
                                     $number = count($get_paper);                               
                                     foreach ($get_paper as $key_papger => $row_paper) {                                        
                                      ?>
                                      <tr>
-                                         <td><?php echo $number--."||".$row_paper->paper_id;?></td>
+                                         <td><?php echo $number--;?></td>
                                          <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
                                          <td><?php echo $row_paper->group_name;?></td>
                                          <td><?php echo $row_paper->paper_inputName1;?></td>
@@ -146,8 +148,10 @@
                                          <td>
                                              <?php 
                                            //ถ้าส่งให้กรรมการแล้ว ไม่ให้ขึ้น select แต่ขึ้นเป็นชื่อ กรรมการแทน
-                                             if( @ join(",", $selected[$row_paper->paper_id])){       //join array $select = $row_paper->paper_id
-                                                echo join(",", $selected[$row_paper->paper_id])."<br/>";                                                         //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
+
+                                            if( !empty( $selected[$value_committee->user_first_name."  ".$value_committee->user_last_name])){       //join array $select = $row_paper->paper_id
+                                                echo join(",",  $selected[$value_committee->user_first_name."  ".$value_committee->user_last_name])."----> ส่งแล้ว";
+                                                //print_r($selected[$value_committee->user_first_name."  ".$value_committee->user_last_name);                                                         //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
                                             }
                                             else{   //ถ้าไม่เท่ากัน ให้แสดง selected
                                              echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');
@@ -157,10 +161,6 @@
                                              foreach ($get_user_committee as $key_commt => $row_users) {
                                                  echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
                                              }
-                                             echo '<option >chicken</option>';
-                                             echo '<option>turkey</option>';
-                                             echo ' <option  >duck</option>';
-                                             echo ' <option>goose</option>';
                                              echo '</select>';
                                              echo ' <button type="submit" class="btn btn-success">ส่ง</i></button>';
                                              echo ' </form>';

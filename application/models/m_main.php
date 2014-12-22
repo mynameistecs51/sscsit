@@ -77,7 +77,7 @@
 				`paper`.`paper_fileProject`,
 				`paper`.`paper_filePictureProject`,
 				`paper`.`paper_date`,
-				`paper`.`paper_user`,
+				`paper`.`user_facebook_id`,
 				`paper_group`.`group_name`
 				FROM
 				`paper`
@@ -89,14 +89,15 @@
 
 		public function get_user_committee(){
 			$this->db->where('user_status','committee');
+			$this->db->or_where('user_status','admin');
 			$get_user_committee = $this->db->get('users');
 			return  $get_user_committee->result();
 		}
 
 		public function send_paper(){
 			$committee = $this->input->post('select_committee');
-		$paper_id = $this->input->post('paper_id');
-		$select_committee = array();
+			$paper_id = $this->input->post('paper_id');
+			$select_committee = array();
 		foreach ($committee as $key => $value_select_committee) 		// อ่านค่าจาก multi  select
 		{
 			$select_committee[] .= $value_select_committee;		//เก็บจำนวน กรรมการว่ามีใครบ้าง
@@ -112,11 +113,31 @@
 			$this->db->insert('committee',$data);
 		}		
 		return true;
-		}
-
-		public function get_users(){
-			$get_users = $this->db->get('users');
-			return $get_users->result();
-		}
 	}
-	?>
+
+	public function get_users(){
+		$get_users = $this->db->get('users');
+		return $get_users->result();
+	}
+
+	public function  get_committee(){
+		$query_table_committee = $this->db->query("SELECT
+			`users`.`user_fb_name`,
+			`users`.`user_name`,
+			`users`.`user_first_name`,
+			`users`.`user_last_name`,
+			`users`.`user_email`,
+			`users`.`user_gender`,
+			`users`.`user_status`,
+			`committee`.`comm_id`,
+			`committee`.`user_facebook_id` AS `user_facebook_id`,
+			`committee`.`paper_id`
+			FROM
+			`users`
+			INNER JOIN `committee` 
+			ON `users`.`user_facebook_id` =	`committee`.`user_facebook_id`
+			");
+		return $query_table_committee->result();
+	}
+}
+?>
