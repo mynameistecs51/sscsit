@@ -9,7 +9,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-3 col-md-6">
-        <a href="status_page">
+            <a href="status_page">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -39,7 +39,7 @@
                                 <i class="fa fa-share-square fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo count($get_paper_committee);?></div>
+                                <div class="huge"><?php echo count($get_send_paper_committee);?></div>
                                 <div>ส่งให้กรรมการแล้ว</div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
 
     <div class="row">
         <div class="col-lg-16">
-         <div class="panel panel-default">
+           <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project                
             </div>
@@ -122,64 +122,69 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $number = count($get_paper);
-                                    $a = "";
-                                    foreach ($get_paper as $key_papger => $row_paper) {
-                                        
-                                       ?>
-                                 <tr>
-                                       <td><?php echo $number--;?></td>
-                                       <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                                       <td><?php echo $row_paper->group_name;?></td>
-                                       <td><?php echo $row_paper->paper_inputName1;?></td>
-                                       <td><?php echo $row_paper->paper_date;?></td>
-                                       <td>
-                                           <?php 
-                                           foreach ($get_paper_committee as $key_commt_paper => $value_committee_paper) {
-                                            # code...
-                                            echo "--";
-                                            // echo $value_committee_paper->paper_id ;
-                                            if($value_committee_paper->paper_id === $row_paper->paper_id){
-                                                echo $value_committee_paper->paper_id ."=".$row_paper->paper_id;
-                                            }
-                                           elseif($value_committee_paper->paper_id !== $row_paper->paper_id){
-                                            echo "NO";
-                                           }
+                                    $selected = array();
+                                    foreach ($get_paper_committee as $key_committee => $value_committee) {
+                                       // echo $value_committee->paper_id."<br/>";
+                                        if(!is_array($selected[$value_committee->paper_id])){
+                                            $selected[$value_committee->paper_id] = [];
                                         }
-                                        echo $a;
-                                           echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');?>
+                                        array_push($selected[$value_committee->paper_id], $value_committee->user_facebook_id);
+                                        //echo 'hello';
+                                    }
+                                    // echo '--------------------';
+                                    print_r($selected);
+                                    // echo '--------------------';
+                                    $number = count($get_paper);                               
+                                    foreach ($get_paper as $key_papger => $row_paper) {                                        
+                                     ?>
+                                     <tr>
+                                         <td><?php echo $number--."||".$row_paper->paper_id;?></td>
+                                         <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                                         <td><?php echo $row_paper->group_name;?></td>
+                                         <td><?php echo $row_paper->paper_inputName1;?></td>
+                                         <td><?php echo $row_paper->paper_date;?></td>
+                                         <td>
+                                             <?php 
+                                           //ถ้าส่งให้กรรมการแล้ว ไม่ให้ขึ้น select แต่ขึ้นเป็นชื่อ กรรมการแทน
+                                             if( join(",", $selected[$row_paper->paper_id])){       //join array $select = $row_paper->paper_id
+                                                echo join(",", $selected[$row_paper->paper_id]);   
+                                                 //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
+                                            }
+                                            else{   //ถ้าไม่เท่ากัน ให้แสดง selected
+                                             echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');
 
-                                           <input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">
-                                           <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
-                                            <?php foreach ($get_committee as $key_commt => $row_users) {
-                                               echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
-                                           }
-                                           ?>
-                                           <option>chicken</option>
-                                           <option>turkey</option>
-                                           <option >duck</option>
-                                           <option>goose</option>
-                                       </select>
-                                       <button type="submit" class="btn btn-success">ส่ง</i></button>
-                                   </form>
-                               </td>
-                           </tr>
-                           <?php } ;?>
-                       </tbody>
-                   </table>
-               </div>
-               <!-- /.table-responsive -->
-           </div>
-           <!-- /.col-lg-4 (nested) -->
-           <div class="col-lg-8">
-            <div id="morris-bar-chart"></div>
+                                             echo '<input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">';
+                                             echo ' <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">';
+                                             foreach ($get_user_committee as $key_commt => $row_users) {
+                                                 echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
+                                             }
+                                             echo '<option >chicken</option>';
+                                             echo '<option>turkey</option>';
+                                             echo ' <option  >duck</option>';
+                                             echo ' <option>goose</option>';
+                                             echo '</select>';
+                                             echo ' <button type="submit" class="btn btn-success">ส่ง</i></button>';
+                                             echo ' </form>';
+                                         }
+                                         ?>
+                                     </td>
+                                 </tr>
+                                 <?php } ;?>
+                             </tbody>
+                         </table>
+                     </div>
+                     <!-- /.table-responsive -->
+                 </div>
+                 <!-- /.col-lg-4 (nested) -->
+                 <div class="col-lg-8">
+                    <div id="morris-bar-chart"></div>
+                </div>
+                <!-- /.col-lg-8 (nested) -->
+            </div>
+            <!-- /.row -->
         </div>
-        <!-- /.col-lg-8 (nested) -->
+        <!-- /.panel-body -->
     </div>
-    <!-- /.row -->
-</div>
-<!-- /.panel-body -->
-</div>
 </div>
 <!-- /.col-lg-16 -->
 

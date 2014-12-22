@@ -87,10 +87,10 @@
 			return $query_paper->result();
 		}
 
-		public function get_committee(){
+		public function get_user_committee(){
 			$this->db->where('user_status','committee');
-			$get_committee = $this->db->get('users');
-			return  $get_committee->result();
+			$get_user_committee = $this->db->get('users');
+			return  $get_user_committee->result();
 		}
 
 		public function send_paper(){

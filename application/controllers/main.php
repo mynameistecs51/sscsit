@@ -78,8 +78,9 @@
 			$data = array(
 				'title' => 'Admin student symposim',
 				'get_paper' => $this->m_main->get_paper(),
-				'get_committee' => $this->m_main->get_committee(),
-				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),
+				'get_user_committee' => $this->m_main->get_user_committee(),
+				'get_paper_committee' => $this->db->get('committee')->result(),
+				'get_send_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
 				);
 			$this->load->view('admin/index',$data);
 		}
