@@ -121,13 +121,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 <tr>
                                     <?php
                                     $number = count($get_paper);
-
+                                    $a = "";
                                     foreach ($get_paper as $key_papger => $row_paper) {
-
+                                        
                                        ?>
+                                 <tr>
                                        <td><?php echo $number--;?></td>
                                        <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
                                        <td><?php echo $row_paper->group_name;?></td>
@@ -135,6 +135,18 @@
                                        <td><?php echo $row_paper->paper_date;?></td>
                                        <td>
                                            <?php 
+                                           foreach ($get_paper_committee as $key_commt_paper => $value_committee_paper) {
+                                            # code...
+                                            echo "--";
+                                            // echo $value_committee_paper->paper_id ;
+                                            if($value_committee_paper->paper_id === $row_paper->paper_id){
+                                                echo $value_committee_paper->paper_id ."=".$row_paper->paper_id;
+                                            }
+                                           elseif($value_committee_paper->paper_id !== $row_paper->paper_id){
+                                            echo "NO";
+                                           }
+                                        }
+                                        echo $a;
                                            echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');?>
 
                                            <input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">
