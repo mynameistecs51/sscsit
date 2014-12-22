@@ -9,7 +9,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-3 col-md-6">
-        <a href="status_page">
+            <a href="admin_status_paper">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -100,79 +100,60 @@
 
     <div class="row">
         <div class="col-lg-16">
-         <div class="panel panel-default">
+           <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-file-text fa-fx"></i> project                
+                <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>ที่</th>
-                                        <th>โปรเจ็ค</th>
-                                        <th>ประเภท</th>
-                                        <th>หัวหน้าโครงงาน</th>
-                                        <th>วันที่ส่ง</th>
-                                        <th>สถานะ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                 <tr>
-                                    <?php
-                                    $number = count($get_paper);
+              <table class="table table-hover">
+                  <!-- <table class="table table-bordered table-hover table-striped"> -->
+                  <thead>
+                      <th>ที่</th>
+                      <th>โปรเจ็ค</th>
+                      <th>ประเภทโครงงาน</th>
+                      <th>file Download</th>
+                      <th>หัวหน้าโครงงาน</th>
+                      <th>เวลาที่ส่ง</th>
+                      <th>ผู้ส่ง</th>
+                      <th>สถานการตรวจ</th>
+                  </thead>
+                  <?php
+                  $number = count($get_paper);
+                  foreach ($get_paper as $key_paper => $row_paper) {
+                      ?>
+                      <tbody>
+                        <tr>
+                            <td><?php echo $number--;?></td>
+                            <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                            <td><?php echo $row_paper->group_name;?></td>                            
+                            <td>
+                                <?php
+                                $this->load->helper('download');
+                                    $data = file_get_contents("images/file_project_doc/".$row_paper->paper_fileProject); // Read the file's contents
+                                    echo $name = $row_paper->paper_inputProjectName_TH;
 
-                                    foreach ($get_paper as $key_papger => $row_paper) {
+                                     echo "download".force_download($name, $data);
 
-                                       ?>
-                                       <td><?php echo $number--;?></td>
-                                       <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                                       <td><?php echo $row_paper->group_name;?></td>
-                                       <td><?php echo $row_paper->paper_inputName1;?></td>
-                                       <td><?php echo $row_paper->paper_date;?></td>
-                                       <td>
-                                           <?php 
-                                           echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');?>
+                                    ?>
+                                </td>
+                                <td><?php echo $row_paper->paper_inputName1;?></td>
+                                <td><?php echo $row_paper->paper_date;?></td>
+                                <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
+                                <td>ผ่านแบบมีเงื่อนไข</td>
+                            </tr>
+                        </tbody>
+                        <?php } ?>
+                    </table>
 
-                                           <input type="hidden" name="paper_id" value="<?php echo $row_paper->paper_id;?>">
-                                           <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">
-                                            <?php foreach ($get_committee as $key_commt => $row_users) {
-                                               echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
-                                           }
-                                           ?>
-                                           <option>chicken</option>
-                                           <option>turkey</option>
-                                           <option >duck</option>
-                                           <option>goose</option>
-                                       </select>
-                                       <button type="submit" class="btn btn-success">ส่ง</i></button>
-                                   </form>
-                               </td>
-                           </tr>
-                           <?php } ;?>
-                       </tbody>
-                   </table>
-               </div>
-               <!-- /.table-responsive -->
-           </div>
-           <!-- /.col-lg-4 (nested) -->
-           <div class="col-lg-8">
-            <div id="morris-bar-chart"></div>
+                </div>  <!-- ./panel body -->
+                <!-- /.panel-body -->
+            </div>
         </div>
-        <!-- /.col-lg-8 (nested) -->
+        <!-- /.col-lg-16 -->
+
     </div>
     <!-- /.row -->
-</div>
-<!-- /.panel-body -->
-</div>
-</div>
-<!-- /.col-lg-16 -->
-
-</div>
-<!-- /.row -->
 </div>
 <!-- /#page-wrapper -->
 

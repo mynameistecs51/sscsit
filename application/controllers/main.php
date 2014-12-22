@@ -68,7 +68,7 @@
 		public function status_page(){
 			$data = array(
 				'title' => 'Status Paper',
-				'get_paper' => $this->m_main->get_paper(),
+				'get_paper' => $this->m_main->get_paper(), 
 				);
 			$this->load->view('status_paper',$data);
 		}

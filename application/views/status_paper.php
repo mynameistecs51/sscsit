@@ -35,7 +35,7 @@
                             <td><?php echo $row_paper->group_name;?></td>
                             <td><?php echo $row_paper->paper_inputName1;?></td>
                             <td><?php echo $row_paper->paper_date;?></td>
-                            <td><?php echo $row_paper->paper_user;?></td>
+                            <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
                             <td>ผ่านแบบมีเงื่อนไข</td>
                         </tr>
                     </tbody>
@@ -103,7 +103,7 @@
                 <div>
                     <div class="media">
                         <div class="pull-left">
-                            <img src="images/blog/thumb1.jpg" alt="">
+                            <img src="<?php echo base_url();?>images/blog/thumb1.jpg" alt="">
                         </div>
                         <div class="media-body">
                             <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="media">
                         <div class="pull-left">
-                            <img src="images/blog/thumb2.jpg" alt="">
+                            <img src="<?php echo base_url();?>images/blog/thumb2.jpg" alt="">
                         </div>
                         <div class="media-body">
                             <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="media">
                         <div class="pull-left">
-                            <img src="images/blog/thumb3.jpg" alt="">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
                         </div>
                         <div class="media-body">
                             <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>

@@ -66,24 +66,28 @@
 
 		public function get_paper(){
 			$query_paper = $this->db->query("SELECT
-				`paper`.`paper_id`,
-				`paper`.`paper_sex`,
-				`paper`.`paper_inputName1`,
-				`paper`.`paper_sex2`,
-				`paper`.`paper_inputName2`,
-				`paper`.`paper_inputProjectName_TH`,
-				`paper`.`paper_inputProjectName_EN`,
-				`paper`.`paper_group`,
-				`paper`.`paper_fileProject`,
-				`paper`.`paper_filePictureProject`,
-				`paper`.`paper_date`,
-				`paper`.`user_facebook_id`,
-				`paper_group`.`group_name`
-				FROM
-				`paper`
-				INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
-				ORDER BY `paper`.`paper_id` DESC
-				");
+			-- 	`paper`.`paper_id`,
+			-- 	`paper`.`paper_sex`,
+			-- 	`paper`.`paper_inputName1`,
+			-- 	`paper`.`paper_sex2`,
+			-- 	`paper`.`paper_inputName2`,
+			-- 	`paper`.`paper_inputProjectName_TH`,
+			-- 	`paper`.`paper_inputProjectName_EN`,
+			-- 	`paper`.`paper_group`,
+			-- 	`paper`.`paper_fileProject`,
+			-- 	`paper`.`paper_filePictureProject`,
+			-- 	`paper`.`paper_date`,
+			-- 	`paper`.`user_facebook_id`,
+			-- 	`paper_group`.`group_name`
+			-- 	FROM
+			-- 	`paper`
+			-- 	INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
+			-- 	ORDER BY `paper`.`paper_id` DESC
+			paper.*, paper_group.*, users.*
+			from (paper inner join paper_group on paper.paper_group = paper_group.group_id) 
+			inner join users on(users.user_facebook_id = paper.user_facebook_id)
+			order by paper.paper_id desc
+			");
 			return $query_paper->result();
 		}
 

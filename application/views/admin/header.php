@@ -282,7 +282,7 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a class="active" href="index.html"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
+                                <a class="active" href="admin"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
