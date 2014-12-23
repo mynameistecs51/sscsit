@@ -57,7 +57,7 @@
                     </li>
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="contact-us.html">Contact</a></li>
-                    <li><a href="main/login">เข้าสู่ระบบ</a></li>
+                    <li><?php echo anchor('main/login','เข้าสู่ระบบ');?></li>
                 </ul>
             </div>
         </div>
