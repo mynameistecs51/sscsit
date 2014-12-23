@@ -131,7 +131,7 @@
                                 <?php
                                 $this->load->helper('download');
                                     $data = file_get_contents("images/file_project_doc/".$row_paper->paper_fileProject); // Read the file's contents
-                                    echo $name = $row_paper->paper_inputProjectName_TH;
+                                    $name = $row_paper->paper_inputProjectName_TH;
 
                                      echo "download".force_download($name, $data);
 
