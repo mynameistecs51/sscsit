@@ -36,38 +36,33 @@
 
 				// } 
 					?>
-
-					<form class="form-horizontal col-sm-16" role="form">
-						<div class="form-group ">
-							<label for="inputfb_id" class="col-sm-2 control-label">FB ID</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputfb_id" placeholder="Email">
-							</div>
-							<label for="inputPassword3" class="col-sm-2 control-label">FB name</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" placeholder="Text input" width="120px;">
-							</div>						
-						</div>
-						<div class="form-group ">
-							<label for="inputPassword3" class="col-sm-2 control-label">Email</label>
-							<div class="col-sm-8">
-								<input type="email" class="form-control" placeholder="Text input" width="120px;">
-							</div>
-						</div>
-						<hr/>
-						<div class="form-group col-sm-16 ">
-							<label for="inputText" class="col-sm-3 control-label">First Name</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputText" placeholder="Text input">
-							</div>
-							<label for="inputText" class="col-sm-3 control-label">Last Name</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputText" placeholder="Text input">
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<div class="col-md-12">
+								<div class="form-group row">
+									<label for="inputKey" class="col-md-1 control-label">Key</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control " id="inputKey" placeholder="Key">
+									</div>
+									<label for="inputValue" class="col-md-1 control-label">Value</label>
+									<div class="col-md-2">
+										<input type="text" class="form-control" id="inputValue" placeholder="Value">
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-default">Sign in</button>
+							<div class="col-md-12">
+								<div class="form-group row">
+									<label for="inputKey" class="col-md-1 control-label">Key</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control" id="inputKey" placeholder="Key">
+									</div>
+									<label for="inputValue" class="col-md-1 control-label">Value</label>
+									<div class="col-md-2">
+										<input type="text" class="form-control" id="inputValue" placeholder="Value">
+									</div>
+								</div>
 							</div>
 						</div>
 					</form>

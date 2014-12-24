@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2014 at 05:30 PM
+-- Generation Time: Dec 24, 2014 at 03:54 PM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -29,7 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `check_paper` (
 `check_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
-  `paper_id` int(11) NOT NULL
+  `paper_id` int(11) NOT NULL,
+  `check_status` enum('ผ่าน','ผ่านแบบมีเงื่อนไข','ไม่ผ่าน') NOT NULL,
+  `check_commetn` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -42,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `committee`
@@ -180,7 +182,7 @@ MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `committee`
 --
 ALTER TABLE `committee`
-MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `paper`
 --
