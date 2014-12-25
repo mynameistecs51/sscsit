@@ -90,8 +90,8 @@
 				'title' => "Status Paper",
 				'get_paper' => $this->m_main->get_paper(),
 				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),
-			);
-		
+				);
+
 			$this->load->view('admin/admin_status_paper',$data);
 		}
 		public function login(){
@@ -125,6 +125,23 @@
 		$this->m_main->send_paper();
 		redirect('main/admin','refresh');  
 		
+	}
+
+	public function download(){
+		$this->load->library('ftp');
+		$config['hostname'] = '127.0.0.1';
+		$config['username'] = 'localftp';
+       	 $config['password'] = '';	//password
+		$config['port'] = 80;		//port server
+		$config['passive'] = TRUE;		//กำหนดการใช้งาน passive mode
+		$config['debug'] = TRUE;		//กำหนดค่าการแจ้งเตือน error
+
+		$this->ftp->connect($config);	// connection ftp server
+		$local_file = "";
+		$remote_file = 'images/file_project_doc/test_1.docx';
+		$this->ftp->download($remote_file,$local_file);
+		echo "FILE".$remote_file."DOWNLOAD";
+		$this->ftp->close();	//end fpt server download
 	}
 
 	public function id_check($fb_data){
