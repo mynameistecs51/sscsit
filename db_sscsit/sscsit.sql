@@ -2,10 +2,17 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
+<<<<<<< HEAD
 -- Host: localhost
 -- Generation Time: Dec 24, 2014 at 07:16 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
+=======
+-- Host: 127.0.0.1
+-- Generation Time: Dec 24, 2014 at 03:54 PM
+-- Server version: 5.5.39
+-- PHP Version: 5.4.31
+>>>>>>> a04a35c3a00eb3bee1927feaea5015c6d87a32ca
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,8 +38,13 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL,
   `check_status` enum('ผ่าน','ผ่านแบบมีเงื่อนไข','ไม่ผ่าน') NOT NULL,
+<<<<<<< HEAD
   `check_comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+=======
+  `check_commetn` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+>>>>>>> a04a35c3a00eb3bee1927feaea5015c6d87a32ca
 
 -- --------------------------------------------------------
 
@@ -44,7 +56,11 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+=======
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+>>>>>>> a04a35c3a00eb3bee1927feaea5015c6d87a32ca
 
 --
 -- Dumping data for table `committee`
