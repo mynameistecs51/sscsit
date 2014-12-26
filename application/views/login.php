@@ -67,20 +67,6 @@
 									<label for="inputEmail" class="col-md-3 control-label">Login Detail</label>
 								</div>
 							</div>
-						</div>						
-						<div class="form-group">
-							<div class="col-md-10">
-								<div class="form-group row">
-									<label for="inputUser_name" class="col-md-3 control-label">User Name</label>
-									<div class="col-md-3">
-										<input type="text" class="form-control " id="inputUser_name" name="inputUser_name" placeholder="inputUser_name">
-									</div>
-									<label for="inputPassword" class="col-md-3 control-label">Password</label>
-									<div class="col-md-3">
-										<input type="text" class="form-control" id="inputPassword" name="inputPassword" placeholder="Value">
-									</div>
-								</div>
-							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-10">

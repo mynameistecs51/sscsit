@@ -13,6 +13,26 @@
 		}
 
 		public function index(){
+			$fb_data = $this->session->userdata('fb_data');
+			if(!$fb_data['me']){     
+				$data = array(
+					'title' => "Student Symposium",
+					'login' => anchor($fb_data['loginUrl'],'Login'),
+					);
+				$this->load->view('index',$data);
+			}  else  {
+				// echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" />';
+				// echo "<br/>";
+				// echo $fb_data['me']['name']." "; 
+				// echo anchor($fb_data['logoutUrl'],'logout');
+                 //echo anchor('sci_con/logout','logout');
+				$data = array(
+					'title' => "Student Symposium",
+					'login' => ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'.$fb_data['me']['name']." ".anchor('main/logout','Logout'),
+					);
+				$this->load->view('index',$data);
+
+			} 
 			$data = array(
 				'title' => "Student Symposium",
 				);
@@ -95,6 +115,7 @@
 			$this->load->view('admin/admin_status_paper',$data);
 		}
 		public function login(){
+
 			$data = array(
 				'title' => "Login",
 				'user_name' => $this->m_main->get_users(),
