@@ -10,7 +10,7 @@ class Facebook_model extends CI_model{
             'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 
-        $this->load->library('facebook', $config);
+        $this->load->library('facebook/facebook', $config);
 
         $user = $this->facebook->getUser();
 
@@ -40,11 +40,34 @@ class Facebook_model extends CI_model{
                         'redirect_uri' => base_url(), // URL where you want to redirect your users after a successful login
                         )
                 ),
-            'logoutUrl' => $this->facebook->getLogoutUrl(array('redirect_uri' => base_url(),)),
+            // 'logoutUrl' => $this->facebook->getLogoutUrl(array('redirect_uri' => base_url(),)),
+            'logoutUrl' => $this->facebook->getLogoutUrl(array('next' => base_url(),)),
             );
 
         $this->session->set_userdata('fb_data', $fb_data);
     }
 
+    public function logout() {
+
+        $this->facebook->getLogoutUrl(array('next' => base_url(),));
+        
+        $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
+        
+        $this->session->sess_destroy();
+        
+        setcookie('PHPSESSID', '', time()-10, "/");
+        $this->session->unset_userdata($fb_data);
+        
+        //redirect('sci_con/', 'refresh');  //redirect to the home page
+
+        //redirect($fb_data['logoutUrl'],'refresh');
+        redirect('main','refresh');
+    }
+    
+    public function id_check($fb_data){
+        $query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id']);
+
+        return $query_faceboo_id;
+    }
 }
 ?>

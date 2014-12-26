@@ -10,6 +10,7 @@
 			date_default_timezone_set("Asia/Bangkok");
 			$this->load->model('m_main','',TRUE);
 			$this->load->model('facebook_model','',TRUE);
+			$this->load->library('facebook/facebook');
 		}
 
 		public function index(){
@@ -17,28 +18,51 @@
 			if(!$fb_data['me']){     
 				$data = array(
 					'title' => "Student Symposium",
-					'login' => anchor($fb_data['loginUrl'],'Login'),
+					//'login' => anchor($fb_data['loginUrl'],'Login'),
+					'fb_data' => $fb_data,
 					);
 				$this->load->view('index',$data);
-			}  else  {
-				// echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" />';
-				// echo "<br/>";
-				// echo $fb_data['me']['name']." "; 
-				// echo anchor($fb_data['logoutUrl'],'logout');
-                 //echo anchor('sci_con/logout','logout');
+			}  elseif($this->facebook_model->id_check($fb_data)->num_rows() <= 0)  {
+
 				$data = array(
 					'title' => "Student Symposium",
-					'login' => ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'.$fb_data['me']['name']." ".anchor('main/logout','Logout'),
+					'fb_data' => $fb_data,
 					);
-				$this->load->view('index',$data);
-
+				$this->load->view('login',$data);
+				//$this->load->view('index',$data);
 			} 
-			$data = array(
-				'title' => "Student Symposium",
-				);
-			$this->load->view('index',$data);
+			foreach ($this->facebook_model->id_check($fb_data)->result() as $key_users => $row_users) {
+				switch ($row_users->user_status) {
+					case 'user':
+					$data = array(
+						'title' => "FB ID > 0",
+						'fb_data' => $fb_data,
+						);
+					$this->load->view('index',$data);
+					break;
+					// --------------end status user ------------//
+					case 'admin':
+					break;
+					// --------------end status admin ------------//
+					case 'committee':
+					break;
+					// --------------end status committee ------------//
+					case 'subper_admin':
+					break;
+					// --------------end status subper_admin ------------//
+
+					default:
+						# code...
+					break;
+				}
+			}
+			
 		}
 
+		public function insert_users(){
+			$this->m_main->insert_users();
+			redirect('main','refresh');
+		}
 		public function send_page(){
 			$data = array(
 				'title' => "Send paper",
@@ -124,23 +148,24 @@
 			//print_r($data['user_name'][0]);
 		}
 		public function logout() {
-		$fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
+		// $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
 
-		$this->session->sess_destroy();
-		
-		setcookie('PHPSESSID', '', time()-10, "/");
-		$this->session->unset_userdata($fb_data);
-		//$this->facebook->getLogoutUrl(array('next' => site_url('user/logout'));
+		// $this->facebook->getLogoutUrl(array('next' => site_url('main')));
+		// $this->session->sess_destroy();
+
+		// setcookie('PHPSESSID', '', time()-10, "/");
+		// $this->session->unset_userdata($fb_data);
+			$this->facebook_model->logout();
 		//redirect('sci_con/', 'refresh');  //redirect to the home page
 
 		//redirect($fb_data['logoutUrl'],'refresh');
-		redirect('main','refresh');
-	}
+			redirect('main','refresh');
+		}
 
-	public function get_paper_group(){
-		$paper_group = $this->m_main->get_paper_group();
+		public function get_paper_group(){
+			$paper_group = $this->m_main->get_paper_group();
 
-	}
+		}
 
 	public function send_paper(){			//send project for committee reading 
 		$this->m_main->send_paper();
@@ -165,11 +190,6 @@
 		$this->ftp->close();	//end fpt server download
 	}
 
-	public function id_check($fb_data){
-		$query_faceboo_id = $this->db->query("SELECT * FROM users WHERE user_facebook_id =".$fb_data['me']['id'])->num_rows();
-
-		return $query_faceboo_id;
-	}
 
 }
 

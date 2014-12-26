@@ -119,29 +119,43 @@
 		return true;
 	}
 
-	public function get_users(){
-		$get_users = $this->db->get('users');
-		return $get_users->result();
-	}
+	public function insert_users(){
+		$data = array(
+			'user_facebook_id' => $this->input->post('inputFB_ID'),
+			'user_fb_name' => $this->input->post('inputFB_name'),
+			'user_email' => $this->input->post('inputEmail'),
+			'user_gender' => $this->input->post('inputGender'),
+			'user_first_name' => $this->input->post('inputFirst_name'),
+			'user_last_name' => $this->input->post('inputLast_name'),
+			'user_status' => 'user',
+			);
+		$this->db->insert('users',$data);
+		return true;
+}
 
-	public function  get_committee(){
-		$query_table_committee = $this->db->query("SELECT
-			`users`.`user_fb_name`,
-			`users`.`user_name`,
-			`users`.`user_first_name`,
-			`users`.`user_last_name`,
-			`users`.`user_email`,
-			`users`.`user_gender`,
-			`users`.`user_status`,
-			`committee`.`comm_id`,
-			`committee`.`user_facebook_id` AS `user_facebook_id`,
-			`committee`.`paper_id`
-			FROM
-			`users`
-			INNER JOIN `committee` 
-			ON `users`.`user_facebook_id` =	`committee`.`user_facebook_id`
-			");
-		return $query_table_committee->result();
-	}
+public function get_users(){
+	$get_users = $this->db->get('users');
+	return $get_users->result();
+}
+
+public function  get_committee(){
+	$query_table_committee = $this->db->query("SELECT
+		`users`.`user_fb_name`,
+		`users`.`user_name`,
+		`users`.`user_first_name`,
+		`users`.`user_last_name`,
+		`users`.`user_email`,
+		`users`.`user_gender`,
+		`users`.`user_status`,
+		`committee`.`comm_id`,
+		`committee`.`user_facebook_id` AS `user_facebook_id`,
+		`committee`.`paper_id`
+		FROM
+		`users`
+		INNER JOIN `committee` 
+		ON `users`.`user_facebook_id` =	`committee`.`user_facebook_id`
+		");
+return $query_table_committee->result();
+}
 }
 ?>
