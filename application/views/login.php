@@ -40,13 +40,13 @@
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="form-group row">
-									<label for="inputKey" class="col-md-1 control-label">Key</label>
+									<label for="inputFB_ID" class="col-md-2 control-label">FB ID</label>
 									<div class="col-md-3">
-										<input type="text" class="form-control " id="inputKey" placeholder="Key">
+										<input type="text" class="form-control " id="inputFB_ID" name="inputFB_ID" placeholder="Key" disabled="true">
 									</div>
-									<label for="inputValue" class="col-md-1 control-label">Value</label>
-									<div class="col-md-2">
-										<input type="text" class="form-control" id="inputValue" placeholder="Value">
+									<label for="inputFB_name" class="col-md-2 control-label">FB NAME</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control" id="inputFB_name" name="inputFB_name" placeholder="Value" disabled="true">
 									</div>
 								</div>
 							</div>
@@ -54,22 +54,53 @@
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="form-group row">
-									<label for="inputKey" class="col-md-1 control-label">Key</label>
-									<div class="col-md-3">
-										<input type="text" class="form-control" id="inputKey" placeholder="Key">
-									</div>
-									<label for="inputValue" class="col-md-1 control-label">Value</label>
-									<div class="col-md-2">
-										<input type="text" class="form-control" id="inputValue" placeholder="Value">
+									<label for="inputEmail" class="col-md-2 control-label">Email</label>
+									<div class="col-md-8">
+										<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="inputEmail" disabled="true">
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="form-group">
+							<div class="col-md-10 ">
+								<div class="form-group row">
+									<label for="inputEmail" class="col-md-3 control-label">Login Detail</label>
+								</div>
+							</div>
+						</div>						
+						<div class="form-group">
+							<div class="col-md-10">
+								<div class="form-group row">
+									<label for="inputUser_name" class="col-md-3 control-label">User Name</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control " id="inputUser_name" name="inputUser_name" placeholder="inputUser_name">
+									</div>
+									<label for="inputPassword" class="col-md-3 control-label">Password</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control" id="inputPassword" name="inputPassword" placeholder="Value">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-10">
+								<div class="form-group row">
+									<label for="inputFirst_name" class="col-md-3 control-label">First Name</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control " id="inputFirst_name" name="inputFirst_name" placeholder="inputFirst_name">
+									</div>
+									<label for="inputLast_name" class="col-md-3 control-label">Last name</label>
+									<div class="col-md-3">
+										<input type="text" class="form-control" id="inputLast_name" name="inputLast_name" placeholder="Value">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<?php echo anchor('#','FB Login','class="btn btn-primary pull-left"');?>
+							<button type="button" class="btn btn-success">Account Login</button>
+						</div>
 					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">FB Login</button>
-					<button type="button" class="btn btn-success">Account Login</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
