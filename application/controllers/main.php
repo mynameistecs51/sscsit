@@ -10,52 +10,54 @@
 			date_default_timezone_set("Asia/Bangkok");
 			$this->load->model('m_main','',TRUE);
 			$this->load->model('facebook_model','',TRUE);
-			$this->load->library('facebook/facebook');
+
 		}
 
 		public function index(){
 			$fb_data = $this->session->userdata('fb_data');
+
 			if(!$fb_data['me']){     
 				$data = array(
 					'title' => "Student Symposium",
-					//'login' => anchor($fb_data['loginUrl'],'Login'),
 					'fb_data' => $fb_data,
 					);
 				$this->load->view('index',$data);
-			}  elseif($this->facebook_model->id_check($fb_data)->num_rows() <= 0)  {
+			}  elseif($this->facebook_model->id_check($fb_data)->num_rows() <= 0)  {	//login ครั้งแรก
 
 				$data = array(
 					'title' => "Student Symposium",
 					'fb_data' => $fb_data,
 					);
 				$this->load->view('login',$data);
-				//$this->load->view('index',$data);
-			} 
-			foreach ($this->facebook_model->id_check($fb_data)->result() as $key_users => $row_users) {
-				switch ($row_users->user_status) {
-					case 'user':
-					$data = array(
-						'title' => "FB ID > 0",
-						'fb_data' => $fb_data,
-						);
-					$this->load->view('index',$data);
-					break;
+				print_r($fb_data);
+			} else{
+				foreach ($this->facebook_model->id_check($fb_data)->result() as $key_users => $row_users) {
+					switch ($row_users->user_status) {
+						case 'user':
+						$data = array(
+							'title' => "FB ID > 0",
+							'fb_data' => $fb_data,
+							);
+						$this->load->view('index',$data);
+						break;
 					// --------------end status user ------------//
-					case 'admin':
-
-					break;
+						case 'admin':
+							redirect('main/admin','refresh');
+						break;
 					// --------------end status admin ------------//
-					case 'committee':
-					break;
+						case 'committee':
+							redirect('main/committee_check_paper','refresh');
+						break;
 					// --------------end status committee ------------//
-					case 'subper_admin':
+						case 'subper_admin':
 						redirect('main/admin','refresh');
-					break;
+						break;
 					// --------------end status subper_admin ------------//
 
-					default:
+						default:
 						# code...
-					break;
+						break;
+					}
 				}
 			}
 			
@@ -121,24 +123,42 @@
 
 		public function  admin()			// admin page
 		{
+			$fb_data = $this->session->userdata('fb_data');
 			$data = array(
 				'title' => 'Admin student symposim',
+				'fb_data' => $fb_data,
 				'get_paper' => $this->m_main->get_paper(),		//all paper
 				'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
 				'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
 				'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
+				'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
 				);
 			$this->load->view('admin/index',$data);
 		}
 
 		public function admin_status_paper(){
+			$fb_data = $this->session->userdata('fb_data');
 			$data = array(
+				'fb_data' => $fb_data,
 				'title' => "Status Paper",
-				'get_paper' => $this->m_main->get_paper(),
-				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),
+				'get_paper' => $this->m_main->get_paper(),  //all paper
+				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+				'check_paper' => $this->db->where('user_facebook_id' , $fb_data['me']['id'])->get('committee')->result(),	//โครงงานที่ต้องตรวจ
 				);
 
 			$this->load->view('admin/admin_status_paper',$data);
+		}
+
+		public function committee_check_paper(){
+			$fb_data = $this->session->userdata('fb_data');
+			$data = array(
+				'fb_data' => $fb_data,
+				'title' => "committee check paper",
+				'get_paper' => $this->m_main->get_paper(),  //all paper
+				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+				'check_paper' => $this->db->where('user_facebook_id' , $fb_data['me']['id'])->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+				);
+			$this->load->view('admin/committee_check_paper',$data);
 		}
 		public function login(){
 

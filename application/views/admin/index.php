@@ -61,8 +61,8 @@
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
-                                <div>ตรวจแล้ว</div>
+                                <div class="huge"><?php echo count($check_paper);?></div>
+                                <div>โครงงานที่ต้องตรวจ</div>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">13</div>
-                                <div>Support Tickets!</div>
+                                <div>โครงงานที่ตรวจแล้ว</div>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                                         if( !isset($selected[$value_committee->paper_id])){
                                             $selected[$value_committee->paper_id] = [];
                                         }
-                                        array_push($selected[$value_committee->paper_id], $value_committee->user_first_name."  ".$value_committee->user_last_name);
+                                        array_push($selected[$value_committee->paper_id], $value_committee->user_first_name."  ".$value_committee->user_last_name);     //แสดงชื่อกรรมการที่ตรวจโครงงาน
                                         //echo 'hello';
 
                                     }

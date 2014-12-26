@@ -30,7 +30,7 @@
     <link href="<?php echo base_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Multi  select -->
-     <link href="<?php echo base_url();?>css/bootstrap-select.css"rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>css/bootstrap-select.css"rel="stylesheet" type="text/css">
     <!-- ./ end mulit select -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -267,22 +267,25 @@
                 </ul>
                 <!-- /.navbar-top-links -->
 
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
-                            <li class="sidebar-search">
-                                <div class="input-group custom-search-form">
+                <div class="navbar-default sidebar center" role="navigation">
+                    <div class="sidebar-nav navbar-collapse ">
+                        <ul class="nav " id="side-menu">
+                            <li class="sidebar-search " >
+<!--                                 <div class="input-group custom-search-form">
                                     <input type="text" class="form-control" placeholder="Search...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </span>
-                                </div>
+                                </div> -->
+                                <?php
+                                echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'.$fb_data['me']['name']." ". anchor('main/logout','Logout');
+                                ?>
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a class="active" href="admin"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
+                            <a class="active" href="admin"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

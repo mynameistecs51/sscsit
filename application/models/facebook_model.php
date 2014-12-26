@@ -10,7 +10,7 @@ class Facebook_model extends CI_model{
             'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 
-        $this->load->library('facebook/facebook', $config);
+        $this->load->library('facebook', $config);
 
         $user = $this->facebook->getUser();
 

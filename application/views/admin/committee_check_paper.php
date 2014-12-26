@@ -134,7 +134,7 @@
                                     $name = $row_paper->paper_inputProjectName_TH;
 
                                      echo "download".force_download($name, $data);
-
+                                     
                                     ?>
                                 </td>
                                 <td><?php echo $row_paper->paper_inputName1;?></td>
