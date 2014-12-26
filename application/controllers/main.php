@@ -42,12 +42,14 @@
 					break;
 					// --------------end status user ------------//
 					case 'admin':
+
 					break;
 					// --------------end status admin ------------//
 					case 'committee':
 					break;
 					// --------------end status committee ------------//
 					case 'subper_admin':
+						redirect('main/admin','refresh');
 					break;
 					// --------------end status subper_admin ------------//
 

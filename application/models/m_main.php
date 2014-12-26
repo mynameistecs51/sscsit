@@ -141,7 +141,6 @@ public function get_users(){
 public function  get_committee(){
 	$query_table_committee = $this->db->query("SELECT
 		`users`.`user_fb_name`,
-		`users`.`user_name`,
 		`users`.`user_first_name`,
 		`users`.`user_last_name`,
 		`users`.`user_email`,
