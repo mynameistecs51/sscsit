@@ -59,7 +59,7 @@
                     <li><a href="contact-us.html">Contact</a></li>
                     <li>
                         <?php 
-                        if(!$fb_data['me']){
+                        if(empty($fb_data['me'])){
                             echo anchor($fb_data['loginUrl'],'Login');
                         }else{
                             echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'.$fb_data['me']['name']." ". anchor('main/logout','Logout');

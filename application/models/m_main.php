@@ -98,6 +98,23 @@
 			return  $get_user_committee->result();
 		}
 
+		public function check_paper($fb_data){
+			$qery_check_paper = $this->db->query("SELECT
+				`users`.*,
+				`committee`.*,
+				`paper`.*,
+				`paper_group`.*
+				FROM
+				`committee`
+				INNER JOIN `paper` ON `committee`.`paper_id` = `paper`.`paper_id`
+				INNER JOIN `users` ON `users`.`user_facebook_id` =
+				`committee`.`user_facebook_id`
+				INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
+				WHERE committee.user_facebook_id ='".$fb_data['me']['id']."'
+				");
+			return $qery_check_paper->result();
+		}
+
 		public function send_paper(){
 			$committee = $this->input->post('select_committee');
 			$paper_id = $this->input->post('paper_id');
@@ -131,30 +148,30 @@
 			);
 		$this->db->insert('users',$data);
 		return true;
-}
+	}
 
-public function get_users(){
-	$get_users = $this->db->get('users');
-	return $get_users->result();
-}
+	public function get_users(){
+		$get_users = $this->db->get('users');
+		return $get_users->result();
+	}
 
-public function  get_committee(){
-	$query_table_committee = $this->db->query("SELECT
-		`users`.`user_fb_name`,
-		`users`.`user_first_name`,
-		`users`.`user_last_name`,
-		`users`.`user_email`,
-		`users`.`user_gender`,
-		`users`.`user_status`,
-		`committee`.`comm_id`,
-		`committee`.`user_facebook_id` AS `user_facebook_id`,
-		`committee`.`paper_id`
-		FROM
-		`users`
-		INNER JOIN `committee` 
-		ON `users`.`user_facebook_id` =	`committee`.`user_facebook_id`
-		");
-return $query_table_committee->result();
-}
+	public function  get_committee(){
+		$query_table_committee = $this->db->query("SELECT
+			`users`.`user_fb_name`,
+			`users`.`user_first_name`,
+			`users`.`user_last_name`,
+			`users`.`user_email`,
+			`users`.`user_gender`,
+			`users`.`user_status`,
+			`committee`.`comm_id`,
+			`committee`.`user_facebook_id` AS `user_facebook_id`,
+			`committee`.`paper_id`
+			FROM
+			`users`
+			INNER JOIN `committee` 
+			ON `users`.`user_facebook_id` =	`committee`.`user_facebook_id`
+			");
+		return $query_table_committee->result();
+	}
 }
 ?>

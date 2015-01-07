@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge"><?php echo count($check_paper);?></div>
-                                <div>โครงงานที่ต้องตรวจ</div>
+                                <div>โครงงานที่ต้องส่ง</div>
                             </div>
                         </div>
                     </div>

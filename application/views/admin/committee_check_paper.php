@@ -100,7 +100,7 @@
 
     <div class="row">
         <div class="col-lg-16">
-           <div class="panel panel-default">
+         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
@@ -119,8 +119,8 @@
                       <th>สถานการตรวจ</th>
                   </thead>
                   <?php
-                  $number = count($get_paper);
-                  foreach ($get_paper as $key_paper => $row_paper) {
+                  $number = count($check_paper);
+                  foreach ($check_paper as $key_paper => $row_paper) {
                       ?>
                       <tbody>
                         <tr>
@@ -129,18 +129,33 @@
                             <td><?php echo $row_paper->group_name;?></td>                            
                             <td>
                                 <?php
-                                $this->load->helper('download');
-                                    $data = file_get_contents("images/file_project_doc/".$row_paper->paper_fileProject); // Read the file's contents
-                                    $name = $row_paper->paper_inputProjectName_TH;
+                               
 
-                                     echo "download".force_download($name, $data);
-                                     
+                                    echo  anchor('main/download/'.$row_paper->paper_fileProject,"download") ;
+
                                     ?>
                                 </td>
                                 <td><?php echo $row_paper->paper_inputName1;?></td>
                                 <td><?php echo $row_paper->paper_date;?></td>
                                 <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
-                                <td>ผ่านแบบมีเงื่อนไข</td>
+                                <td>
+                                  <div class="input-group">
+                                    <h4>
+                                        <label class="label label-success" for="accept">
+                                            <input type="radio"  value="accept" name="radio_check" id="accept"  />ผ่าน
+                                        </label><br/>
+                                        <label class="label label-warning" for="conditional_accept">
+                                            <input type="radio" value="conditional_accept" name="radio_check" id="conditional_accept" />ผ่านแบบมีเงื่อนไข
+                                        </label><br/>
+                                        <label class="label label-danger" for="reject">
+                                            <input type="radio" value="reject" name="radio_check" id="reject" />ไม่ผ่าน
+                                        </label>
+                                    </h4>
+                                    <div class="btn btn-success">
+                                    send
+                                    </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                         <?php } ?>
