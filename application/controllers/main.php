@@ -68,8 +68,11 @@ class Main extends CI_Controller {
 		redirect('main','refresh');
 	}
 	public function send_page(){
+		$fb_data = $this->session->userdata('fb_data');
+
 		$data = array(
 			'title' => "Send paper",
+			'fb_data' => $fb_data,
 // 'paper_group' => $this->db->get('paper_group')->result(),
 			'paper_group' => $this->m_main->get_paper_group(),
 			);
@@ -114,8 +117,11 @@ class Main extends CI_Controller {
 	}
 
 	public function status_page(){
+		$fb_data = $this->session->userdata('fb_data');
+
 		$data = array(
 			'title' => 'Status Paper',
+			'fb_data' => $fb_data,
 			'get_paper' => $this->m_main->get_paper(), 
 			);
 		$this->load->view('status_paper',$data);

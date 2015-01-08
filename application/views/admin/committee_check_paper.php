@@ -139,22 +139,24 @@
                                 <td><?php echo $row_paper->paper_date;?></td>
                                 <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
                                 <td>
+                                <?php echo form_open();?>
                                   <div class="input-group">
                                     <h4>
-                                        <label class="label label-success" for="accept">
-                                            <input type="radio"  value="accept" name="radio_check" id="accept"  />ผ่าน
+                                        <label class="label label-success" for="accept[]">
+                                            <input type="radio"  value="accept" name="radio_check[]" id="accept[]"  />ผ่าน
                                         </label><br/>
-                                        <label class="label label-warning" for="conditional_accept">
-                                            <input type="radio" value="conditional_accept" name="radio_check" id="conditional_accept" />ผ่านแบบมีเงื่อนไข
+                                        <label class="label label-warning" for="conditional_accept[]">
+                                            <input type="radio" value="conditional_accept" name="radio_check[]" id="conditional_accept[]" />ผ่านแบบมีเงื่อนไข
                                         </label><br/>
-                                        <label class="label label-danger" for="reject">
-                                            <input type="radio" value="reject" name="radio_check" id="reject" />ไม่ผ่าน
+                                        <label class="label label-danger" for="reject[]">
+                                            <input type="radio" value="reject" name="radio_check[]" id="reject[]" />ไม่ผ่าน
                                         </label>
                                     </h4>
                                     <div class="btn btn-success">
                                     send
                                     </div>
                                     </div>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
