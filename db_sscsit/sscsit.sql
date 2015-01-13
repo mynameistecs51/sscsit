@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2014 at 04:49 PM
+-- Generation Time: Jan 13, 2015 at 10:30 AM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
 `check_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL,
-  `check_status` enum('ผ่าน','ผ่านแบบมีเงื่อนไข','ไม่ผ่าน') NOT NULL,
+  `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_commetn` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 
 INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
 (1, '02', 10),
-(2, '02', 11),
+(2, '895214977163448', 11),
 (5, '03', 10);
 
 -- --------------------------------------------------------
@@ -133,7 +133,7 @@ INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `use
 ('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'committee'),
 ('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'subper_admin'),
 ('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'user'),
-('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'user');
+('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'committee');
 
 --
 -- Indexes for dumped tables
