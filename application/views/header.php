@@ -6,6 +6,10 @@
     <meta name="description" content="Student symposium โครงงานนักศึกษา">
     <meta name="author" content="">
     <title><?php echo $title;?></title>
+    <!-- start bootstrap data table -->
+    <script  <type="text/javascript" src="<?php echo base_url();?>js/bootstrap-table.js"></script> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap-table.css" />
+    <!-- data table bootstrap -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/font-awesome.min.css" rel="stylesheet" type="text/css"/>

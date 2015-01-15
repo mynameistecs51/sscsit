@@ -209,6 +209,14 @@ class Main extends CI_Controller {
 		redirect('main/index','refresh');
 	}
 
+	public function data_Table(){
+		echo '<meta charset="UTF-8" /> ';
+		 $get_paper = $this->m_main->get_paper();
+		 $jsn = json_encode($get_paper);
+		 $jsn = '{"opt":'.$jsn."}";
+		 echo ($jsn);
+	}
+
 }
 
 /* End of file welcome.php */

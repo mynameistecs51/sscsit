@@ -1,5 +1,9 @@
 <?php $this->load->view('header');?>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#status_paper').dataTable();
+    } );
+</script>
 <section id="services">
     <div class="container">
         <div class="row">
@@ -16,11 +20,11 @@
                     <div class="panel-title">tttttt</div>
                 </div>
                 <div class="panel-body">
-                  <table class="table table-hover">
+                <table class="table table-hover" id="table-pagination" data-url="<?php echo base_url().'/main/data_Table';?>" data-height="400" data-pagination="true" data-search="true">
 
                       <thead>
                         <th>โปรเจ็ค</th>
-                         <th>ประเภทโครงงาน</th>
+                        <th>ประเภทโครงงาน</th>
                         <th>หัวหน้าโครงงาน</th>
                         <th>เวลาที่ส่ง</th>
                         <th>ผู้ส่ง</th>
