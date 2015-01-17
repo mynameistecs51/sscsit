@@ -1,88 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+<script type="text/javascript">
+	var data = [
+	{
+		"name": "bootstrap-table",
+		"stargazers_count": "526",
+		"forks_count": "122",
+		"description": "An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports twitter bootstrap v2 and v3) "
+	},
+	{
+		"name": "multiple-select",
+		"stargazers_count": "288",
+		"forks_count": "150",
+		"description": "A jQuery plugin to select multiple elements with checkboxes :)"
+},
+{
+	"name": "bootstrap-show-password",
+	"stargazers_count": "32",
+	"forks_count": "11",
+	"description": "Show/hide password plugin for twitter bootstrap."
+},
+{
+	"name": "blog",
+	"stargazers_count": "13",
+	"forks_count": "4",
+	"description": "my blog"
+},
+{
+	"name": "scutech-redmine",
+	"stargazers_count": "6",
+	"forks_count": "3",
+	"description": "Redmine notification tools for chrome extension."
+}
+];
 
-	<style type="text/css">
-
-	::selection{ background-color: #E13300; color: white; }
-	::moz-selection{ background-color: #E13300; color: white; }
-	::webkit-selection{ background-color: #E13300; color: white; }
-
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
-
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
-
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
-
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
-
-	#body{
-		margin: 0 15px 0 15px;
-	}
-	
-	p.footer{
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-	
-	#container{
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		-webkit-box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
-</head>
-<body>
-
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
-
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-</div>
-
-</body>
-</html>
+$(function () {
+	$('#table').bootstrapTable({
+		data: data
+	});
+});
+</script>
+<table id="table">
+	<thead>
+		<tr>
+			<th data-field="name">Name</th>
+			<th data-field="stargazers_count">Stars</th>
+			<th data-field="forks_count">Forks</th>
+			<th data-field="description">Description</th>
+		</tr>
+	</thead>
+</table>

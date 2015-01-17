@@ -7,8 +7,8 @@
     <meta name="author" content="">
     <title><?php echo $title;?></title>
     <!-- start bootstrap data table -->
-    <script  <type="text/javascript" src="<?php echo base_url();?>js/bootstrap-table.js"></script> 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap-table.css" />
+    <script  <type="text/javascript" src="<?php echo base_url();?>bootstrap-table-master/src/bootstrap-table.js"></script> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>bootstrap-table-master/src/bootstrap-table.css" />
     <!-- data table bootstrap -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -44,7 +44,7 @@
                     <li ><?php echo anchor('main','หน้าหลัก');?></li>
                     <li><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
                     <li><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
-                    <li><a href="services.html">Services</a></li>
+                     <li><?php echo anchor("main/service_page",'service');?></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>

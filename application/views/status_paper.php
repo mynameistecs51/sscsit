@@ -2,6 +2,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#status_paper').dataTable();
+        alert("test");
     } );
 </script>
 <section id="services">

@@ -40,22 +40,26 @@ class Main extends CI_Controller {
 						);
 					$this->load->view('index',$data);
 					break;
-// --------------end status user ------------//
+					// --------------end status user ------------//
 					case 'admin':
 					redirect('main/admin','refresh');
 					break;
-// --------------end status admin ------------//
+					// --------------end status admin ------------//
 					case 'committee':
 					redirect('main/committee_check_paper','refresh');
 					break;
-// --------------end status committee ------------//
+					// --------------end status committee ------------//
 					case 'subper_admin':
 					redirect('main/admin','refresh');
 					break;
-// --------------end status subper_admin ------------//
+					// --------------end status subper_admin ------------//
 
 					default:
-# code...
+					$data = array(
+						'title' => "FB ID > 0",
+						'fb_data' => $fb_data,
+						);
+					$this->load->view('index',$data);
 					break;
 				}
 			}
@@ -211,10 +215,26 @@ class Main extends CI_Controller {
 
 	public function data_Table(){
 		echo '<meta charset="UTF-8" /> ';
-		 $get_paper = $this->m_main->get_paper();
-		 $jsn = json_encode($get_paper);
-		 $jsn = '{"opt":'.$jsn."}";
-		 echo ($jsn);
+		$get_paper = $this->m_main->get_paper();
+		$jsn = json_encode($get_paper);
+		// $jsn = '{"opt":'.$jsn."}";
+		//echo $jsn;
+		$data = array('jsn' => $jsn,);
+		$this->load->view('data',$data);
+		
+	}
+
+	public function service_page(){
+		$fb_data = $this->session->userdata('fb_data');
+		$data = array(
+			'fb_data' => $fb_data,
+			'title' => "service page",
+			);
+		$this->load->view('welcome_message',$data);
+	}
+
+	public function data(){
+		$this->load->view('data.json');
 	}
 
 }
