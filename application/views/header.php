@@ -7,9 +7,21 @@
     <meta name="author" content="">
     <title><?php echo $title;?></title>
     <!-- start bootstrap data table -->
-    <script  <type="text/javascript" src="<?php echo base_url();?>bootstrap-table-master/src/bootstrap-table.js"></script> 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>bootstrap-table-master/src/bootstrap-table.css" />
-    <!-- data table bootstrap -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/examples/resources/syntax/shCore.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/examples/resources/demo.css">
+    <style type="text/css" class="init">
+        div.dataTables_wrapper {
+            margin-bottom: 3em;
+        }
+    </style>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/examples/resources/syntax/shCore.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/examples/resources/demo.js"></script>
+   
+    
+    <!-- end data table bootstrap -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -25,6 +37,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>images/ico/apple-touch-icon-57-precomposed.png">
+    
 </head><!--/head-->
 <body>
     <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
@@ -44,7 +57,7 @@
                     <li ><?php echo anchor('main','หน้าหลัก');?></li>
                     <li><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
                     <li><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
-                     <li><?php echo anchor("main/service_page",'service');?></li>
+                    <li><?php echo anchor("main/service_page",'service');?></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>

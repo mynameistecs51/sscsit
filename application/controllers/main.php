@@ -234,19 +234,7 @@ class Main extends CI_Controller {
 	}
 
 	public function seach_text(){
-		$search = strip_tags($this->input->post('search'));
-		$string = "";
-		if($search === ""){
-			echo "กรุณากรอกข้อมูล";
-		}else{
-			$result = $this->db->query("SELECT paper.*, paper_group.*, users.*
-			FROM  (paper INNER JOIN paper_group ON paper.paper_group = paper_group.group_id) 
-			INNER JOIN users ON(users.user_facebook_id = paper.user_facebook_id)
-			WHERE paper.paper_inputProjectName_TH LIKE '%{$search}%'
-			ORDER BY paper.paper_id DESC
-			")->result();
-			print_r($result);
-		}
+		echo "TEST";
 	}
 
 }

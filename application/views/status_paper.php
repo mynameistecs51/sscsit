@@ -8,8 +8,8 @@
     });
     function search_ajax_way(){
         var searchText = $("#search").val();
-        alert(searchText);
-        //$.post("<?php echo base_url().'main/seach_text';?>",{name:searchText},function(data){$("#table-pagination").html(data);})
+        //alert(searchText);
+        $.post("index.php/main/seach_text",{search:searchText},function(data){$("#table-pagination").html(data);})
     }
 </script>
 <section id="services">
