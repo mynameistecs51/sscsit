@@ -1,9 +1,16 @@
 <?php $this->load->view('header');?>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#status_paper').dataTable();
-        alert("test");
-    } );
+    jQuery(document).ready(function(){
+        $('#search').keyup(function(event){
+            event.preventDefault();
+            search_ajax_way();
+        });
+    });
+    function search_ajax_way(){
+        var searchText = $("#search").val();
+        alert(searchText);
+        //$.post("<?php echo base_url().'main/seach_text';?>",{name:searchText},function(data){$("#table-pagination").html(data);})
+    }
 </script>
 <section id="services">
     <div class="container">
@@ -18,62 +25,66 @@
         <div class="row">       <!-- //    show paper all    //  -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="panel-title">tttttt</div>
+                    <div class="panel-title">tttttt
+                       <div class="input-group col-md-2 pull-right">
+                        <input type="text" class="form-control" name="search" id="search" placeholder="ค้นหา">
+                        <div class="input-group-addon"> <i class="icon-search "></i></div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                <table class="table table-hover" id="table-pagination" data-url="<?php echo base_url().'/main/data_Table';?>" data-height="400" data-pagination="true" data-search="true">
-
-                      <thead>
-                        <th>โปรเจ็ค</th>
-                        <th>ประเภทโครงงาน</th>
-                        <th>หัวหน้าโครงงาน</th>
-                        <th>เวลาที่ส่ง</th>
-                        <th>ผู้ส่ง</th>
-                        <th>สถานการตรวจ</th>
-                    </thead>
-                    <?php
-                    foreach ($get_paper as $key_paper => $row_paper) {
-                      ?>
-                      <tbody>
-                        <tr>
-                            <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                            <td><?php echo $row_paper->group_name;?></td>
-                            <td><?php echo $row_paper->paper_inputName1;?></td>
-                            <td><?php echo $row_paper->paper_date;?></td>
-                            <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
-                            <td>ผ่านแบบมีเงื่อนไข</td>
-                        </tr>
-                    </tbody>
-                    <?php } ?>
-                </table>
-
-            </div>  <!-- ./panel body -->
-        </div>
-    </div><!--/.row  wsho paper-->
-    <hr>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="center">
-                <h2>What our clients say</h2>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
             </div>
-            <div class="gap"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                    </blockquote>
-                </div>
-                <div class="col-md-6">
-                    <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                    </blockquote>
-                </div>
+            <div class="panel-body">
+                <table class="table table-hover" id="table-pagination" data-url="<?php echo base_url().'/main/data_Table';?>" data-height="400" data-pagination="true" data-search="true">
+                  <thead>
+                    <th>โปรเจ็ค</th>
+                    <th>ประเภทโครงงาน</th>
+                    <th>หัวหน้าโครงงาน</th>
+                    <th>เวลาที่ส่ง</th>
+                    <th>ผู้ส่ง</th>
+                    <th>สถานการตรวจ</th>
+                </thead>
+                <?php
+                foreach ($get_paper as $key_paper => $row_paper) {
+                  ?>
+                  <tbody>
+                    <tr>
+                        <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                        <td><?php echo $row_paper->group_name;?></td>
+                        <td><?php echo $row_paper->paper_inputName1;?></td>
+                        <td><?php echo $row_paper->paper_date;?></td>
+                        <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
+                        <td>ผ่านแบบมีเงื่อนไข</td>
+                    </tr>
+                </tbody>
+                <?php } ?>
+            </table>
+
+        </div>  <!-- ./panel body -->
+    </div>
+</div><!--/.row  wsho paper-->
+<hr>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="center">
+            <h2>What our clients say</h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        </div>
+        <div class="gap"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                </blockquote>
+            </div>
+            <div class="col-md-6">
+                <blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                </blockquote>
             </div>
         </div>
     </div>
+</div>
 </div>
 </section><!--/#services-->
 
