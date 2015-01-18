@@ -11390,7 +11390,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": "========== ไม่มีข้อมูลที่ต้องการ=========="
 		},
 	
 	

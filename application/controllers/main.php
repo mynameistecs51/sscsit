@@ -180,17 +180,7 @@ class Main extends CI_Controller {
 //print_r($data['user_name'][0]);
 	}
 	public function logout() {
-// $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
-
-// $this->facebook->getLogoutUrl(array('next' => site_url('main')));
-// $this->session->sess_destroy();
-
-// setcookie('PHPSESSID', '', time()-10, "/");
-// $this->session->unset_userdata($fb_data);
 		$this->facebook_model->logout();
-//redirect('sci_con/', 'refresh');  //redirect to the home page
-
-//redirect($fb_data['logoutUrl'],'refresh');
 		redirect('main','refresh');
 	}
 
@@ -226,9 +216,11 @@ class Main extends CI_Controller {
 
 	public function service_page(){
 		$fb_data = $this->session->userdata('fb_data');
+
 		$data = array(
+			'title' => 'service  page',
 			'fb_data' => $fb_data,
-			'title' => "service page",
+			'get_paper' => $this->m_main->get_paper(), 
 			);
 		$this->load->view('welcome_message',$data);
 	}

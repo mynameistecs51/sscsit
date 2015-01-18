@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 
 <head>
 
@@ -21,16 +21,16 @@
     <link href="<?php echo base_url();?>css/plugins/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>css/sb-admin-2.css" rel="stylesheet" type="text/css">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url();?>css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>css/plugins/morris.css" rel="stylesheet" type="text/css">
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Multi  select -->
-    <link href="<?php echo base_url();?>css/bootstrap-select.css"rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>css/bootstrap-select.css" rel="stylesheet" type="text/css">
     <!-- ./ end mulit select -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
