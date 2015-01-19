@@ -6,15 +6,37 @@
     <meta name="description" content="Student symposium โครงงานนักศึกษา">
     <meta name="author" content="">
     <title><?php echo $title;?></title>
-    <!-- start bootstrap data table -->
-   
-    <!-- end data table bootstrap -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/animate.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet" type="text/css"/>
+    
+    <!-- start bootstrap data table -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/media/css/jquery.dataTables.css">
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/examples/resources/syntax/shCore.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/examples/resources/demo.css"> -->
+    <style type="text/css" class="init">
+        div.dataTables_wrapper {
+            margin-bottom: 3em;
+        }
+    </style>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/media/js/jquery.dataTables.js"></script>
+    <!--<script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/examples/resources/syntax/shCore.js"></script>-->
+    <!--<script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/examples/resources/demo.js"></script>-->
+    <script type="text/javascript" language="javascript" class="init">
+        $(document).ready(function () {
+            $('table.display').dataTable();
+        });
+    </script>
+    <!-- end data table bootstrap -->
+
+    <!-- start bootstrap switch -->
+    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-switch.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap-switch.css">
+    <!-- end bootstrap switch -->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -26,7 +48,7 @@
     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>images/ico/apple-touch-icon-57-precomposed.png">
     
 </head><!--/head-->
-<body>
+<body >
     <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -45,7 +67,7 @@
                     <li><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
                     <li><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
                     <li><?php echo anchor("main/service_page",'service');?></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><?php echo anchor('main/portfolio_page','portfolio');?></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">

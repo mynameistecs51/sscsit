@@ -204,12 +204,13 @@ class Main extends CI_Controller {
 	}
 
 	public function data_Table(){
-		echo '<meta charset="UTF-8" /> ';
-		$get_paper = $this->m_main->get_paper();
-		$jsn = json_encode($get_paper);
-		// $jsn = '{"opt":'.$jsn."}";
-		//echo $jsn;
-		$data = array('jsn' => $jsn,);
+		$fb_data = $this->session->userdata('fb_data');
+
+		$data = array(
+			'title' => 'service  page',
+			'fb_data' => $fb_data,
+			'get_paper' => $this->m_main->get_paper(), 
+			);
 		$this->load->view('data',$data);
 		
 	}
@@ -225,12 +226,18 @@ class Main extends CI_Controller {
 		$this->load->view('welcome_message',$data);
 	}
 
-	public function seach_text(){
-		echo "TEST";
+	public function portfolio_page(){
+		$fb_data = $this->session->userdata('fb_data');
+
+		$data = array(
+			'title' => 'service  page',
+			'fb_data' => $fb_data,
+			);
+			$this->load->view('portfolio',$data);
+		}
+
 	}
 
-}
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
-?>
+	/* End of file welcome.php */
+	/* Location: ./application/controllers/welcome.php */
+	?>
