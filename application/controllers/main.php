@@ -209,7 +209,7 @@ class Main extends CI_Controller {
 		$data = array(
 			'title' => 'service  page',
 			'fb_data' => $fb_data,
-			'get_paper' => $this->m_main->get_paper(), 
+			'get_users' => $this->m_main->get_users(), 
 			);
 		$this->load->view('data',$data);
 		
