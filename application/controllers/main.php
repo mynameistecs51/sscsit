@@ -236,6 +236,12 @@ class Main extends CI_Controller {
 			$this->load->view('portfolio',$data);
 		}
 
+		public function test_checkbox(){
+			 $this->input->post('value_checked');
+
+			 return true;
+		}
+
 	}
 
 	/* End of file welcome.php */

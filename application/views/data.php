@@ -46,9 +46,22 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("[name='my-checkbox']").bootstrapSwitch();
-			
+			$("[name='my-checkbox']").bootstrapSwitch({
+				onSwitchChange : function(e,s){
+					if(s){
+						$.ajax({
+							url: '<?php echo site_url("main/test_checkbox"); ?>',
+							type: 'POST',
+							data: {'value_checked' : "this is a book"}
+						}).success(function(data){
+
+							console.log(data +' this is return');
+						});
+					}
+				}
+			});
+
 		});
-		
+
 	</script>
 	<?php $this->load->view('footer');?>
