@@ -233,17 +233,22 @@ class Main extends CI_Controller {
 			'title' => 'service  page',
 			'fb_data' => $fb_data,
 			);
-			$this->load->view('portfolio',$data);
-		}
-
-		public function test_checkbox(){
-			 $this->input->post('value_checked');
-
-			 return true;
-		}
-
+		$this->load->view('portfolio',$data);
 	}
 
-	/* End of file welcome.php */
-	/* Location: ./application/controllers/welcome.php */
-	?>
+	public function test_checkbox(){
+		$user_id = $this->input->post('user_id');
+		$my_status = $this->input->post('my-checkbox');
+
+		if($my_status === "checked"){
+			echo $user_id;
+		}else{
+			echo $user_id;
+		}
+	}
+
+}
+
+/* End of file welcome.php */
+/* Location: ./application/controllers/welcome.php */
+?>

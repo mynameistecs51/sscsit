@@ -24,10 +24,9 @@
 			<tbody>
 				<?php
 				$number =  count($get_users);
-
 				foreach ($get_users as $key_users => $row_users) {
-					//$is_admin = ($user['permissions'] == 'admin' ? true : false);
 					$user_status = ($row_users->user_status === 'committee'? "checked":"");
+
 					?>                  
 					<tr>
 						<td><?php echo $number-- ;?></td>
@@ -35,11 +34,15 @@
 						<td><?php echo $row_users->user_last_name;?></td>
 						<td><?php echo $row_users->user_email;?></td>
 						<td><?php echo $row_users->user_gender;?></td>
-						<!-- <td><?php echo $row_users->user_status;?></td> -->
-						<td><input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> />
-						</td>  
-					</tr>           
-					<?php } ?> 
+						<td>
+							 <?php echo form_open('main/test_checkbox',array('id' => "check_status",'name' => "check_status"));?>
+								<input type="hidden" name="user_id" id="user_id" value="<?php echo $row_users->user_facebook_id;?>">
+								<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> />								
+							</form>
+						</td> 
+					</tr>      
+
+					<?php }  ?> 
 				</tbody>
 			</table>
 		</section>
@@ -52,12 +55,26 @@
 						$.ajax({
 							url: '<?php echo site_url("main/test_checkbox"); ?>',
 							type: 'POST',
-							data: {'value_checked' : "this is a book"}
+							//data: {'value_checked' : "committee",'user_id':$('#user_id').val()},
+							data:$('#check_status').serialize(),
+							//dataType:"json",
 						}).success(function(data){
-
-							console.log(data +' this is return');
+							alert(data);
+							//console.log(data +' this is return');
+						});
+					}else{
+						$.ajax({
+							url: '<?php echo site_url("main/test_checkbox"); ?>',
+							type: 'POST',
+							//data: {'value_checked' :"user", 'user_id':$('#user_id').val()},
+							 data:$('#check_status').serialize(),
+							//dataType:"json",
+						}).success(function(data){
+							alert(data);
+							//console.log(data +' this is return');
 						});
 					}
+					
 				}
 			});
 
