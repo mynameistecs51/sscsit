@@ -35,11 +35,13 @@
 						<td><?php echo $row_users->user_email;?></td>
 						<td><?php echo $row_users->user_gender;?></td>
 						<td>
-							 <?php echo form_open('main/test_checkbox',array('id' => "check_status",'name' => "check_status"));?>
+							<?php //echo form_open('main/test_checkbox',array('id' => "check_status",'name' => "check_status"));?>
+							<form id="check_status" name="check_status">
 								<label for="user_id"><?php echo "id = ".$row_users->user_facebook_id;?></label><br/>
 								<input type="hidden" name="user_id" id="user_id" value="<?php echo $row_users->user_facebook_id;?>"/>
 								<input type="hidden" name="user" id="user" value="<?php echo $row_users->user_first_name;?>"/>
-								<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> value="submit"/>								
+								<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?>  value="submit"/>			
+								<!-- <input type="submit" value="submit">				 -->
 							</form>
 						</td> 
 					</tr>      
@@ -50,37 +52,39 @@
 		</section>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$("[name='my-checkbox']").bootstrapSwitch({
-				onSwitchChange : function(e,s){
+		$(document).ready(function() {
+			$("#check_status").submit(function(e)
+			{
+				$("[name='my-checkbox']").bootstrapSwitch({	onSwitchChange : function(e,s){
 					if(s){
 						$.ajax({
-							url: '<?php echo site_url("main/test_checkbox"); ?>',
+							url: '<?php echo site_url("main/test_checkbox");?>',
 							type: 'POST',
-							//data: {'value_checked' : "committee",'user_id':$('#user_id').val()},
-							data:$('#check_status').serialize(),
-							//dataType:"json",
-						}).success(function(data){
-							alert(data);
-							//console.log(data +' this is return');
-						});
-					}else{
-						$.ajax({
-							url: '<?php echo site_url("main/test_checkbox"); ?>',
-							type: 'POST',
-							//data: {'value_checked' :"user", 'user_id':$('#user_id').val()},
-							 data:$('#check_status').serialize(),
-							//dataType:"json",
-						}).success(function(data){
-							alert(data);
-							//console.log(data +' this is return');
-						});
-					}
-					
+						//data: {'value_checked' : "committee",'user_id':$('#user_id').val()},
+						data:$('#check_status').serialize(),
+						//dataType:"json",
+					}).success(function(data){
+						alert(data);
+						//console.log(data +' this is return');
+					});
+				}else{
+					$.ajax({
+						url: '<?php echo site_url("main/test_checkbox"); ?>',
+						type: 'POST',
+						//data: {'value_checked' :"user", 'user_id':$('#user_id').val()},
+						data:$('#check_status').serialize(),
+						//dataType:"json",
+					}).success(function(data){
+						alert(data);
+						//console.log(data +' this is return');
+					});
 				}
-			});
-
+			}
 		});
 
+			});
+
+	$("#my-checkbox").submit(); //SUBMIT FORM
+});
 	</script>
 	<?php $this->load->view('footer');?>
