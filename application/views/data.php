@@ -36,8 +36,10 @@
 						<td><?php echo $row_users->user_gender;?></td>
 						<td>
 							 <?php echo form_open('main/test_checkbox',array('id' => "check_status",'name' => "check_status"));?>
-								<input type="hidden" name="user_id" id="user_id" value="<?php echo $row_users->user_facebook_id;?>">
-								<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> />								
+								<label for="user_id"><?php echo "id = ".$row_users->user_facebook_id;?></label><br/>
+								<input type="hidden" name="user_id" id="user_id" value="<?php echo $row_users->user_facebook_id;?>"/>
+								<input type="hidden" name="user" id="user" value="<?php echo $row_users->user_first_name;?>"/>
+								<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> value="submit"/>								
 							</form>
 						</td> 
 					</tr>      

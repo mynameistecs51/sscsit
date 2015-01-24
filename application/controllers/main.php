@@ -239,11 +239,12 @@ class Main extends CI_Controller {
 	public function test_checkbox(){
 		$user_id = $this->input->post('user_id');
 		$my_status = $this->input->post('my-checkbox');
+		$user = $this->input->post('user');
 
 		if($my_status === "checked"){
-			echo $user_id;
+			echo $user_id."&".$user;
 		}else{
-			echo $user_id;
+			echo $user_id."&".$user;
 		}
 	}
 
