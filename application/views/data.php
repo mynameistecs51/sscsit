@@ -52,39 +52,27 @@
 		</section>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#check_status").submit(function(e)
-			{
-				$("[name='my-checkbox']").bootstrapSwitch({	onSwitchChange : function(e,s){
-					if(s){
-						$.ajax({
-							url: '<?php echo site_url("main/test_checkbox");?>',
-							type: 'POST',
-						//data: {'value_checked' : "committee",'user_id':$('#user_id').val()},
-						data:$('#check_status').serialize(),
-						//dataType:"json",
+		$(document).ready(function(){
+			$("[name = 'my-checkbox']").bootstrapSwitch({ onSwitchChange : function(e,s){
+				if(s){
+					$.ajax({
+						url: "<?php echo site_url('main/test_checkbox');?>",
+						type: "POST",
+						data: $('#check_status').serialize(),
 					}).success(function(data){
 						alert(data);
-						//console.log(data +' this is return');
 					});
 				}else{
 					$.ajax({
-						url: '<?php echo site_url("main/test_checkbox"); ?>',
-						type: 'POST',
-						//data: {'value_checked' :"user", 'user_id':$('#user_id').val()},
-						data:$('#check_status').serialize(),
-						//dataType:"json",
+						url: "<?php echo site_url('main/test_checkbox');?>",
+						type: "POST",
+						data: $('#check_status').serialize(),
 					}).success(function(data){
 						alert(data);
-						//console.log(data +' this is return');
-					});
+					});					
 				}
 			}
 		});
-
-			});
-
-	$("#my-checkbox").submit(); //SUBMIT FORM
-});
+		});
 	</script>
 	<?php $this->load->view('footer');?>

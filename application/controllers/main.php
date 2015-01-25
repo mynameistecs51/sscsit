@@ -242,9 +242,9 @@ class Main extends CI_Controller {
 		$user = $this->input->post('user');
 
 		if($my_status === "checked"){
-			echo $user_id."&".$user;
+			echo "user_id".$user_id."\n"."user_name".$user;
 		}else{
-			echo $user_id."&".$user;
+			echo $user_id."\n".$user;
 		}
 	}
 
