@@ -173,5 +173,16 @@
 			");
 		return $query_table_committee->result();
 	}
+
+	public function update_user_status($status){
+		$user_id = $this->input->post('user_id');
+		$user = $this->input->post('user');
+
+		$update_status = $this->db->query('UPDATE users
+				SET user_status = "'.$status.'"
+				WHERE user_facebook_id = "'.$user_id.'"
+				');
+		return $update_status;
+	}
 }
 ?>
