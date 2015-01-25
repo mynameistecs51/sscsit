@@ -239,14 +239,9 @@ class Main extends CI_Controller {
 	public function test_checkbox(){
 		$my_status = $this->input->post('my-checkbox');
 		if($my_status === "checked"){
-			// echo "user_id".$user_id."\n"."user_name".$user;
-			// $data = array(
-			// 	'user_status' => 'committee',
-			// 	);
-			// $this->db->where('user_facebook_id', $user_id);
-			// $this->db->update('users', $data); 
 			$update_status = $this->m_main->update_user_status($status = "committee");
 			echo  $update_status;
+			print_r($update_status);
 		}else{
 			$update_status = $this->m_main->update_user_status($status = "user");
 			echo  $update_status;
