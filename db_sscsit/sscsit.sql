@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2015 at 10:30 AM
+-- Generation Time: Jan 26, 2015 at 09:31 AM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_last_name` varchar(100) NOT NULL,
   `user_email` varchar(100) NOT NULL,
   `user_gender` enum('male','female') NOT NULL,
-  `user_status` enum('subper_admin','admin','committee','user') NOT NULL
+  `user_status` enum('supper_admin','admin','committee','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -129,10 +129,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `user_last_name`, `user_email`, `user_gender`, `user_status`) VALUES
 ('01', 'te', 'te', 'te', 'te@hotmail.com', 'male', 'admin'),
-('02', 'ch', 'ch', 'ch', 'ch@hotmail.com', 'male', 'committee'),
-('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'committee'),
-('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'subper_admin'),
-('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'user'),
+('02', 'ch', 'ch', 'ch', 'ch@hotmail.com', 'male', 'user'),
+('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin'),
+('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'user'),
+('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'committee'),
 ('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'committee');
 
 --
