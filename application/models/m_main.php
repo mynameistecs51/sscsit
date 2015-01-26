@@ -151,7 +151,9 @@
 	}
 
 	public function get_users(){
-		$get_users = $this->db->get('users');
+		// $this->db->where( "user_status !=", 'supper_admin');
+		// $get_users = $this->db->get('users');
+		$get_users = $this->db->query("SELECT * FROM users WHERE user_status != 'admin' AND user_status != 'supper_admin' ");
 		return $get_users->result();
 	}
 
