@@ -287,6 +287,9 @@
                             <li>
                             <a class="active" href="admin"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
                             </li>
+                            <li>
+                            <a class="" href="data_Table"><i class="fa fa-cogs fa-fw"></i> จัดการสิทธิ์</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
