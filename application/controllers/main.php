@@ -238,7 +238,8 @@ class Main extends CI_Controller {
 
 	public function test_checkbox(){
 		$my_status = $this->input->post('my-checkbox');
-		if($my_status === "checked"){
+
+		if($my_status === "on"){
 			$update_status = $this->m_main->update_user_status($status = "committee");
 			echo  $update_status;
 			print_r($update_status);
