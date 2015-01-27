@@ -11,6 +11,7 @@
 
     <title><?php echo $title;?></title>
 
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,7 +29,25 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <!-- start bootstrap data table -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>DataTables/media/css/jquery.dataTables.css">
+    <style type="text/css" class="init">
+        div.dataTables_wrapper {
+            margin-bottom: 3em;
+        }
+    </style>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>DataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" class="init">
+        $(document).ready(function () {
+            $('table.display').dataTable();
+        });
+    </script>
+    <!-- end data table bootstrap -->
+    <!-- start bootstrap switch -->
+    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-switch.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap-switch.css">
+    <!-- end bootstrap switch -->
     <!-- Multi  select -->
     <link href="<?php echo base_url();?>css/bootstrap-select.css" rel="stylesheet" type="text/css">
     <!-- ./ end mulit select -->
@@ -285,10 +304,10 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                            <a class="active" href="admin"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
+                                <a class="active" href="admin"><i class="fa fa-dashboard fa-fw"></i> ทั่วไป</a>
                             </li>
                             <li>
-                            <a class="" href="data_Table"><i class="fa fa-cogs fa-fw"></i> จัดการสิทธิ์</a>
+                                <a class="" href="data_Table"><i class="fa fa-cogs fa-fw"></i> จัดการสิทธิ์</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

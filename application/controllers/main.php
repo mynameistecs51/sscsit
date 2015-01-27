@@ -29,7 +29,6 @@ class Main extends CI_Controller {
 				'fb_data' => $fb_data,
 				);
 			$this->load->view('login',$data);
-			print_r($fb_data);
 		} else{
 			foreach ($this->facebook_model->id_check($fb_data)->result() as $key_users => $row_users) {
 				switch ($row_users->user_status) {
@@ -207,9 +206,14 @@ class Main extends CI_Controller {
 		$fb_data = $this->session->userdata('fb_data');
 
 		$data = array(
-			'title' => 'service  page',
+			'title' => 'manage status',
 			'fb_data' => $fb_data,
-			'get_users' => $this->m_main->get_users(), 
+			'get_users' => $this->m_main->get_users(), 			
+			'get_paper' => $this->m_main->get_paper(),		//all paper
+			'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
+			'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
+			'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
+			'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
 			);
 		$this->load->view('data',$data);
 		
@@ -236,7 +240,7 @@ class Main extends CI_Controller {
 		$this->load->view('portfolio',$data);
 	}
 
-	public function test_checkbox(){
+	public function manage_status(){
 		$my_status = $this->input->post('my-checkbox');
 
 		if($my_status === "on"){
