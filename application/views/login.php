@@ -21,28 +21,6 @@
 					<hr/>
 				</div>
 				<div class="modal-body">
-				<?php 
-				// $fb_id = "";
-				// $fb_name = "";
-				// $fb_email = "";
-				// if(!$fb_data['me']){     
-				// 	echo anchor($fb_data['loginUrl'],'<button >login</button>');
-				// 	echo "<br/>";
-				// 	print_r($fb_data);
-				// }  else  {
-				// 	// echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" />';
-				// 	// echo "<br/>";
-				// 	$fb_id = $fb_data['me']['id'];
-				// 	$fb_name =  $fb_data['me']['name']." "; 
-				// 	$fb_email = $fb_data['me']['email'];
-				// 	// echo anchor($fb_data['logoutUrl'],'logout');
-    //              //echo anchor('sci_con/logout','logout');
-				// 	// print_r($fb_data);
-
-				// } 
-
-					?>
-					<!-- <form class="form-horizontal" role="form"> -->
 					<?php echo form_open('main/insert_users','class="form-horizontal" role="form"');?>
 					<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['me']['id'];?>">
 					<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['me']['name'];?>">
