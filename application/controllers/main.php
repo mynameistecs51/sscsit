@@ -253,6 +253,26 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function checked_paper(){
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('checked_paper','checked_paper','required|callback_checked');
+		if($this->form_validation->run() == FALSE){
+			redirect('main/committee_check_paper','#myModal');
+		}else{
+			echo $this->input->post('checked_paper').'<br/>';
+			echo $this->input->post('comment');
+		}
+	}
+
+	public function checked($str){
+		if($str == ''){
+			$this->form_validation->set_message('กรุณาเลือก','%s');
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 }
 
 /* End of file welcome.php */
