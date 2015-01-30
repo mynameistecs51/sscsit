@@ -255,21 +255,37 @@ class Main extends CI_Controller {
 
 	public function checked_paper(){
 		$this->load->library('form_validation');
+		$fb_data = $this->session->userdata('fb_data');
+
 		$this->form_validation->set_rules('checked_paper','checked_paper','required|callback_checked');
 		if($this->form_validation->run() == FALSE){
-			header('location:'.$_SERVER['HTTP_REFERER']);
+			$data = array(
+				'fb_data' => $fb_data,
+				'title' => "committee check paper",
+				'get_paper' => $this->m_main->get_paper(),  //all paper
+				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+				'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
+				'javascript_myModal' => '
+				<script type="text/javascript">
+					$(window).load(function(){
+						$("#myModal").modal("show");
+					});
+		</script>',
+		);
+			$this->load->view('admin/committee_check_paper',$data);
 		}else{
+			echo $fb_data['me']['id']."<br/>";
 			echo $this->input->post('checked_paper').'<br/>';
-			echo $this->input->post('comment');
-		}
+			echo $this->input->post('comment');		}
 	}
 
-	public function checked($str){
-		if($str == ''){
-			$this->form_validation->set_message('กรุณาเลือก','%s');
-			return false;
-		}else{
+	public function checked(){
+		if($this->input->post('checked_paper') != ''){
 			return true;
+		}else{
+			$this->form_validation->set_message('checked_paper', 'กรุณาเลือก');
+			echo "<script>alert('error');</script>";
+			return false;
 		}
 	}
 
