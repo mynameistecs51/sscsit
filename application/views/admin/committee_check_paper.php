@@ -107,7 +107,7 @@ if(empty($javascript_myModal)){
 
     <div class="row">
         <div class="col-lg-16">
-         <div class="panel panel-default">
+           <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
@@ -148,72 +148,23 @@ if(empty($javascript_myModal)){
                                     ตรวจเอกสาร
                                 </button>
 
-                                <div class="row col-sm-12">
-                                    <div id="myModal"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                                        <!-- <div class="modal-dialog " style="width:60%" > -->
-                                        <div class="modal-dialog modal-lg ">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title">ตรวจเอกสาร</h4>
+                                <div id="myModal"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                                <?php echo $row_paper->paper_inputProjectName_TH;?>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <?php } ?>
+                </table>
 
-                                                </div>
-                                                <div class="modal-body">
-                                                    <?php echo form_open('main/checked_paper','class="form-horizontal" role="form"');?>
-                                                    <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
-                                                    <input type="text" name="paper_id" value="<?php  echo $row_paper->paper_inputProjectName_TH;?> ">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="accept" class="btn btn-success">
-                                                                <input type="radio" id="accept" name="checked_paper" value="accept"/>
-                                                                :ผ่าน
-                                                            </label>&nbsp;
-                                                            <label for="conditional_accept" class="btn btn-warning" >
-                                                                <input type="radio" id="conditional_accept" name="checked_paper" value="conditional_accept">
-                                                                :ผ่านแบบมีเงื่อนไข
-                                                            </label>&nbsp;
-                                                            <label for="reject" class="btn btn-danger">
-                                                                <input type="radio" id="reject" name="checked_paper" value="reject">
-                                                                :ไม่ผ่าน
-                                                            </label>
-                                                            <?php echo form_error('checked_paper'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="comment">
-                                                                Comment:
-                                                                <textarea id="comment" name="comment" class="form-control" rows="3" cols="80"></textarea>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success">ส่ง</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-                        </td>
-                    </tr>
-                </tbody>
-                <?php } ?>
-            </table>
-
-        </div>  <!-- ./panel body -->
-        <!-- /.panel-body -->
+            </div>  <!-- ./panel body -->
+            <!-- /.panel-body -->
+        </div>
     </div>
-</div>
-<!-- /.col-lg-16 -->
-
+    <!-- /.col-lg-16 -->
 </div>
 <!-- /.row -->
 </div>
 <!-- /#page-wrapper -->
-
-
-
 
 <?php $this->load->view('admin/footer');?>
