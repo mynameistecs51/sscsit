@@ -254,6 +254,7 @@ class Main extends CI_Controller {
 	}
 
 	public function checked_paper(){
+
 		$this->load->library('form_validation');
 		$fb_data = $this->session->userdata('fb_data');
 
@@ -274,9 +275,10 @@ class Main extends CI_Controller {
 		);
 			$this->load->view('admin/committee_check_paper',$data);
 		}else{
+			echo "<meta charset='UTF-8'/>";
 			echo $fb_data['me']['id']."<br/>";
 			echo $this->input->post('checked_paper').'<br/>';
-			echo $this->input->post('comment');		
+			echo $this->input->post('comment')."<br/>";	
 			echo $this->input->post('project_name');
 		}
 	}
