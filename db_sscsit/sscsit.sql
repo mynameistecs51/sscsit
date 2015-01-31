@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 26, 2015 at 09:31 AM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Host: localhost
+-- Generation Time: Jan 31, 2015 at 02:57 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
   `paper_id` int(11) NOT NULL,
   `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_commetn` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -44,16 +44,16 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `committee`
 --
 
 INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
-(1, '02', 10),
 (2, '895214977163448', 11),
-(5, '03', 10);
+(6, '05', 10),
+(7, '895214977163448', 10);
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `user_facebook_id` char(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper`
@@ -94,7 +94,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper_group`
@@ -182,7 +182,7 @@ MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `committee`
 --
 ALTER TABLE `committee`
-MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `paper`
 --
