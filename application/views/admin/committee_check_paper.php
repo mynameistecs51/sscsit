@@ -107,7 +107,7 @@ if(empty($javascript_myModal)){
 
     <div class="row">
         <div class="col-lg-16">
-           <div class="panel panel-default">
+         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
@@ -144,11 +144,11 @@ if(empty($javascript_myModal)){
                             <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
                             <td>
 
-                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal<?php echo $row_paper->paper_id;?>">
                                     ตรวจเอกสาร
                                 </button>
                                 <div class="row col-sm-12">
-                                    <div id="myModal"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                                <div id="myModal<?php echo $row_paper->paper_id;?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
                                         <!-- <div class="modal-dialog " style="width:60%" > -->
                                         <div class="modal-dialog modal-lg ">
                                             <div class="modal-content">
@@ -160,7 +160,7 @@ if(empty($javascript_myModal)){
                                                 <div class="modal-body">
                                                     <?php echo form_open('main/checked_paper','class="form-horizontal" role="form"');?>
                                                     <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
-                                                    <input type="text" name="paper_id" value="<?php  echo $row_paper->paper_inputProjectName_TH;?> ">
+                                                    <input type="text" name="project_name" value="<?php  echo $row_paper->paper_inputProjectName_TH;?> ">
                                                     <div class="form-group">
                                                         <div class="col-md-12">
                                                             <label for="accept" class="btn btn-success">

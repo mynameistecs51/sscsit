@@ -276,7 +276,9 @@ class Main extends CI_Controller {
 		}else{
 			echo $fb_data['me']['id']."<br/>";
 			echo $this->input->post('checked_paper').'<br/>';
-			echo $this->input->post('comment');		}
+			echo $this->input->post('comment');		
+			echo $this->input->post('project_name');
+		}
 	}
 
 	public function checked(){

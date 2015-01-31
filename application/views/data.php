@@ -99,7 +99,7 @@
 			</a>
 		</div>
 	</div>  <!-- /.row -->
-<hr/>
+	<hr/>
 	<div class="container">
 		<section >
 
