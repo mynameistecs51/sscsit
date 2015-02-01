@@ -160,11 +160,7 @@ if(empty($javascript_myModal)){
                                                 <div class="modal-body">
                                                     <?php echo form_open('main/checked_paper','class="form-horizontal" role="form"');?>
                                                     <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
-<<<<<<< HEAD
-                                                    <input type="hidden" name="project_name" value="<?php  echo $row_paper->paper_inputProjectName_TH;?> ">
-=======
                                                     <input type="text" name="project_name" value="<?php  echo $row_paper->paper_inputProjectName_TH;?> ">
->>>>>>> b373a862538e2b27e2b2b1d4600a578a7736ba36
                                                     <div class="form-group">
                                                         <div class="col-md-12">
                                                             <label for="accept" class="btn btn-success">

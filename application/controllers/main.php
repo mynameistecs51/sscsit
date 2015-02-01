@@ -294,10 +294,4 @@ class Main extends CI_Controller {
 	}
 
 }
-<<<<<<< HEAD
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
-=======
->>>>>>> b373a862538e2b27e2b2b1d4600a578a7736ba36
 ?>
