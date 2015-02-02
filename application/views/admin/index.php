@@ -132,9 +132,9 @@
                                         //echo 'hello';
 
                                     }
-                                    // echo '--------------------';
-                                  //  print_r($selected);
-                                    // echo '--------------------';
+                                   //  echo '--------------------';
+                                   // print_r($selected);
+                                   //  echo '--------------------';
                                     $number = count($get_paper);                               
                                     foreach ($get_paper as $key_papger => $row_paper) {                                        
                                      ?>

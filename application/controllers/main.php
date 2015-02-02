@@ -166,9 +166,12 @@ class Main extends CI_Controller {
 		'get_paper' => $this->m_main->get_paper(),  //all paper
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
+		'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
 		);
+		
 		$this->load->view('admin/committee_check_paper',$data);
 	}
+
 	public function login(){
 
 		$data = array(
@@ -255,10 +258,10 @@ class Main extends CI_Controller {
 
 	public function checked_paper(){
 
-		$this->load->library('form_validation');
 		$fb_data = $this->session->userdata('fb_data');
-
+		$this->load->library('form_validation');
 		$this->form_validation->set_rules('checked_paper','checked_paper','required|callback_checked');
+
 		if($this->form_validation->run() == FALSE){
 			$data = array(
 				'fb_data' => $fb_data,
@@ -275,11 +278,8 @@ class Main extends CI_Controller {
 		);
 			$this->load->view('admin/committee_check_paper',$data);
 		}else{
-			echo "<meta charset='UTF-8'/>";
-			echo $fb_data['me']['id']."<br/>";
-			echo $this->input->post('checked_paper').'<br/>';
-			echo $this->input->post('comment')."<br/>";	
-			echo $this->input->post('project_name');
+			$insert_check_paper =  $this->m_main->checked_paper();
+			redirect('main/committee_check_paper','refresh');
 		}
 	}
 

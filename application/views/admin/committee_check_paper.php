@@ -107,7 +107,7 @@ if(empty($javascript_myModal)){
 
     <div class="row">
         <div class="col-lg-16">
-         <div class="panel panel-default">
+           <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
@@ -125,87 +125,107 @@ if(empty($javascript_myModal)){
                       <th>ผู้ส่ง</th>
                       <th>สถานการตรวจ</th>
                   </thead>
-                  <?php
-                  $number = count($check_paper);
-                  foreach ($check_paper as $key_paper => $row_paper) {
-                      ?>
-                      <tbody>
-                        <tr>
-                            <td><?php echo $number--;?></td>
-                            <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
-                            <td><?php echo $row_paper->group_name;?></td>                            
-                            <td>
-                                <?php
-                                echo  anchor('main/download/'.$row_paper->paper_fileProject,"download") ;
-                                ?>
-                            </td>
-                            <td><?php echo $row_paper->paper_inputName1;?></td>
-                            <td><?php echo $row_paper->paper_date;?></td>
-                            <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
-                            <td>
+                  <?php 
+                  $checked = array();
+                  foreach ($get_committee_checkpaper as $key_get_committee_checkpaper => $value_get_committee_checkpaper) {
+                    if(!isset($checked[$value_get_committee_checkpaper->paper_id])){
+                        $checked[$value_get_committee_checkpaper->paper_id] = [];
+                    }
+                    array_push($checked[$value_get_committee_checkpaper->paper_id],$value_get_committee_checkpaper->paper_id);
+                }
+                echo '--------------------';
+                print_r($checked);
+                echo '--------------------';
+                ?>
+                <?php
+                $number = count($check_paper);
+                foreach ($check_paper as $key_paper => $row_paper) {
+                  ?>
+                  <tbody>
+                    <tr>
+                        <td><?php echo $number--;?></td>
+                        <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                        <td><?php echo $row_paper->group_name;?></td>                            
+                        <td>
+                            <?php
+                            echo  anchor('main/download/'.$row_paper->paper_fileProject,"download") ;
+                            ?>
+                        </td>
+                        <td><?php echo $row_paper->paper_inputName1;?></td>
+                        <td><?php echo $row_paper->paper_date;?></td>
+                        <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
+                        <td>
+                            <?php
+                            if(!empty($checked[$row_paper->paper_id])){
+                               echo  join(",",$checked[$row_paper->paper_id])."---->ตรวจแล้ว<----";
+                                  
+                            }else{
+                                echo '<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal'.$row_paper->paper_id.'">
+                                ตรวจเอกสาร
+                            </button>';
+                        }
 
-                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal<?php echo $row_paper->paper_id;?>">
-                                    ตรวจเอกสาร
-                                </button>
-                                <div class="row col-sm-12">
-                                <div id="myModal<?php echo $row_paper->paper_id;?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                                        <!-- <div class="modal-dialog " style="width:60%" > -->
-                                        <div class="modal-dialog modal-lg ">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title">ตรวจเอกสาร</h4>
+                        ?>
 
+                        <div class="row col-sm-12">
+                            <div id="myModal<?php echo $row_paper->paper_id;?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                                <!-- <div class="modal-dialog " style="width:60%" > -->
+                                <div class="modal-dialog modal-lg ">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">ตรวจเอกสาร</h4>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <?php echo form_open('main/checked_paper','class="form-horizontal" role="form"');?>
+                                            <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
+                                            <input type="hidden" name="project_id" value="<?php  echo $row_paper->paper_id;?> ">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label for="accept" class="btn btn-success">
+                                                        <input type="radio" id="accept" name="checked_paper" value="accept"/>
+                                                        :ผ่าน
+                                                    </label>&nbsp;
+                                                    <label for="conditional_accept" class="btn btn-warning" >
+                                                        <input type="radio" id="conditional_accept" name="checked_paper" value="conditional_accept">
+                                                        :ผ่านแบบมีเงื่อนไข
+                                                    </label>&nbsp;
+                                                    <label for="reject" class="btn btn-danger">
+                                                        <input type="radio" id="reject" name="checked_paper" value="reject">
+                                                        :ไม่ผ่าน
+                                                    </label>
+                                                    <?php echo form_error('checked_paper'); ?>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <?php echo form_open('main/checked_paper','class="form-horizontal" role="form"');?>
-                                                    <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
-                                                    <input type="text" name="project_name" value="<?php  echo $row_paper->paper_inputProjectName_TH;?> ">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="accept" class="btn btn-success">
-                                                                <input type="radio" id="accept" name="checked_paper" value="accept"/>
-                                                                :ผ่าน
-                                                            </label>&nbsp;
-                                                            <label for="conditional_accept" class="btn btn-warning" >
-                                                                <input type="radio" id="conditional_accept" name="checked_paper" value="conditional_accept">
-                                                                :ผ่านแบบมีเงื่อนไข
-                                                            </label>&nbsp;
-                                                            <label for="reject" class="btn btn-danger">
-                                                                <input type="radio" id="reject" name="checked_paper" value="reject">
-                                                                :ไม่ผ่าน
-                                                            </label>
-                                                            <?php echo form_error('checked_paper'); ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="comment">
-                                                                Comment:
-                                                                <textarea id="comment" name="comment" class="form-control" rows="3" cols="80"></textarea>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success">ส่ง</button>
-                                                </div>
-                                                <?php echo form_close();?>
                                             </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-                            </td>
-                        </tr>
-                    </tbody>
-                    <?php } ?>
-                </table>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label for="comment">
+                                                        Comment:
+                                                        <textarea id="comment" name="comment" class="form-control" rows="3" cols="80"></textarea>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-success">ส่ง</button>
+                                        </div>
+                                        <?php echo form_close();?>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                    </td>
+                </tr>
+            </tbody>
+            <?php } ?>
+        </table>
 
-            </div>  <!-- ./panel body -->
-            <!-- /.panel-body -->
-        </div>
-    </div>
-    <!-- /.col-lg-16 -->
+    </div>  <!-- ./panel body -->
+    <!-- /.panel-body -->
+</div>
+</div>
+<!-- /.col-lg-16 -->
 </div>
 <!-- /.row -->
 </div>
