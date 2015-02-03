@@ -72,14 +72,40 @@ class Main extends CI_Controller {
 	}
 	public function send_page(){
 		$fb_data = $this->session->userdata('fb_data');
+		if(!empty($fb_data['me']['id'])){
+			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_facebook_id ='.$fb_data['me']['id'])->result();
 
-		$data = array(
-			'title' => "Send paper",
-			'fb_data' => $fb_data,
-// 'paper_group' => $this->db->get('paper_group')->result(),
-			'paper_group' => $this->m_main->get_paper_group(),
-			);
-		$this->load->view('send-paper',$data);
+			foreach ($get_paper as $key_get_paper => $value_get_paper) {
+				if($value_get_paper->user_facebook_id === $fb_data['me']['id']){
+					$data = array(
+						'title' => "UPDATE PAPER",
+						'fb_data' => $fb_data,
+						'paper_group' => $this->m_main->get_paper_group(),
+						'get_paper_data' => $get_paper,
+						);
+					$this->load->view('paper_update',$data);
+				}else{
+					$data = array(
+						'title' => "Send paper",
+						'fb_data' => $fb_data,
+					// 'paper_group' => $this->db->get('paper_group')->result(),
+						'paper_group' => $this->m_main->get_paper_group(),
+						);
+					$this->load->view('send-paper',$data);
+				}
+
+			}
+		}else{
+			$data = array(
+				'title' => "Send paper",
+				'fb_data' => $fb_data,
+					// 'paper_group' => $this->db->get('paper_group')->result(),
+				'paper_group' => $this->m_main->get_paper_group(),
+				);
+			$this->load->view('send-paper',$data);
+		}
+
+		
 	}
 
 	public function add_project(){

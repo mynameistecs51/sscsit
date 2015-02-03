@@ -84,9 +84,9 @@
 			-- 	INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
 			-- 	ORDER BY `paper`.`paper_id` DESC
 			paper.*, paper_group.*, users.*
-			from (paper inner join paper_group on paper.paper_group = paper_group.group_id) 
-			inner join users on(users.user_facebook_id = paper.user_facebook_id)
-			order by paper.paper_id desc
+			FROM (paper INNER JOIN paper_group ON  paper.paper_group = paper_group.group_id) 
+			INNER JOIN users ON(users.user_facebook_id = paper.user_facebook_id)
+			ORDER BY paper.paper_id DESC
 			");
 			return $query_paper->result();
 		}
