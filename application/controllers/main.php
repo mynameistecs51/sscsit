@@ -83,6 +83,7 @@ class Main extends CI_Controller {
 	}
 
 	public function add_project(){
+		$fb_data = $this->session->userdata('fb_data');
 // $rand = rand(1111,9999);
 		$date = date("Y_m_d_H_i");
 		$file_project = "";
@@ -111,7 +112,7 @@ class Main extends CI_Controller {
 			'paper_fileProject' => $file_project['file_name'],
 			'paper_filePictureProject' => "null",
 			'paper_date' => $date,
-			'user_facebook_id' => '01',//$fb_data['me']['id'],
+			'user_facebook_id' => $fb_data['me']['id'],//$fb_data['me']['id'],
 			);
 
 		$this->db->insert('paper',$insert_paper);

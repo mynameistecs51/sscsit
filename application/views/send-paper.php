@@ -107,7 +107,7 @@
             <button type="submit" class="btn btn-success">Send  </button>
             <!-- </div> -->
         </div>
-    </form>  <!-- end form -->
+    <?php echo form_close();?>  <!-- end form -->
 </div>  <!-- end panel body -->
 </div> <!-- end panel -->
 </div>
