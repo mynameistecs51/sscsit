@@ -30,7 +30,7 @@
                  <?php echo form_open_multipart('main/add_project','class="form-horizontal col-sm-10 pull-left" role="form"');?>
                  <?php 
                  foreach ($get_paper_data as $key_paper_data => $value_paper_data) {
-                    echo $value_paper_data->user_facebook_id."<br/>";
+                  
                      ?>
                      <div class="form-group">
                         <label for="inputName1" class="col-sm-3 control-label">ผู้ส่งโครงงาน 1</label>
@@ -38,10 +38,12 @@
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <label for="male">Male
-                                        <input type="radio"  value="male" name="sex" id="male" checked="true" />
+                                        <input type="radio"  value="male" name="sex" id="male" <?php  echo  ($value_paper_data->paper_sex === "male"? "checked" : "");?>
+                                        />
                                     </label>
                                     <label for="female">Female
-                                        <input type="radio" value="female" name="sex" id="female">
+                                        <input type="radio" value="female" name="sex" id="female" <?php  echo  ($value_paper_data->paper_sex === "female"? "checked" : "");?>
+                                        />
                                     </label>
                                 </div>
                                 <input type="text" class="form-control " name="inputName1" id="inputName1"  value="<?php echo $value_paper_data->paper_inputName1;?>" />
@@ -54,26 +56,28 @@
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <label for="male2">Male
-                                        <input type="radio" value="male" name="sex2" id="male2" checked="true" />
+                                        <input type="radio" value="male" name="sex2" id="male2" <?php  echo  ($value_paper_data->paper_sex2 === "male"? "checked" : "");?>
+                                        />
                                     </label>
                                     <label for="female">Female
-                                        <input type="radio" value="female" name="sex2" id="female2">
+                                        <input type="radio" value="female" name="sex2" id="female2" <?php  echo  ($value_paper_data->paper_sex2 === "female"? "checked" : "");?>
+                                        />
                                     </label>
                                 </div>
-                                <input type="text" class="form-control" name="inputName2" id="inputName2" placeholder="ชื่อสกุล  ผู้ส่งโครงงาน 2">
+                                <input type="text" class="form-control" name="inputName2" id="inputName2" value="<?php echo $value_paper_data->paper_inputName2;?>" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group"> 
                         <label for="inputProjectName_TH" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาไทย)</label>
                         <div class="col-sm-7">                           
-                            <input type="text" class="form-control" id="inputProjectName_TH" name="inputProjectName_TH" placeholder="ชื่อโปรเจ็คภาษาไทย">
+                            <input type="text" class="form-control" id="inputProjectName_TH" name="inputProjectName_TH" value="<?php echo $value_paper_data->paper_inputProjectName_TH;?>" />
                         </div>
                     </div>
                     <div class="form-group"> 
                         <label for="inputProjectName_EN" class="col-sm-3 control-label">ชื่อโปรเจ็ค (ภาษาอังกฤษ)</label>
                         <div class="col-sm-7">                           
-                            <input type="text" class="form-control" id="inputProjectName_EN" name="inputProjectName_EN" placeholder="ชื่อโปรเจ็คภาษาอังกฤษ">
+                            <input type="text" class="form-control" id="inputProjectName_EN" name="inputProjectName_EN" value="<?php echo $value_paper_data->paper_inputProjectName_EN;?>" />
                         </div>
                     </div>
                     <div class="form-group"> 
@@ -81,8 +85,10 @@
                         <div class="col-sm-7">  
                          <select  class="form-control "  id="select_group" name="select_group" >   <!--  เลือกประเภทของโครงงาน   -->
                              <?php
+                            
                              foreach ($paper_group as $key => $row_group) {
-                                echo '<option value="'.$row_group->group_id.'">'.$row_group->group_name.'</option>';
+                                 $checked= ($value_paper_data->paper_group === $row_group->group_id ? "selected" : "");
+                                echo '<option value="'.$row_group->group_id.'" '.$checked.'>'.$row_group->group_name.'</option>';
                             }
                             ?>
                         </select>
