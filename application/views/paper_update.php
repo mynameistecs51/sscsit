@@ -115,7 +115,7 @@
         <div class="form-group pull-right">
             <!-- <div class="col-sm-offset-2 col-sm-10"> -->
             <button type="reset" class="btn btn-warning">Cancel </button>
-            <button type="submit" class="btn btn-success">Send  </button>
+            <button type="submit" class="btn btn-success">UPDATE  </button>
             <!-- </div> -->
         </div>
         <?php 

@@ -27,6 +27,14 @@
                     </thead>
                     <tbody>
                         <?php
+                        $check_paper = array();
+                        foreach ($get_status_paper as $key_status_paper => $value_status_paper) {
+                            if(!isset($check_paper[$value_status_paper->paper_id])){
+                                $check_paper[$value_status_paper->paper_id] = [];
+                            }
+                            array_push($check_paper[$value_status_paper->paper_id], array('status' => $value_status_paper->check_status, 'comment' => $value_status_paper->check_comment,'id' => $value_status_paper->paper_id));
+                        }
+
                         foreach ($get_paper as $key_paper => $row_paper) {
                           ?>
                           <tr>
@@ -35,7 +43,23 @@
                             <td><?php echo $row_paper->paper_inputName1;?></td>
                             <td><?php echo $row_paper->paper_date;?></td>
                             <td><?php echo $row_paper->user_first_name." ".$row_paper->user_last_name;?></td>
-                            <td>ผ่านแบบมีเงื่อนไข</td>
+                            <td>
+                                <?php
+                                if(!empty($check_paper[$row_paper->paper_id])){
+                                    // echo   join(",",$check_paper[$row_paper->paper_id]).
+                                    join(',',$check_paper[$row_paper->paper_id][0]);
+                                    if($check_paper[$row_paper->paper_id][0]['status'] === "accept"){
+                                        echo "<button class='btn btn-success'>ผ่าน</button>";
+                                    }elseif($check_paper[$row_paper->paper_id][0]['status'] === "conditional_accept") {
+                                        echo "<button class='btn btn-warning'>ผ่านแบบมีเงื่อนไข</button>";
+                                    }elseif($check_paper[$row_paper->paper_id][0]['status'] === "reject") {
+                                        echo "<button class='btn btn-danger'>ไม่ผ่าน</button>";
+                                    }   //end else if check_paper
+                                }else{
+                                    echo '<h4><span class="label label-default">ยังไม่ตรวจ</span></h4>';
+                                } //end if !empty
+                                ?>
+                            </td>
                         </tr>
                         <?php } ?>
                     </tbody>            

@@ -133,9 +133,9 @@ if(empty($javascript_myModal)){
                     }
                     array_push($checked[$value_get_committee_checkpaper->paper_id],$value_get_committee_checkpaper->paper_id);
                 }
-                echo '--------------------';
-                print_r($checked);
-                echo '--------------------';
+                // echo '--------------------';
+                // print_r($checked);
+                // echo '--------------------';
                 ?>
                 <?php
                 $number = count($check_paper);

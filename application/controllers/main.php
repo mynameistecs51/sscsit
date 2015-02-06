@@ -152,7 +152,8 @@ class Main extends CI_Controller {
 		$data = array(
 			'title' => 'Status Paper',
 			'fb_data' => $fb_data,
-			'get_paper' => $this->m_main->get_paper(), 
+			'get_paper' => $this->m_main->get_paper(),
+			'get_status_paper' => $this->m_main->get_status_paper(), 
 			);
 		$this->load->view('status_paper',$data);
 	}

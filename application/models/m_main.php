@@ -206,5 +206,19 @@
 			);
 		return $get_committee_checkpaper->result();
 	}
+
+	public function get_status_paper(){
+		$get_status_paper = $this->db->query('SELECT
+			`paper`.*,
+			`check_paper`.*,
+			`paper_group`.*,
+			`users`.*
+			FROM
+			`check_paper`
+			INNER JOIN `paper` ON `paper`.`paper_id` = `check_paper`.`paper_id`
+			INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
+			INNER JOIN `users` ON `paper`.`user_facebook_id` = `users`.`user_facebook_id`');
+		return $get_status_paper->result();
+	}
 }
 ?>
