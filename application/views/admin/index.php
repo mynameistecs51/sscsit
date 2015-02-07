@@ -126,7 +126,7 @@
                                     foreach ($get_send_committee as $key_committee => $value_committee) {
                                        // echo $value_committee->user_first_name."  ".$value_committee->user_last_name."<br/>";
                                         if( !isset($selected[$value_committee->paper_id])){
-                                            $selected[$value_committee->paper_id] = [];
+                                            $selected[$value_committee->paper_id] = array();
                                         }
                                         array_push($selected[$value_committee->paper_id], $value_committee->user_first_name."  ".$value_committee->user_last_name);     //แสดงชื่อกรรมการที่ตรวจโครงงาน
                                         //echo 'hello';

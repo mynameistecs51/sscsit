@@ -129,7 +129,7 @@ if(empty($javascript_myModal)){
                   $checked = array();
                   foreach ($get_committee_checkpaper as $key_get_committee_checkpaper => $value_get_committee_checkpaper) {
                     if(!isset($checked[$value_get_committee_checkpaper->paper_id])){
-                        $checked[$value_get_committee_checkpaper->paper_id] = [];
+                        $checked[$value_get_committee_checkpaper->paper_id] = array();
                     }
                     array_push($checked[$value_get_committee_checkpaper->paper_id],$value_get_committee_checkpaper->paper_id);
                 }

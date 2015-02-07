@@ -149,13 +149,15 @@ class Main extends CI_Controller {
 	public function status_page(){
 		$fb_data = $this->session->userdata('fb_data');
 
-		$data = array(
+		 $data = array(
 			'title' => 'Status Paper',
 			'fb_data' => $fb_data,
 			'get_paper' => $this->m_main->get_paper(),
 			'get_status_paper' => $this->m_main->get_status_paper(), 
 			);
 		$this->load->view('status_paper',$data);
+		//print_r($data);
+
 	}
 
 	public function  admin()			// admin page
