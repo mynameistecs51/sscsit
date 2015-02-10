@@ -5,8 +5,8 @@ class Facebook_model extends CI_model{
     public function __construct() {
         parent::__construct();
         $config = array(
-            'appId'  => '426623594158671',
-            'secret' => '934e8f174aed9dc529db63003620330c',
+            'appId'  => '454050584749305',
+            'secret' => 'fe912f75101dae2d9f43dde78768f24c',
             'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 
