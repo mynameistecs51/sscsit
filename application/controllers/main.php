@@ -34,7 +34,7 @@ class Main extends CI_Controller {
 				switch ($row_users->user_status) {
 					case 'user':
 					$data = array(
-						'title' => "FB ID > 0",
+						'title' => "Student Symposium",
 						'fb_data' => $fb_data,
 						);
 					$this->load->view('index',$data);
@@ -55,7 +55,7 @@ class Main extends CI_Controller {
 
 					default:
 					$data = array(
-						'title' => "FB ID > 0",
+						'title' => "Student Symposium",
 						'fb_data' => $fb_data,
 						);
 					$this->load->view('index',$data);
@@ -146,10 +146,35 @@ class Main extends CI_Controller {
 //print_r($insert_paper);
 	}
 
+	public function update_project(){
+		$fb_data = $this->session->userdata('fb_data');
+// $rand = rand(1111,9999);
+		$date = date("Y_m_d_H_i");
+		$file_project = "";
+		$file_pictrue ="";
+		
+		$update_paper = array(
+			'paper_id' => '',
+			'paper_sex' => $this->input->post('sex'),
+			'paper_inputName1' => $this->input->post('inputName1'),
+			'paper_sex2' => $this->input->post('sex2'),
+			'paper_inputName2' => $this->input->post('inputName2'),
+			'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
+			'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
+			'paper_group' => $this->input->post('select_group'),
+			'paper_fileProject' => $file_project['file_name'],
+			'paper_filePictureProject' => "null",
+			'paper_date' => $date,
+			'user_facebook_id' => $fb_data['me']['id'],//$fb_data['me']['id'],
+			);
+
+		print_r($update_paper);
+	}
+
 	public function status_page(){
 		$fb_data = $this->session->userdata('fb_data');
 
-		 $data = array(
+		$data = array(
 			'title' => 'Status Paper',
 			'fb_data' => $fb_data,
 			'get_paper' => $this->m_main->get_paper(),

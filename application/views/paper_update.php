@@ -27,7 +27,7 @@
                 <div class="panel panel-body"> <!-- strat body panel -->
                  <!--  <form class="form-horizontal col-sm-10 pull-left" role="form">   -->  <!--   start form -->
 
-                 <?php echo form_open_multipart('main/add_project','class="form-horizontal col-sm-10 pull-left" role="form"');?>
+                 <?php echo form_open_multipart('main/update_project','class="form-horizontal col-sm-10 pull-left" role="form"');?>
                  <?php 
                  foreach ($get_paper_data as $key_paper_data => $value_paper_data) {
                   
