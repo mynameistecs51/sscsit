@@ -2,10 +2,10 @@
 
 <section id="main-slider" class="no-margin">
     <div class="carousel slide wet-asphalt">
-        <ol class="carousel-indicators">
-            <li data-target="<?php echo base_url();?>#main-slider" data-slide-to="0" class="active"></li>
-            <li data-target="<?php echo base_url();?>#main-slider" data-slide-to="1"></li>
-            <li data-target="<?php echo base_url();?>#main-slider" data-slide-to="2"></li>
+        <ol class       = "carousel-indicators">
+            <li data-target = "<?php echo base_url();?>#main-slider" data-slide-to = "0" class = "active"></li>
+            <li data-target = "<?php echo base_url();?>#main-slider" data-slide-to = "1"></li>
+            <li data-target = "<?php echo base_url();?>#main-slider" data-slide-to = "2"></li>
         </ol>
         <div class="carousel-inner">
             <div class="item active" style="background-image: url(<?php echo base_url();?>images/slider/bg1.jpg)">

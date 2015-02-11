@@ -1,22 +1,22 @@
 <?php $this->load->view('header');?>
-<section id                                             ="services">
-   <div class                                              ="container">
-      <div class                                              ="row">
-         <div class                                              ="col-md-12">
-            <div class                                              ="center gap">
+<section id="services">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="center gap">
                <h2>โครงงานทั้งหมด</h2>
                <p>โครงงาน สัมนาทางวิชาการของนักศึกษาสาขาวิทยาการคอมพิวเตอร์และเทคโนโลยีสารสนเทศ</p>
             </div>                
          </div>
       </div>
-      <div class                                              ="row">       <!-- //    show paper all    //  -->
-         <div class                                              ="panel panel-primary">
-            <div class                                              ="panel-heading">
-               <div class                                              ="panel-title">โครงงาน
+      <div class="row">       <!-- //    show paper all    //  -->
+         <div class="panel panel-primary">
+            <div class ="panel-heading">
+               <div class ="panel-title">โครงงาน
                </div>
             </div>
-            <div class                                              ="panel-body">
-               <table id                                               ="" class="display" cellspacing="0" width="100%">
+            <div class ="panel-body">
+               <table id ="" class="display" cellspacing="0" width="100%">
                   <thead>
                      <th>โปรเจ็ค</th>
                      <th>ประเภทโครงงาน</th>
@@ -58,17 +58,17 @@
                               if(!empty($check_paper[$row_paper->paper_id])){
 // echo   join(",",$check_paper[$row_paper->paper_id]).
                                  join(',',$check_paper[$row_paper->paper_id][0]);
-                                 if($check_paper[$row_paper->paper_id][0]['status']      === "accept"){
-                                    echo "<button class                                     ='btn btn-success'>".$check_paper[$row_paper->paper_id][0]['committee_check']  ."</button>";
+                                 if($check_paper[$row_paper->paper_id][0]['status'] === "accept"){
+                                    echo "<button class ='btn btn-success'>".$check_paper[$row_paper->paper_id][0]['committee_check']  ."</button>";
 
                                  }elseif($check_paper[$row_paper->paper_id][0]['status'] === "conditional_accept") {
-                                    echo "<button class                                     ='btn btn-warning'>ผ่านแบบมีเงื่อนไข</button>";
+                                    echo "<button class ='btn btn-warning'>ผ่านแบบมีเงื่อนไข</button>";
                                  }elseif($check_paper[$row_paper->paper_id][0]['status'] === "reject") {
-//  echo "<button class                                 ='btn btn-danger'>ไม่ผ่าน</button>";
-                                    echo "<button class                                     ='btn btn-danger'>".$check_paper[$row_paper->paper_id][0]['committee_check']  ."</button>";
+//  echo "<button class ='btn btn-danger'>ไม่ผ่าน</button>";
+                                    echo "<button class ='btn btn-danger'>".$check_paper[$row_paper->paper_id][0]['committee_check']  ."</button>";
 }   //end else if check_paper
 }else{
-   echo '<h4><span class                                   ="label label-default">ยังไม่ตรวจ</span></h4>';
+   echo '<h4><span class ="label label-default">ยังไม่ตรวจ</span></h4>';
 } //end if !empty
 ?>
 </td>
@@ -81,24 +81,24 @@
 </div>
 </div><!--/.row  wsho paper-->
 <hr>
-<div class                                              ="row">
-   <div class                                              ="col-lg-12">
-      <div class                                              ="center">
+<div class ="row">
+   <div class ="col-lg-12">
+      <div class ="center">
          <h2>What our clients say</h2>
          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
       </div>
-      <div class                                              ="gap"></div>
-      <div class                                              ="row">
-         <div class                                              ="col-md-6">
+      <div class ="gap"></div>
+      <div class ="row">
+         <div class ="col-md-6">
             <blockquote>
                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-               <small>Someone famous in <cite title                    ="Source Title">Source Title</cite></small>
+               <small>Someone famous in <cite title ="Source Title">Source Title</cite></small>
             </blockquote>
          </div>
-         <div class                                              ="col-md-6">
+         <div class ="col-md-6">
             <blockquote>
                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-               <small>Someone famous in <cite title                    ="Source Title">Source Title</cite></small>
+               <small>Someone famous in <cite title ="Source Title">Source Title</cite></small>
             </blockquote>
          </div>
       </div>
@@ -107,79 +107,79 @@
 </div>
 </section><!--/#services-->
 
-<section id                                             ="bottom" class="wet-asphalt">
-   <div class                                              ="container">
-      <div class                                              ="row">
-         <div class                                              ="col-md-3 col-sm-6">
+<section id ="bottom" class="wet-asphalt">
+   <div class ="container">
+      <div class ="row">
+         <div class ="col-md-3 col-sm-6">
             <h4>About Us</h4>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
             <p>Pellentesque habitant morbi tristique senectus.</p>
          </div><!--/.col-md-3-->
 
-         <div class                                              ="col-md-3 col-sm-6">
+         <div class ="col-md-3 col-sm-6">
             <h4>Company</h4>
             <div>
-               <ul class                                               ="arrow">
-                  <li><a href                                             ="#">The Company</a></li>
-                  <li><a href                                             ="#">Our Team</a></li>
-                  <li><a href                                             ="#">Our Partners</a></li>
-                  <li><a href                                             ="#">Our Services</a></li>
-                  <li><a href                                             ="#">Faq</a></li>
-                  <li><a href                                             ="#">Conatct Us</a></li>
-                  <li><a href                                             ="#">Privacy Policy</a></li>
-                  <li><a href                                             ="#">Terms of Use</a></li>
-                  <li><a href                                             ="#">Copyright</a></li>
+               <ul class ="arrow">
+                  <li><a href ="#">The Company</a></li>
+                  <li><a href ="#">Our Team</a></li>
+                  <li><a href ="#">Our Partners</a></li>
+                  <li><a href ="#">Our Services</a></li>
+                  <li><a href ="#">Faq</a></li>
+                  <li><a href ="#">Conatct Us</a></li>
+                  <li><a href ="#">Privacy Policy</a></li>
+                  <li><a href ="#">Terms of Use</a></li>
+                  <li><a href ="#">Copyright</a></li>
                </ul>
             </div>
          </div><!--/.col-md-3-->
 
-         <div class                                              ="col-md-3 col-sm-6">
+         <div class ="col-md-3 col-sm-6">
             <h4>Latest Blog</h4>
             <div>
-               <div class                                              ="media">
-                  <div class                                              ="pull-left">
-                     <img src                                                ="<?php echo base_url();?>images/blog/thumb1.jpg" alt="">
+               <div class ="media">
+                  <div class ="pull-left">
+                     <img src ="<?php echo base_url();?>images/blog/thumb1.jpg" alt="">
                   </div>
-                  <div class                                              ="media-body">
-                     <span class                                             ="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                     <small class                                            ="muted">Posted 17 Aug 2013</small>
-                  </div>
-               </div>
-               <div class                                              ="media">
-                  <div class                                              ="pull-left">
-                     <img src                                                ="<?php echo base_url();?>images/blog/thumb2.jpg" alt="">
-                  </div>
-                  <div class                                              ="media-body">
-                     <span class                                             ="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                     <small class                                            ="muted">Posted 13 Sep 2013</small>
+                  <div class ="media-body">
+                     <span class ="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                     <small class ="muted">Posted 17 Aug 2013</small>
                   </div>
                </div>
-               <div class                                              ="media">
-                  <div class                                              ="pull-left">
-                     <img src                                                ="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
+               <div class ="media">
+                  <div class ="pull-left">
+                     <img src ="<?php echo base_url();?>images/blog/thumb2.jpg" alt="">
                   </div>
-                  <div class                                              ="media-body">
-                     <span class                                             ="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                     <small class                                            ="muted">Posted 11 Jul 2013</small>
+                  <div class ="media-body">
+                     <span class ="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                     <small class ="muted">Posted 13 Sep 2013</small>
+                  </div>
+               </div>
+               <div class ="media">
+                  <div class ="pull-left">
+                     <img src ="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
+                  </div>
+                  <div class ="media-body">
+                     <span class ="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                     <small class ="muted">Posted 11 Jul 2013</small>
                   </div>
                </div>
             </div>  
          </div><!--/.col-md-3-->
 
-         <div class                                              ="col-md-3 col-sm-6">
+         <div class ="col-md-3 col-sm-6">
             <h4>Address</h4>
             <address>
                <strong>Twitter, Inc.</strong><br>
                795 Folsom Ave, Suite 600<br>
                San Francisco, CA 94107<br>
-               <abbr title                                             ="Phone">P:</abbr> (123) 456-7890
+               <abbr title ="Phone">P:</abbr> (123) 456-7890
             </address>
             <h4>Newsletter</h4>
-            <form role                                              ="form">
-               <div class                                              ="input-group">
-                  <input type                                             ="text" class="form-control" autocomplete="off" placeholder="Enter your email">
-                  <span class                                             ="input-group-btn">
-                     <button class                                           ="btn btn-danger" type="button">Go!</button>
+            <form role ="form">
+               <div class ="input-group">
+                  <input type ="text" class="form-control" autocomplete="off" placeholder="Enter your email">
+                  <span class ="input-group-btn">
+                     <button class ="btn btn-danger" type="button">Go!</button>
                   </span>
                </div>
             </form>
