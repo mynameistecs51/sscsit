@@ -115,7 +115,7 @@ class Main extends CI_Controller {
 		$file_project = "";
 		$file_pictrue ="";
 
-		if($_FILES['fileProject'] != null)
+		if($_FILES['fileProject']['name'] != null)
 		{
 			$file_project = $this->m_main->upload_fileproject();
 		}
@@ -151,24 +151,35 @@ class Main extends CI_Controller {
 // $rand = rand(1111,9999);
 		$date = date("Y_m_d_H_i");
 		$file_project = "";
-		$file_pictrue ="";
-		
-		$update_paper = array(
-			'paper_id' => '',
-			'paper_sex' => $this->input->post('sex'),
-			'paper_inputName1' => $this->input->post('inputName1'),
-			'paper_sex2' => $this->input->post('sex2'),
-			'paper_inputName2' => $this->input->post('inputName2'),
-			'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
-			'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
-			'paper_group' => $this->input->post('select_group'),
-			'paper_fileProject' => $file_project['file_name'],
-			'paper_filePictureProject' => "null",
-			'paper_date' => $date,
-			'user_facebook_id' => $fb_data['me']['id'],//$fb_data['me']['id'],
+
+		if(!empty($_FILES['fileProject']['name']) ){			
+			$paper_query = $this->db->query("SELECT * FROM paper WHERE user_facebook_id=".$fb_data['me']['id'])->result();
+			echo '<meta charset="UTF-8" /> ';
+		foreach ($paper_query as $key_paper => $value_paper) {
+			echo $value_paper->paper_fileProject;
+			//unlink('./images/file_project_doc/'.$value_paper->paper_fileProject);  //delete file project again update
+		}
+			$update_paper = array(
+				'paper_id' => '',
+				'paper_sex' => $this->input->post('sex'),
+				'paper_inputName1' => $this->input->post('inputName1'),
+				'paper_sex2' => $this->input->post('sex2'),
+				'paper_inputName2' => $this->input->post('inputName2'),
+				'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
+				'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
+				'paper_group' => $this->input->post('select_group'),
+				'paper_fileProject' => $file_project['file_name'],
+				'paper_filePictureProject' => "null",
+				'paper_date' => $date,
+			'user_facebook_id' => $fb_data['me']['id'],//facebook id 
 			);
 
-		print_r($update_paper);
+			print_r($update_paper);
+
+		}else{
+			echo "NOT FILE UPDATE";	
+		}
+
 	}
 
 	public function status_page(){
@@ -312,7 +323,6 @@ class Main extends CI_Controller {
 	}
 
 	public function checked_paper(){
-
 		$fb_data = $this->session->userdata('fb_data');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('checked_paper','checked_paper','required|callback_checked');
