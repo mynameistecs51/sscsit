@@ -155,46 +155,48 @@ class Main extends CI_Controller {
 		if(!empty($_FILES['fileProject']['name']) ){			
 			$paper_query = $this->db->query("SELECT * FROM paper WHERE user_facebook_id=".$fb_data['me']['id'])->result();
 			echo '<meta charset="UTF-8" /> ';
-		foreach ($paper_query as $key_paper => $value_paper) {
-			echo $value_paper->paper_fileProject;
-			//unlink('./images/file_project_doc/'.$value_paper->paper_fileProject);  //delete file project again update
+			foreach ($paper_query as $key_paper => $value_paper) {
+				echo $value_paper->paper_fileProject;
+			unlink('./images/file_project_doc/'.$value_paper->paper_fileProject);  //delete file project again update
+			$file_project = $this->m_main->upload_fileproject(); //อัพโหลดไฟล์ใหม่
 		}
-			$update_paper = array(
-				'paper_id' => '',
-				'paper_sex' => $this->input->post('sex'),
-				'paper_inputName1' => $this->input->post('inputName1'),
-				'paper_sex2' => $this->input->post('sex2'),
-				'paper_inputName2' => $this->input->post('inputName2'),
-				'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
-				'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
-				'paper_group' => $this->input->post('select_group'),
-				'paper_fileProject' => $file_project['file_name'],
-				'paper_filePictureProject' => "null",
-				'paper_date' => $date,
+		$update_paper = array(
+			'paper_id' => '',
+			'paper_sex' => $this->input->post('sex'),
+			'paper_inputName1' => $this->input->post('inputName1'),
+			'paper_sex2' => $this->input->post('sex2'),
+			'paper_inputName2' => $this->input->post('inputName2'),
+			'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
+			'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
+			'paper_group' => $this->input->post('select_group'),
+			'paper_fileProject' => $file_project['file_name'],
+			'paper_filePictureProject' => "null",
+			'paper_date' => $date,
 			'user_facebook_id' => $fb_data['me']['id'],//facebook id 
 			);
-
-			print_r($update_paper);
-
-		}else{
-			echo "NOT FILE UPDATE";	
-		}
-
+		 $this->db->where('user_facebook_id',$fb_data['me']['id']);
+		$this->db->update('paper',$update_paper);
+		
+		redirect('main','refresh');
+	}else{
+		echo "กรุณาเลือกไฟล์";	
 	}
 
-	public function status_page(){
-		$fb_data = $this->session->userdata('fb_data');
+}
 
-		$data = array(
-			'title' => 'Status Paper',
-			'fb_data' => $fb_data,
-			'get_paper' => $this->m_main->get_paper(),
-			'get_status_paper' => $this->m_main->get_status_paper(), 
-			);
-		$this->load->view('status_paper',$data);
+public function status_page(){
+	$fb_data = $this->session->userdata('fb_data');
+
+	$data = array(
+		'title' => 'Status Paper',
+		'fb_data' => $fb_data,
+		'get_paper' => $this->m_main->get_paper(),
+		'get_status_paper' => $this->m_main->get_status_paper(), 
+		);
+	$this->load->view('status_paper',$data);
 		//print_r($data);
 
-	}
+}
 
 	public function  admin()			// admin page
 	{
