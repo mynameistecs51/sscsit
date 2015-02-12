@@ -176,10 +176,10 @@ class Main extends CI_Controller {
 			);
 		 $this->db->where('user_facebook_id',$fb_data['me']['id']);
 		$this->db->update('paper',$update_paper);
-		
+
 		redirect('main','refresh');
 	}else{
-		echo "กรุณาเลือกไฟล์";	
+		echo "กรุณาเลือกไฟล์";	//ทำใหม่ให้มันดี ๆ 
 	}
 
 }
