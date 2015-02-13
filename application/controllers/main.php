@@ -72,7 +72,7 @@ class Main extends CI_Controller {
 	}
 	public function send_page(){
 		$fb_data = $this->session->userdata('fb_data');
-		if(!empty($fb_data['me']['id'])){
+		if(isset($fb_data['me']['id'])){
 			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_facebook_id ='.$fb_data['me']['id'])->result();
 
 			foreach ($get_paper as $key_get_paper => $value_get_paper) {
@@ -93,7 +93,6 @@ class Main extends CI_Controller {
 						);
 					$this->load->view('send-paper',$data);
 				}
-
 			}
 		}else{
 			$data = array(
@@ -104,8 +103,13 @@ class Main extends CI_Controller {
 				);
 			$this->load->view('send-paper',$data);
 		}
-
-		
+		$data = array(
+			'title' => "Send paper",
+			'fb_data' => $fb_data,
+					// 'paper_group' => $this->db->get('paper_group')->result(),
+			'paper_group' => $this->m_main->get_paper_group(),
+			);
+		$this->load->view('send-paper',$data);
 	}
 
 	public function add_project(){
@@ -174,7 +178,7 @@ class Main extends CI_Controller {
 			'paper_date' => $date,
 			'user_facebook_id' => $fb_data['me']['id'],//facebook id 
 			);
-		 $this->db->where('user_facebook_id',$fb_data['me']['id']);
+		$this->db->where('user_facebook_id',$fb_data['me']['id']);
 		$this->db->update('paper',$update_paper);
 
 		redirect('main','refresh');
