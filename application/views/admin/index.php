@@ -132,9 +132,9 @@
                                         //echo 'hello';
 
                                     }
-                                   //  echo '--------------------';
-                                   // print_r($selected);
-                                   //  echo '--------------------';
+                                    echo '--------------------';
+                                   print_r($selected);
+                                    echo '--------------------';
                                     $number = count($get_paper);                               
                                     foreach ($get_paper as $key_papger => $row_paper) {                                        
                                      ?>
@@ -149,7 +149,7 @@
                                            //ถ้าส่งให้กรรมการแล้ว ไม่ให้ขึ้น select แต่ขึ้นเป็นชื่อ กรรมการแทน
 
                                             if( !empty( $selected[$row_paper->paper_id])){       //join array $select = $row_paper->paper_id
-                                                echo join(",", $selected[$row_paper->paper_id])."----> ส่งแล้ว";                                                         //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
+                                                echo join(",", $selected[$row_paper->paper_id])."----> ส่งแล้ว";           //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
                                             }
                                             else{   //ถ้าไม่เท่ากัน ให้แสดง selected
                                              echo form_open('main/send_paper','class="form-horizontal  pull-left" role="form"');
