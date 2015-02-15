@@ -269,6 +269,24 @@ public function status_page(){
 
 	}
 
+	public function update_send_paper(){		// update committee send paper reading
+		$paper_id = $this->input->post('paper_id');
+		$committee_id = $this->input->post('commit_id');
+		$committee_select = $this->input->post('select_committee');
+
+			// echo "paper_id = ".$paper_id."<br/>";
+			// echo "committee id =".$committee_id."<br/>";
+			// echo "id_committee = ".$committee[0];
+		$data = array(
+			//'comm_id' => $committee_id,
+			'user_facebook_id' => $committee_select[0],
+			'paper_id' => $paper_id,
+			);
+		$this->db->where('comm_id', $committee_id);
+		$this->db->update('committee', $data); 
+		redirect('main/admin','refresh');
+	}
+
 	public function download($file_name){		// download file project
 		$this->load->helper('download');
 		$data = file_get_contents("images/file_project_doc/".$file_name); // Read the file's contents
@@ -277,7 +295,7 @@ public function status_page(){
 		redirect('main/index','refresh');
 	}
 
-	public function data_Table(){
+	public function data_Table(){		//show status paper
 		$fb_data = $this->session->userdata('fb_data');
 
 		$data = array(
