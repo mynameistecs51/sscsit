@@ -124,7 +124,7 @@
                               <?php
                               $selected = array();
                               foreach ($get_send_committee as $key_committee => $value_committee) {
-// echo $value_committee->user_first_name."  ".$value_committee->user_last_name."<br/>";
+                                 // echo $value_committee->user_first_name."  ".$value_committee->user_last_name."<br/>";
                                  if( !isset($selected[$value_committee->paper_id])){
                                     $selected[$value_committee->paper_id] = array();
                                  }
@@ -144,7 +144,8 @@
                                     <td><?php echo $row_paper->paper_inputName1;?></td>
                                     <td><?php echo $row_paper->paper_date;?></td>
                                     <td>
-                                       <?php 
+                                       <div class="form-group">
+                                          <?php 
                                              //ถ้าส่งให้กรรมการแล้ว ไม่ให้ขึ้น select แต่ขึ้นเป็นชื่อ กรรมการแทน
 
                                        if( !empty( $selected[$row_paper->paper_id])){       //join array $select = $row_paper->paper_id
@@ -174,17 +175,17 @@
                                                          <div class="form-group">
                                                             <div class="col-md-12">
                                                             <?php       //แก้ไขกรรมการที่จะตรวจเอกสาร
-                                                               echo form_open('main/update_send_paper','class="form-horizontal  pull-left" role="form"');
+                                                            echo form_open('main/update_send_paper','class="form-horizontal  pull-left" role="form"');
 
-                                                               echo '<input type="hidden" name="paper_id" value="'.$row_paper->paper_id.'">';
-                                                               echo '<input type="hidden" name="commit_id" value="'.$value_selected['comm_id'].'">';
-                                                               echo ' <select class="selectpicker show-tick "  data-live-search="true"  name="select_committee[]" title="เลือกกรรมการ">';
-                                                               foreach ($get_user_committee as $key_commt => $row_users) {
-                                                                  $selected_option = ($row_users->user_facebook_id === $value_selected['committee_facebook_id'] ? "selected":"");
-                                                                  echo '<option value="'.$row_users->user_facebook_id.'"'.$selected_option.' >'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
-                                                               }
-                                                               echo '</select>';
-                                                               echo ' <button type="submit" class="btn btn-success">UPDATE</i></button>';
+                                                            echo '<input type="hidden" name="paper_id" value="'.$row_paper->paper_id.'">';
+                                                            echo '<input type="hidden" name="commit_id" value="'.$value_selected['comm_id'].'">';
+                                                            echo ' <select class="selectpicker show-tick "  data-live-search="true"  name="select_committee[]" title="เลือกกรรมการ">';
+                                                            foreach ($get_user_committee as $key_commt => $row_users) {
+                                                               $selected_option = ($row_users->user_facebook_id === $value_selected['committee_facebook_id'] ? "selected":"");
+                                                               echo '<option value="'.$row_users->user_facebook_id.'"'.$selected_option.' >'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
+                                                            }
+                                                            echo '</select>';
+                                                            echo ' <button type="submit" class="btn btn-success">UPDATE</i></button>';
                                                                echo form_close(); //' </form>';
                                                                ?>
 
@@ -213,29 +214,26 @@
                                        echo form_close(); //' </form>';
                                     }
                                     ?>
-                                 </td>
-                              </tr>
-                              <?php } ;?>
-                           </tbody>
-                        </table>
-                     </div>
-                     <!-- /.table-responsive -->
+                                 </div>  <!-- ./end form group -->
+                              </td>
+                           </tr>
+                           <?php } ;?>
+                        </tbody>
+                     </table>
                   </div>
-                  <!-- /.col-lg-4 (nested) -->
-                  <div class="col-lg-8">
-                     <div id="morris-bar-chart"></div>
-                  </div>
-                  <!-- /.col-lg-8 (nested) -->
+                  <!-- /.table-responsive -->
                </div>
-               <!-- /.row -->
+               
             </div>
-            <!-- /.panel-body -->
+            <!-- /.row -->
          </div>
+         <!-- /.panel-body -->
       </div>
-      <!-- /.col-lg-16 -->
-
    </div>
-   <!-- /.row -->
+   <!-- /.col-lg-16 -->
+
+</div>
+<!-- /.row -->
 </div>
 <!-- /#page-wrapper -->
 

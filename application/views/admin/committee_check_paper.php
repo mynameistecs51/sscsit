@@ -131,7 +131,7 @@ if(empty($javascript_myModal)){
                     if(!isset($checked[$value_get_committee_checkpaper->paper_id])){
                         $checked[$value_get_committee_checkpaper->paper_id] = array();
                     }
-                    array_push($checked[$value_get_committee_checkpaper->paper_id],$value_get_committee_checkpaper->paper_id);
+                    array_push($checked[$value_get_committee_checkpaper->paper_id],array('check_status' => $value_get_committee_checkpaper->check_status,'paper_id' => $value_get_committee_checkpaper->paper_id,'check_comment' => $value_get_committee_checkpaper->check_comment));
                 }
                 // echo '--------------------';
                 // print_r($checked);
@@ -157,8 +157,13 @@ if(empty($javascript_myModal)){
                         <td>
                             <?php
                             if(!empty($checked[$row_paper->paper_id])){
-                               echo  join(",",$checked[$row_paper->paper_id])."---->ตรวจแล้ว<----";
-                                  
+                                if($checked[$row_paper->paper_id][0]['check_status'] === "accept"){
+                                    echo  "<button class='btn btn-success'>ผ่าน</button>";  
+                                }elseif($checked[$row_paper->paper_id][0]['check_status'] === "conditional_accept"){
+                                    echo  "<button class='btn btn-warning'>ผ่านแบบมีเงื่อนไข</button>";  
+                                }elseif($checked[$row_paper->paper_id][0]['check_status'] === "reject"){
+                                    echo "<button class='btn btn-danger'>ไม่ผ่าน</button>";
+                                }
                             }else{
                                 echo '<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal'.$row_paper->paper_id.'">
                                 ตรวจเอกสาร
