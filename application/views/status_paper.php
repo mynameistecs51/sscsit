@@ -56,13 +56,13 @@
                     <?php
                     if(!empty($check_paper[$row_paper->paper_id])){
                         for($i=0; $i<count($check_paper[$row_paper->paper_id]); $i++){
-                            echo "ดูสถานะยังไม่สมบูรณ์เนื่องจาก ง่วง";
+                      
                             if($check_paper[$row_paper->paper_id][$i]['status'] === "accept"){
-                                echo "<button class ='btn btn-success' data-toggle='modal' data-target='#myModal".$check_paper[$row_paper->paper_id][$i]['committee_id'] ."'>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>";
+                                echo "<button class ='btn btn-success' data-toggle='modal' data-target='#myModal".$check_paper[$row_paper->paper_id][$i]['committee_id'].$check_paper[$row_paper->paper_id][$i]['id'] ."'>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>";
                                 ?>
                                 <!-- modal show comment -->
                                 <!-- <div class="row col-sm-12"> -->
-                                <div id="myModal<?php echo $check_paper[$row_paper->paper_id][$i]['committee_id'];?>"  class="modal fade bs-example-modal-lg " tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                                <div id="myModal<?php echo $check_paper[$row_paper->paper_id][$i]['committee_id'].$check_paper[$row_paper->paper_id][$i]['id'];?>"  class="modal fade bs-example-modal-lg " tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
                                     <!-- <div class="modal-dialog " style="width:60%" > -->
                                     <div class="modal-dialog modal-lg ">
                                         <div class="modal-content">
@@ -95,11 +95,11 @@
                             <!-- ./ end modal show comment -->
                             <?php
                         }elseif($check_paper[$row_paper->paper_id][$i]['status'] === "conditional_accept"){
-                            echo "<button class ='btn btn-warning' data-toggle='modal' data-target='#myModal".$check_paper[$row_paper->paper_id][$i]['committee_id'] ."'>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>";
+                            echo "<button class ='btn btn-warning' data-toggle='modal' data-target='#myModal".$check_paper[$row_paper->paper_id][$i]['committee_id'].$check_paper[$row_paper->paper_id][$i]['id']."'>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>";
                             ?>
                             <!-- modal show comment -->
                             <!-- <div class="row col-sm-12"> -->
-                            <div id="myModal<?php echo $check_paper[$row_paper->paper_id][$i]['committee_id'];?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                            <div id="myModal<?php echo $check_paper[$row_paper->paper_id][$i]['committee_id'].$check_paper[$row_paper->paper_id][$i]['id'];?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
                                 <!-- <div class="modal-dialog " style="width:60%" > -->
                                 <div class="modal-dialog modal-lg ">
                                     <div class="modal-content">
@@ -132,11 +132,11 @@
                         <!-- ./ end modal show comment -->
                         <?php
                     }elseif($check_paper[$row_paper->paper_id][$i]['status'] === "reject"){
-                        echo "<button class ='btn btn-danger' data-toggle='modal' data-target='#myModal".$check_paper[$row_paper->paper_id][$i]['committee_id'] ."'>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>";
+                        echo "<button class ='btn btn-danger' data-toggle='modal' data-target='#myModal".$check_paper[$row_paper->paper_id][$i]['committee_id'].$check_paper[$row_paper->paper_id][$i]['id'] ."'>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>";
                         ?>
                         <!-- modal show comment -->
                         <!-- <div class="row col-sm-12"> -->
-                        <div id="myModal<?php echo $check_paper[$row_paper->paper_id][$i]['committee_id'];?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+                        <div id="myModal<?php echo $check_paper[$row_paper->paper_id][$i]['committee_id'].$check_paper[$row_paper->paper_id][$i]['id'];?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
                             <!-- <div class="modal-dialog " style="width:60%" > -->
                             <div class="modal-dialog modal-lg ">
                                 <div class="modal-content">

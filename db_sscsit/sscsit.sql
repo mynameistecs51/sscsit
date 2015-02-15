@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2015 at 05:01 PM
+-- Generation Time: Feb 15, 2015 at 10:29 AM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -32,14 +32,16 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
   `paper_id` int(11) NOT NULL,
   `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_comment` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `check_paper`
 --
 
 INSERT INTO `check_paper` (`check_id`, `user_facebook_id`, `paper_id`, `check_status`, `check_comment`) VALUES
-(2, '895214977163448', 10, 'accept', 'asdf');
+(2, '895214977163448', 10, 'accept', 'asdf'),
+(3, '895214977163448', 13, 'reject', 'ไม่ผ่าน'),
+(4, '921251517908263', 13, 'conditional_accept', 'แก้ไขเล็กน้อย');
 
 -- --------------------------------------------------------
 
@@ -51,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `committee`
@@ -60,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `committee` (
 INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
 (9, '05', 10),
 (10, '895214977163448', 10),
-(12, '895214977163448', 11),
-(13, '895214977163448', 13);
+(15, '895214977163448', 13),
+(16, '921251517908263', 13);
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
 INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `user_facebook_id`) VALUES
 (10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', '01'),
 (13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', '01'),
-(17, 'male', 'ไชยวัฒน์', 'male', 'หอมแสง', 'โปรเจ็ค', 'project_test', 2, 'project_test.docx', 'null', '2015-02-03 16:52:00', '895214977163448');
+(17, 'male', 'ไชยวัฒน์', 'female', 'หอมแสง', 'โปรเจ็ค', 'project_test', 2, 'project_test1.docx', 'null', '2015-02-03 16:52:00', '895214977163448');
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,8 @@ INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `use
 ('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin'),
 ('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'user'),
 ('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'committee'),
-('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'committee');
+('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'user'),
+('921251517908263', 'ตาน้อย ตาน้อย', 'ทดสอบ', 'ทดสอบ', 'tanoi_chem@hotmail.com', 'female', 'committee');
 
 --
 -- Indexes for dumped tables
@@ -185,12 +188,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `check_paper`
 --
 ALTER TABLE `check_paper`
-MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `committee`
 --
 ALTER TABLE `committee`
-MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `paper`
 --
