@@ -166,7 +166,7 @@
 			`users`.`user_gender`,
 			`users`.`user_status`,
 			`committee`.`comm_id`,
-			`committee`.`user_facebook_id` AS `user_facebook_id`,
+			`committee`.`user_facebook_id`,
 			`committee`.`paper_id`
 			FROM
 			`users`
