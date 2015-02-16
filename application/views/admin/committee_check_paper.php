@@ -171,7 +171,7 @@ if(empty($javascript_myModal)){
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <?php echo form_open('main/update_checked_paper','class="form-horizontal" role="form"');?>
+                                                        <?php echo form_open('main/update_send_paper','class="form-horizontal" role="form"');?>
                                                         <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
                                                         <input type="hidden" name="project_id" value="<?php  echo $row_paper->paper_id;?> ">
                                                         <div class="form-group">
@@ -223,7 +223,7 @@ if(empty($javascript_myModal)){
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <?php echo form_open('main/update_checked_paper','class="form-horizontal" role="form"');?>
+                                                        <?php echo form_open('main/update_send_paper','class="form-horizontal" role="form"');?>
                                                         <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
                                                         <input type="hidden" name="project_id" value="<?php  echo $row_paper->paper_id;?> ">
                                                         <div class="form-group">
@@ -275,7 +275,7 @@ if(empty($javascript_myModal)){
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <?php echo form_open('main/update_checked_paper','class="form-horizontal" role="form"');?>
+                                                        <?php echo form_open('main/update_send_paper','class="form-horizontal" role="form"');?>
                                                         <input type="hidden" name="user_facebook_id" value="<?php echo $fb_data['me']['id'];?>" />
                                                         <input type="hidden" name="project_id" value="<?php  echo $row_paper->paper_id;?> ">
                                                         <div class="form-group">

@@ -282,9 +282,11 @@ public function status_page(){
 			'user_facebook_id' => $committee_select[0],
 			'paper_id' => $paper_id,
 			);
-		$this->db->where('comm_id', $committee_id);
-		$this->db->update('committee', $data); 
-		redirect('main/admin','refresh');
+		print_r($data);
+		echo "xxxxxxxxxxxxx";
+		// $this->db->where('comm_id', $committee_id);
+		// $this->db->update('committee', $data); 
+		// redirect('main/admin','refresh');
 	}
 
 	public function download($file_name){		// download file project
