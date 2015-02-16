@@ -110,7 +110,7 @@
 				INNER JOIN `users` ON `users`.`user_facebook_id` =
 				`committee`.`user_facebook_id`
 				INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
-				WHERE committee.user_facebook_id ='".$fb_data['me']['id']."'
+				WHERE `committee`.`user_facebook_id` ='".$fb_data['me']['id']."'
 				");
 			return $qery_check_paper->result();
 		}

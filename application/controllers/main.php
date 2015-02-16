@@ -244,6 +244,27 @@ public function status_page(){
 		$this->load->view('admin/committee_check_paper',$data);
 	}
 
+
+	public function update_checked_paper(){  //update committee checkpaper แกไขกรรมการตรวเอกสาร
+		$paper_id  = $this->input->post('project_id');
+		$committee_id = $this->input->post('user_facebook_id');
+		$committee_status = $this->input->post('checked_paper');
+		$committee_comment = $this->input->post('comment');
+		$committee_check_id = $this->input->post('check_id');
+
+		$data = array(
+			//'check_id' => $committee_check_id,
+			'user_facebook_id' => $committee_id,
+			'paper_id' => $paper_id,
+			'check_status' => $committee_status,
+			'check_comment' => $committee_comment,
+			);
+		$this->db->where('check_id',$committee_check_id);
+		$this->db->update('check_paper',$data);
+
+		redirect('main/committee_check_paper','refresh');
+	}
+
 	public function login(){
 
 		$data = array(
@@ -274,19 +295,14 @@ public function status_page(){
 		$committee_id = $this->input->post('commit_id');
 		$committee_select = $this->input->post('select_committee');
 
-			// echo "paper_id = ".$paper_id."<br/>";
-			// echo "committee id =".$committee_id."<br/>";
-			// echo "id_committee = ".$committee[0];
 		$data = array(
 			//'comm_id' => $committee_id,
 			'user_facebook_id' => $committee_select[0],
 			'paper_id' => $paper_id,
 			);
-		print_r($data);
-		echo "xxxxxxxxxxxxx";
-		// $this->db->where('comm_id', $committee_id);
-		// $this->db->update('committee', $data); 
-		// redirect('main/admin','refresh');
+		$this->db->where('comm_id', $committee_id);
+		$this->db->update('committee', $data); 
+		redirect('main/admin','refresh');
 	}
 
 	public function download($file_name){		// download file project
@@ -373,6 +389,7 @@ public function status_page(){
 			redirect('main/committee_check_paper','refresh');
 		}
 	}
+
 
 	public function checked(){
 		if($this->input->post('checked_paper') != ''){
