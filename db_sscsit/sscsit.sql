@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 15, 2015 at 10:29 AM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Host: localhost
+-- Generation Time: Feb 16, 2015 at 07:41 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
   `paper_id` int(11) NOT NULL,
   `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_comment` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `check_paper`
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
 
 INSERT INTO `check_paper` (`check_id`, `user_facebook_id`, `paper_id`, `check_status`, `check_comment`) VALUES
 (2, '895214977163448', 10, 'accept', 'asdf'),
-(3, '895214977163448', 13, 'reject', 'ไม่ผ่าน'),
-(4, '921251517908263', 13, 'conditional_accept', 'แก้ไขเล็กน้อย');
+(4, '921251517908263', 13, 'conditional_accept', 'แก้ไขเล็กน้อย'),
+(5, '895214977163448', 13, 'conditional_accept', 'ไปแก้มาอีกจักหน่อย');
 
 -- --------------------------------------------------------
 
@@ -53,15 +53,15 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `committee`
 --
 
 INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
-(9, '05', 10),
-(10, '895214977163448', 10),
+(9, '895214977163448', 10),
+(10, '921251517908263', 10),
 (15, '895214977163448', 13),
 (16, '921251517908263', 13);
 
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `user_facebook_id` char(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper`
@@ -104,7 +104,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper_group`
@@ -143,7 +143,7 @@ INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `use
 ('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin'),
 ('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'user'),
 ('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'committee'),
-('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'user'),
+('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'committee'),
 ('921251517908263', 'ตาน้อย ตาน้อย', 'ทดสอบ', 'ทดสอบ', 'tanoi_chem@hotmail.com', 'female', 'committee');
 
 --
@@ -188,7 +188,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `check_paper`
 --
 ALTER TABLE `check_paper`
-MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `committee`
 --
