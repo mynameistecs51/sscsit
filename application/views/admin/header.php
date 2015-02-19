@@ -72,7 +72,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <?php echo anchor('main','หลักหลัก',' class="navbar-brand"');?>
+                    <?php echo anchor('main/home','หลักหลัก',' class="navbar-brand"');?>
                 </div>
                 <!-- /.navbar-header -->
 

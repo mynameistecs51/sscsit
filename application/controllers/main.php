@@ -66,11 +66,20 @@ class Main extends CI_Controller {
 
 	}
 
+	public function home(){
+		$fb_data = $this->session->userdata('fb_data');
+		$data = array(
+			'title' => "Student Symposium",
+			'fb_data' => $fb_data,
+			);
+		$this->load->view('index',$data);
+	}
+
 	public function insert_users(){
 		$this->m_main->insert_users();
 		redirect('main','refresh');
 	}
-	
+
 	public function send_page(){
 		$fb_data = $this->session->userdata('fb_data');
 		if(isset($fb_data['me']['id'])){
@@ -333,26 +342,6 @@ public function status_page(){
 		
 	}
 
-	public function service_page(){
-		$fb_data = $this->session->userdata('fb_data');
-
-		$data = array(
-			'title' => 'service  page',
-			'fb_data' => $fb_data,
-			'get_paper' => $this->m_main->get_paper(), 
-			);
-		$this->load->view('welcome_message',$data);
-	}
-
-	public function portfolio_page(){
-		$fb_data = $this->session->userdata('fb_data');
-
-		$data = array(
-			'title' => 'service  page',
-			'fb_data' => $fb_data,
-			);
-		$this->load->view('portfolio',$data);
-	}
 
 	public function manage_status(){
 		$my_status = $this->input->post('my-checkbox');
