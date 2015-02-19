@@ -70,6 +70,7 @@ class Main extends CI_Controller {
 		$this->m_main->insert_users();
 		redirect('main','refresh');
 	}
+	
 	public function send_page(){
 		$fb_data = $this->session->userdata('fb_data');
 		if(isset($fb_data['me']['id'])){
@@ -84,17 +85,19 @@ class Main extends CI_Controller {
 						'get_paper_data' => $get_paper,
 						);
 					$this->load->view('paper_update',$data);
-				}else{
-					$data = array(
-						'title' => "Send paper",
-						'fb_data' => $fb_data,
-					// 'paper_group' => $this->db->get('paper_group')->result(),
-						'paper_group' => $this->m_main->get_paper_group(),
-						);
-					$this->load->view('send-paper',$data);
 				}
+				// else{
+				// 	$data = array(
+				// 		'title' => "Send paper",
+				// 		'fb_data' => $fb_data,
+				// 	// 'paper_group' => $this->db->get('paper_group')->result(),
+				// 		'paper_group' => $this->m_main->get_paper_group(),
+				// 		);
+				// 	$this->load->view('send-paper',$data);
+				// }
 			}
-		}else{
+		}
+		else{
 			$data = array(
 				'title' => "Send paper",
 				'fb_data' => $fb_data,
@@ -103,13 +106,13 @@ class Main extends CI_Controller {
 				);
 			$this->load->view('send-paper',$data);
 		}
-		$data = array(
-			'title' => "Send paper",
-			'fb_data' => $fb_data,
-					// 'paper_group' => $this->db->get('paper_group')->result(),
-			'paper_group' => $this->m_main->get_paper_group(),
-			);
-		$this->load->view('send-paper',$data);
+		// $data = array(
+		// 	'title' => "Send paper",
+		// 	'fb_data' => $fb_data,
+		// 			// 'paper_group' => $this->db->get('paper_group')->result(),
+		// 	'paper_group' => $this->m_main->get_paper_group(),
+		// 	);
+		// $this->load->view('send-paper',$data);
 	}
 
 	public function add_project(){
