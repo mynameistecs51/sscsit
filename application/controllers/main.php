@@ -20,6 +20,8 @@ class Main extends CI_Controller {
 			$data = array(
 				'title' => "Student Symposium",
 				'fb_data' => $fb_data,
+				'get_paper' => $this->m_main->get_paper(),
+				'get_status_paper' => $this->m_main->get_status_paper(), 
 				);
 			$this->load->view('index',$data);
 		}elseif($this->facebook_model->id_check($fb_data)->num_rows() <= 0)  {	//login ครั้งแรก

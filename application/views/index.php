@@ -117,224 +117,155 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <h3>โครงงาน Student Sympsium</h3>
+                    <h3>โครงงาน ของนักศึกษา</h3>
                     <p>โครงงานทั้งหมดของนักศึกษาที่ส่งเข้าร่วมในการนำเสนอผลงาน</p>
-                    <div class="btn-group">
-                        <a class="btn btn-danger" href="<?php echo base_url().'#scroller';?>" data-slide="prev"><i class="icon-angle-left"></i></a>
-                        <a class="btn btn-danger" href="<?php echo base_url();?>#scroller" data-slide="next"><i class="icon-angle-right"></i></a>
-                    </div>
+
                     <p class="gap"></p>
                 </div>
-                <div class="col-md-9">
-                    <div id="scroller" class="carousel slide">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item1.png" alt="">
-                                                <h5>
-                                                    Nova - Corporate site template
-                                                </h5>
-                                                <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                            
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item3.png" alt="">
-                                                <h5>
-                                                    Fornax - Apps site template
-                                                </h5>
-                                                <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                            
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item2.png" alt="">
-                                                <h5>
-                                                    Flat Theme - Business Theme
-                                                </h5>
-                                                <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!--/.row-->
-                            </div><!--/.item-->
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item2.png" alt="">
-                                                <h5>
-                                                    Flat Theme - Business Theme
-                                                </h5>
-                                                <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item1.png" alt="">
-                                                <h5>
-                                                    Nova - Corporate site template
-                                                </h5>
-                                                <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                            
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/item3.png" alt="">
-                                                <h5>
-                                                    Fornax - Apps site template
-                                                </h5>
-                                                <div class="overlay">
-                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="<?php echo base_url();?>images/portfolio/full/item1.jpg" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!--/.item-->
+                <div class="row col-md-9">       <!-- //    show paper all    //  -->
+                  <div class="panel panel-primary">
+                    <div class ="panel-heading">
+                      <div class ="panel-title">โครงงาน
+                      </div>
+                  </div>
+                  <div class ="panel-body">
+                   <table id ="" class="display" cellspacing="0" width="100%">
+                    <thead>
+                      <th>โปรเจ็ค</th>
+                      <th>ประเภทโครงงาน</th>
+                      <th>หัวหน้าโครงงาน</th>
+                      <th>สถานการตรวจ <i class="label label-success">ผ่าน</i><i class="label label-warning">มีเงื่อนไข</i><i class="label label-danger">ไม่ผ่าน</i></label></th>
+                  </thead>
+                  <tbody>
+                      <?php
+                      $check_paper = array();
+                      foreach ($get_status_paper as $key_status_paper         => $value_status_paper) {
+                //echo $value_status_paper->paper_id."=".$value_status_paper->user_first_name."<br/>";
+                        if(!isset($check_paper[$value_status_paper->paper_id])){
+                            $check_paper[$value_status_paper->paper_id] = array();
+                        }
+
+                        array_push($check_paper[$value_status_paper->paper_id], array(
+                            'status' => $value_status_paper->check_status, 
+                            'comment' => $value_status_paper->check_comment,
+                            'id' => $value_status_paper->paper_id,
+                            'committee_check'=> $value_status_paper->user_first_name,
+                            'committee_id' => $value_status_paper->user_facebook_id,
+                            )
+                        );
+                    }
+                    foreach ($get_paper as $key_paper=> $row_paper) {
+                        ?>
+                        <tr>
+                            <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
+                            <td><?php echo $row_paper->group_name;?></td>
+                            <td><?php echo $row_paper->paper_inputName1;?></td>
+                            <td>
+                               <div class="form-group">
+                                <?php
+                                if(!empty($check_paper[$row_paper->paper_id])){
+                                    for($i=0; $i<count($check_paper[$row_paper->paper_id]); $i++){
+
+                                        if($check_paper[$row_paper->paper_id][$i]['status'] === "accept"){
+                                            echo "<button class ='btn btn-success' disabled>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>&nbsp;";
+
+                                        }elseif($check_paper[$row_paper->paper_id][$i]['status'] === "conditional_accept"){
+                                            echo "<button class ='btn btn-warning' disabled>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button> &nbsp;";
+
+                                        }elseif($check_paper[$row_paper->paper_id][$i]['status'] === "reject"){
+                                            echo "<button class ='btn btn-danger' disabled>".$check_paper[$row_paper->paper_id][$i]['committee_check']  ."</button>&nbsp;";
+                                        }
+                                    }
+                                }else{
+                                    echo '<h4><span class ="label label-default">ยังไม่ตรวจ</span></h4>';
+                            }              //end if !empty
+                            ?>
+                        </div> <!-- /. end  <div class="form-group"> -->
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>         
+        </table>
+
+    </div>  <!-- ./panel body -->
+</div>
+</div><!--/.row  show paper-->
+</div><!--/.row-->
+</div>
+</section><!--/#recent-works-->
+
+<section id="bottom" class="wet-asphalt">
+    <div class="container">
+            <h4>คณะกรรมการ</h4>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 ">
+                    <div class="thumbnail">
+                        <div class="pull-left">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
+                        </div>
+                        <div class="caption">
+                           <a href="#">Pellentesque habitant morbi tristique senectus</a>
+                            <small class="muted">Posted 11 Jul 2013</small>
                         </div>
                     </div>
                 </div>
-            </div><!--/.row-->
-        </div>
-    </section><!--/#recent-works-->
-
-    <section id="testimonial" class="alizarin">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center">
-                        <h2>What our clients say</h2>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                    </div>
-                    <div class="gap"></div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                            </blockquote>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                            </blockquote>
+               <div class="col-md-3 col-sm-6 ">
+                    <div class="thumbnail">
+                        <div class="pull-left">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
                         </div>
-                        <div class="col-md-6">
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                            </blockquote>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                            </blockquote>
+                        <div class="caption">
+                           <a href="#">Pellentesque habitant morbi tristique senectus</a>
+                            <small class="muted">Posted 11 Jul 2013</small>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section><!--/#testimonial-->
-
-    <section id="bottom" class="wet-asphalt">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <h4>About Us</h4>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
-                    <p>Pellentesque habitant morbi tristique senectus.</p>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <h4>Company</h4>
-                    <div>
-                        <ul class="arrow">
-                            <li><a href="#">Company Overview</a></li>
-                            <li><a href="#">Meet The Team</a></li>
-                            <li><a href="#">Our Awesome Partners</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Frequently Asked Questions</a></li>
-                            <li><a href="#">Conatct Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">Copyright</a></li>
-                        </ul>
+               <div class="col-md-3 col-sm-6 ">
+                    <div class="thumbnail">
+                        <div class="pull-left">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
+                        </div>
+                        <div class="caption">
+                           <a href="#">Pellentesque habitant morbi tristique senectus</a>
+                            <small class="muted">Posted 11 Jul 2013</small>
+                        </div>
                     </div>
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <h4>Latest Blog</h4>
-                    <div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <img src="<?php echo base_url();?>images/blog/thumb1.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                                <small class="muted">Posted 17 Aug 2013</small>
-                            </div>
+                </div>
+               <div class="col-md-3 col-sm-6 ">
+                    <div class="thumbnail">
+                        <div class="pull-left">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
                         </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <img src="<?php echo base_url();?>images/blog/thumb2.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                                <small class="muted">Posted 13 Sep 2013</small>
-                            </div>
+                        <div class="caption">
+                           <a href="#">Pellentesque habitant morbi tristique senectus</a>
+                            <small class="muted">Posted 11 Jul 2013</small>
                         </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                                <small class="muted">Posted 11 Jul 2013</small>
-                            </div>
+                    </div>
+                </div>
+               <div class="col-md-3 col-sm-6 ">
+                    <div class="thumbnail">
+                        <div class="pull-left">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
                         </div>
-                    </div>  
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <h4>Address</h4>
-                    <address>
-                        <strong>Twitter, Inc.</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                    </address>
-                    <h4>Newsletter</h4>
-                    <form role="form">
-                        <div class="input-group">
-                            <input type="text" class="form-control" autocomplete="off" placeholder="Enter your email">
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button">Go!</button>
-                            </span>
+                        <div class="caption">
+                           <a href="#">Pellentesque habitant morbi tristique senectus</a>
+                            <small class="muted">Posted 11 Jul 2013</small>
                         </div>
-                    </form>
-                </div> <!--/.col-md-3-->
-            </div>
-        </div>
-    </section><!--/#bottom-->
-    <?php $this->load->view('footer');?>
+                    </div>
+                </div>
+               <div class="col-md-3 col-sm-6 ">
+                    <div class="thumbnail">
+                        <div class="pull-left">
+                            <img src="<?php echo base_url();?>images/blog/thumb3.jpg" alt="">
+                        </div>
+                        <div class="caption">
+                           <a href="#">Pellentesque habitant morbi tristique senectus</a>
+                            <small class="muted">Posted 11 Jul 2013</small>
+                        </div>
+                    </div>
+                </div>
+            </div>  <!-- /  .div row -->
+    </div> <!--  / .div container -->
+</div>
+</section><!--/#bottom-->
+<?php $this->load->view('footer');?>

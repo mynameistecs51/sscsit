@@ -183,7 +183,7 @@
 
 </div>  <!-- ./panel body -->
 </div>
-</div><!--/.row  wsho paper-->
+</div><!--/.row  show paper-->
 <hr>
 </div> <!-- ./end div container -->
 </section><!--/#bottom-->
