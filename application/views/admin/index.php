@@ -61,7 +61,7 @@
                         <i class="fa fa-shopping-cart fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo count($check_paper);?></div>
+                        <div class="huge"><?php echo  count($get_paper) - count($get_count_paper_committee);?></div>
                         <div>โครงงานที่ต้องส่ง</div>
                      </div>
                   </div>
@@ -83,7 +83,7 @@
                         <i class="fa fa-support fa-5x"></i>
                      </div>
                      <div class="col-xs-9 text-right">
-                        <div class="huge">13</div>
+                        <div class="huge"><?php echo count($count_paper_check);?></div>
                         <div>โครงงานที่ตรวจแล้ว</div>
                      </div>
                   </div>
@@ -109,7 +109,8 @@
                <div class="row">
                   <div class="col-lg-12">
                      <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
+                        <!-- <table class="table table-bordered table-hover table-striped"> -->
+                        <table id ="" class="display" cellspacing="0" width="100%">
                            <thead>
                               <tr>
                                  <th>ที่</th>

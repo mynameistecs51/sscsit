@@ -82,7 +82,7 @@ class Main extends CI_Controller {
 		redirect('main','refresh');
 	}
 
-	public function send_page(){
+	public function send_page($error =''){
 		$fb_data = $this->session->userdata('fb_data');
 		if(isset($fb_data['me']['id'])){
 			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_facebook_id ='.$fb_data['me']['id'])->result();
@@ -114,6 +114,7 @@ class Main extends CI_Controller {
 				'fb_data' => $fb_data,
 					// 'paper_group' => $this->db->get('paper_group')->result(),
 				'paper_group' => $this->m_main->get_paper_group(),
+				'error' => $error,
 				);
 			$this->load->view('send-paper',$data);
 		}
@@ -133,18 +134,11 @@ class Main extends CI_Controller {
 		$file_project = "";
 		$file_pictrue ="";
 
-		if($_FILES['fileProject']['name'] != null)
+		if($_FILES['fileProject']['name'] != null && $fb_data['me']['id'] != null) 
 		{
-			$file_project = $this->m_main->upload_fileproject();
-		}
+			$file_project = $this->m_main->upload_fileproject();		//upload file 
 
-//echo $file_project['file_name']."<br/>";
-// if($_FILES['filePictureProject'] != null){
-// 	// -------- upload pictuer project ---------------//
-// 	//$file_pictrue = $file_project = $this->m_main->upload_picture_project();
-// }
-
-		$insert_paper = array(
+			$insert_paper = array(	
 			'paper_id' => '',
 			'paper_sex' => $this->input->post('sex'),
 			'paper_inputName1' => $this->input->post('inputName1'),
@@ -159,9 +153,13 @@ class Main extends CI_Controller {
 			'user_facebook_id' => $fb_data['me']['id'],//$fb_data['me']['id'],
 			);
 
-		$this->db->insert('paper',$insert_paper);
+		$this->db->insert('paper',$insert_paper);	//insert data to database
+		}else{
+			$error = "error";
+			redirect('main/send_page/'.$error,'refresh');
+		}
+		
 		redirect('main','refresh');
-//print_r($insert_paper);
 	}
 
 	public function update_project(){
@@ -227,6 +225,7 @@ public function status_page(){
 		'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
 		'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
 		'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+		'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` group by paper_id')->result(),		// count โครงงานที่ตรวจแล้ว
 		);
 		$this->load->view('admin/index',$data);
 	}
@@ -239,6 +238,8 @@ public function status_page(){
 		'get_paper' => $this->m_main->get_paper(),  //all paper
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' => $this->db->where('user_facebook_id' , $fb_data['me']['id'])->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+		'get_paper' => $this->m_main->get_paper(),
+		'get_status_paper' => $this->m_main->get_status_paper(), 
 		);
 
 		$this->load->view('admin/admin_status_paper',$data);
@@ -253,6 +254,7 @@ public function status_page(){
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
 		'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
+		'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` group by paper_id')->result(),		//
 		);
 		
 		$this->load->view('admin/committee_check_paper',$data);
