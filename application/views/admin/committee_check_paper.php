@@ -16,7 +16,8 @@ if(empty($javascript_myModal)){
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-3 col-md-6">
-            <a href="admin_status_paper">
+            <!-- <a href="admin_status_paper"> -->
+            <a href = "committee_check_paper">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -24,7 +25,7 @@ if(empty($javascript_myModal)){
                                 <i class="fa fa-file-text fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo count($get_paper);?></div>
+                                <div class="huge"><?php echo count($check_paper);?></div>
                                 <div>โปรเจ็คทั้งหมด</div>
                             </div>
                         </div>
@@ -61,14 +62,14 @@ if(empty($javascript_myModal)){
         </div>
         <div class="col-lg-3 col-md-6">
             <a href="#">
-                <div class="panel panel-yellow">
+                <div class="panel panel-red">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo count($check_paper);?></div>
+                                <div class="huge"><?php echo count($check_paper) - count($count_paper_check);?></div>
                                 <div>โครงงานที่ต้องตรวจ</div>
                             </div>
                         </div>
@@ -83,7 +84,7 @@ if(empty($javascript_myModal)){
         </div>
         <div class="col-lg-3 col-md-6">
             <a href="#">
-                <div class="panel panel-red">
+            <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -107,7 +108,7 @@ if(empty($javascript_myModal)){
 
     <div class="row">
         <div class="col-lg-16">
-           <div class="panel panel-default">
+         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
@@ -264,9 +265,9 @@ if(empty($javascript_myModal)){
                                     </div><!-- /.modal -->
                                     <?php 
                                 }elseif($checked[$row_paper->paper_id][0]['check_status'] === "reject"){
-                                   echo  "<button class='btn btn-danger'data-toggle='modal' data-target='#myModal".$row_paper->paper_id."'>ไม่ผ่าน</button>";  
-                                   ?>
-                                   <div class="row col-sm-12">
+                                 echo  "<button class='btn btn-danger'data-toggle='modal' data-target='#myModal".$row_paper->paper_id."'>ไม่ผ่าน</button>";  
+                                 ?>
+                                 <div class="row col-sm-12">
                                     <div id="myModal<?php echo $row_paper->paper_id;?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
                                         <!-- <div class="modal-dialog " style="width:60%" > -->
                                         <div class="modal-dialog modal-lg ">

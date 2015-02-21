@@ -251,10 +251,11 @@ public function status_page(){
 			'fb_data' => $fb_data,
 			'title' => "committee check paper",
 		'get_paper' => $this->m_main->get_paper(),  //all paper
+		//'count_check_paper' => $this->db->query('SELECT * FROM check_paper WHERE user_facebook_id = "895214977163448"'), //check paper for user facebook id
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
 		'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
-		'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` group by paper_id')->result(),		//
+		'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY  paper_id')->result(),		//
 		);
 		
 		$this->load->view('admin/committee_check_paper',$data);
@@ -340,7 +341,9 @@ public function status_page(){
 			'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
 			'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
 			'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
-			'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+			//'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+			'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+			'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY paper_id')->result(),		//
 			);
 		$this->load->view('data',$data);
 		

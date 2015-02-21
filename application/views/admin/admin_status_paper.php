@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge"><?php echo count($get_paper);?></div>
-                                <div>โปรเจ็คทั้งหมด</div>
+                                <div>โปรเจ็คทั้งหมด</div>  <!-- โปรเจ็ค ของแต่ล่ะคน form user_facebook_id -->
                             </div>
                         </div>
                     </div>
