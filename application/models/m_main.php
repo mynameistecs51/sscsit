@@ -66,23 +66,6 @@
 
 		public function get_paper(){
 			$query_paper = $this->db->query("SELECT
-			-- 	`paper`.`paper_id`,
-			-- 	`paper`.`paper_sex`,
-			-- 	`paper`.`paper_inputName1`,
-			-- 	`paper`.`paper_sex2`,
-			-- 	`paper`.`paper_inputName2`,
-			-- 	`paper`.`paper_inputProjectName_TH`,
-			-- 	`paper`.`paper_inputProjectName_EN`,
-			-- 	`paper`.`paper_group`,
-			-- 	`paper`.`paper_fileProject`,
-			-- 	`paper`.`paper_filePictureProject`,
-			-- 	`paper`.`paper_date`,
-			-- 	`paper`.`user_facebook_id`,
-			-- 	`paper_group`.`group_name`
-			-- 	FROM
-			-- 	`paper`
-			-- 	INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
-			-- 	ORDER BY `paper`.`paper_id` DESC
 			paper.*, paper_group.*, users.*
 			FROM (paper INNER JOIN paper_group ON  paper.paper_group = paper_group.group_id) 
 			INNER JOIN users ON(users.user_facebook_id = paper.user_facebook_id)
@@ -151,8 +134,6 @@
 	}
 
 	public function get_users(){
-		// $this->db->where( "user_status !=", 'supper_admin');
-		// $get_users = $this->db->get('users');
 		$get_users = $this->db->query("SELECT * FROM users WHERE user_status != 'admin' AND user_status != 'supper_admin' ");
 		return $get_users->result();
 	}

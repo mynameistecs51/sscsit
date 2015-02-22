@@ -251,7 +251,6 @@ public function status_page(){
 			'fb_data' => $fb_data,
 			'title' => "committee check paper",
 		'get_paper' => $this->m_main->get_paper(),  //all paper
-		//'count_check_paper' => $this->db->query('SELECT * FROM check_paper WHERE user_facebook_id = "895214977163448"'), //check paper for user facebook id
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
 		'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
