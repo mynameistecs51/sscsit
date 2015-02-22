@@ -77,7 +77,6 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<?php echo anchor('#','FB Login','class="btn btn-primary pull-left"');?>
 							<button type="submit" class="btn btn-success">Account Login</button>
 						</div>
 					</form>
