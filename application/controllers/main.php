@@ -50,7 +50,7 @@ class Main extends CI_Controller {
 					redirect('main/committee_check_paper','refresh');
 					break;
 					// --------------end status committee ------------//
-					case 'subper_admin':
+					case 'supper_admin':
 					redirect('main/admin','refresh');
 					break;
 					// --------------end status subper_admin ------------//
@@ -139,40 +139,40 @@ class Main extends CI_Controller {
 			$file_project = $this->m_main->upload_fileproject();		//upload file 
 
 			$insert_paper = array(	
-			'paper_id' => '',
-			'paper_sex' => $this->input->post('sex'),
-			'paper_inputName1' => $this->input->post('inputName1'),
-			'paper_sex2' => $this->input->post('sex2'),
-			'paper_inputName2' => $this->input->post('inputName2'),
-			'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
-			'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
-			'paper_group' => $this->input->post('select_group'),
-			'paper_fileProject' => $file_project['file_name'],
-			'paper_filePictureProject' => "null",
-			'paper_date' => $date,
+				'paper_id' => '',
+				'paper_sex' => $this->input->post('sex'),
+				'paper_inputName1' => $this->input->post('inputName1'),
+				'paper_sex2' => $this->input->post('sex2'),
+				'paper_inputName2' => $this->input->post('inputName2'),
+				'paper_inputProjectName_TH' => $this->input->post("inputProjectName_TH"),
+				'paper_inputProjectName_EN' => $this->input->post('inputProjectName_EN'),
+				'paper_group' => $this->input->post('select_group'),
+				'paper_fileProject' => $file_project['file_name'],
+				'paper_filePictureProject' => "null",
+				'paper_date' => $date,
 			'user_facebook_id' => $fb_data['me']['id'],//$fb_data['me']['id'],
 			);
 
 		$this->db->insert('paper',$insert_paper);	//insert data to database
-		}else{
-			$error = "error";
-			redirect('main/send_page/'.$error,'refresh');
-		}
-		
-		redirect('main','refresh');
+	}else{
+		$error = "error";
+		redirect('main/send_page/'.$error,'refresh');
 	}
 
-	public function update_project(){
-		$fb_data = $this->session->userdata('fb_data');
-// $rand = rand(1111,9999);
-		$date = date("Y_m_d_H_i");
-		$file_project = "";
+	redirect('main','refresh');
+}
 
-		if(!empty($_FILES['fileProject']['name']) ){			
-			$paper_query = $this->db->query("SELECT * FROM paper WHERE user_facebook_id=".$fb_data['me']['id'])->result();
-			echo '<meta charset="UTF-8" /> ';
-			foreach ($paper_query as $key_paper => $value_paper) {
-				echo $value_paper->paper_fileProject;
+public function update_project(){
+	$fb_data = $this->session->userdata('fb_data');
+// $rand = rand(1111,9999);
+	$date = date("Y_m_d_H_i");
+	$file_project = "";
+
+	if(!empty($_FILES['fileProject']['name']) ){			
+		$paper_query = $this->db->query("SELECT * FROM paper WHERE user_facebook_id=".$fb_data['me']['id'])->result();
+		echo '<meta charset="UTF-8" /> ';
+		foreach ($paper_query as $key_paper => $value_paper) {
+			echo $value_paper->paper_fileProject;
 			unlink('./images/file_project_doc/'.$value_paper->paper_fileProject);  //delete file project again update
 			$file_project = $this->m_main->upload_fileproject(); //อัพโหลดไฟล์ใหม่
 		}
@@ -214,20 +214,29 @@ public function status_page(){
 
 }
 
-	public function  admin()			// admin page
-	{
+	public function  admin()	{		// admin page
 		$fb_data = $this->session->userdata('fb_data');
-		$data = array(
-			'title' => 'Admin student symposim',
-			'fb_data' => $fb_data,
-		'get_paper' => $this->m_main->get_paper(),		//all paper
-		'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
-		'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
-		'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
-		'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
-		'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` group by paper_id')->result(),		// count โครงงานที่ตรวจแล้ว
-		);
-		$this->load->view('admin/index',$data);
+
+		foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
+			if($admin_row->user_status === "committee" || $admin_row->user_status === "admin" || $admin_row->user_status === "supper_admin"){
+
+				$data = array(
+					'title' => 'Admin student symposim',
+					'fb_data' => $fb_data,
+						'get_paper' => $this->m_main->get_paper(),		//all paper
+						'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
+						'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
+						'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
+						'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+						'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` group by paper_id')->result(),		// count โครงงานที่ตรวจแล้ว
+						);
+				$this->load->view('admin/index',$data);
+
+			}else{
+				redirect('main','refresh');
+			}
+		}	//------- /. end foreach./------//
+		
 	}
 
 	public function admin_status_paper(){
@@ -247,17 +256,23 @@ public function status_page(){
 
 	public function committee_check_paper(){
 		$fb_data = $this->session->userdata('fb_data');
-		$data = array(
-			'fb_data' => $fb_data,
-			'title' => "committee check paper",
-		'get_paper' => $this->m_main->get_paper(),  //all paper
-		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
-		'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
-		'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
-		'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY  paper_id')->result(),		//
-		);
-		
-		$this->load->view('admin/committee_check_paper',$data);
+		foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
+			if($admin_row->user_status === "committee" || $admin_row->user_status === "admin"){
+				$data = array(
+					'fb_data' => $fb_data,
+					'title' => "committee check paper",
+					'get_paper' => $this->m_main->get_paper(),  //all paper
+					'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+					'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
+					'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
+					'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY  paper_id')->result(),		//
+					);
+
+				$this->load->view('admin/committee_check_paper',$data);
+			}else{
+				redirect("main",'refresh');
+			}
+		}	//---------/. end foreach ./-----------//
 	}
 
 
