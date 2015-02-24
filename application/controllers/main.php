@@ -216,13 +216,15 @@ public function status_page(){
 
 	public function  admin()	{		// admin page
 		$fb_data = $this->session->userdata('fb_data');
+		if(!($fb_data['me']['id'])){
+			redirect('main','refresh');
+		}else{
+			foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
+				if($admin_row->user_status === "committee" || $admin_row->user_status === "admin" || $admin_row->user_status === "supper_admin"){
 
-		foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
-			if($admin_row->user_status === "committee" || $admin_row->user_status === "admin" || $admin_row->user_status === "supper_admin"){
-
-				$data = array(
-					'title' => 'Admin student symposim',
-					'fb_data' => $fb_data,
+					$data = array(
+						'title' => 'Admin student symposim',
+						'fb_data' => $fb_data,
 						'get_paper' => $this->m_main->get_paper(),		//all paper
 						'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
 						'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
@@ -230,20 +232,21 @@ public function status_page(){
 						'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
 						'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` group by paper_id')->result(),		// count โครงงานที่ตรวจแล้ว
 						);
-				$this->load->view('admin/index',$data);
+					$this->load->view('admin/index',$data);
 
-			}else{
-				redirect('main','refresh');
-			}
+				}else{
+					redirect('main','refresh');
+				}
 		}	//------- /. end foreach./------//
-		
 	}
 
-	public function admin_status_paper(){
-		$fb_data = $this->session->userdata('fb_data');
-		$data = array(
-			'fb_data' => $fb_data,
-			'title' => "Status Paper",
+}
+
+public function admin_status_paper(){
+	$fb_data = $this->session->userdata('fb_data');
+	$data = array(
+		'fb_data' => $fb_data,
+		'title' => "Status Paper",
 		'get_paper' => $this->m_main->get_paper(),  //all paper
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' => $this->db->where('user_facebook_id' , $fb_data['me']['id'])->get('committee')->result(),	//โครงงานที่ต้องตรวจ
@@ -251,28 +254,32 @@ public function status_page(){
 		'get_status_paper' => $this->m_main->get_status_paper(), 
 		);
 
-		$this->load->view('admin/admin_status_paper',$data);
-	}
+	$this->load->view('admin/admin_status_paper',$data);
+}
 
-	public function committee_check_paper(){
-		$fb_data = $this->session->userdata('fb_data');
+public function committee_check_paper(){
+	$fb_data = $this->session->userdata('fb_data');
+	if(!($fb_data['me']['id'])){
+		redirect('main','refresh');
+	}else{
 		foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
 			if($admin_row->user_status === "committee" || $admin_row->user_status === "admin"){
 				$data = array(
 					'fb_data' => $fb_data,
 					'title' => "committee check paper",
-					'get_paper' => $this->m_main->get_paper(),  //all paper
-					'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
-					'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
-					'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
-					'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY  paper_id')->result(),		//
-					);
+							'get_paper' => $this->m_main->get_paper(),  //all paper
+							'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+							'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
+							'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
+							'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY  paper_id')->result(),		//
+							);
 
 				$this->load->view('admin/committee_check_paper',$data);
 			}else{
 				redirect("main",'refresh');
 			}
-		}	//---------/. end foreach ./-----------//
+			}	//---------/. end foreach ./-----------//
+		}
 	}
 
 
