@@ -220,7 +220,7 @@ public function status_page(){
 			redirect('main','refresh');
 		}else{
 			foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
-				if($admin_row->user_status === "committee" || $admin_row->user_status === "admin" || $admin_row->user_status === "supper_admin"){
+				if($admin_row->user_status === "admin" || $admin_row->user_status === "supper_admin"){
 
 					$data = array(
 						'title' => 'Admin student symposim',

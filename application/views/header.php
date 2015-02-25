@@ -47,14 +47,14 @@
 <body >
     <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header" style="margin-top:30px;margin-left: 0px;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <?php echo anchor('main','<img src="'.base_url().'images/logo.png" alt="logo"/>','class="navbar-brand"');?>
+                <?php echo anchor('main/home','<img src="'.base_url().'images/logo.png" alt="logo"/>','class="navbar-brand"');?>
                 <!-- <a class="navbar-brand" href="index.php/main"><img src="images/logo.png" alt="logo"></a> -->
             </div>
             <div class="collapse navbar-collapse">

@@ -6,7 +6,7 @@ if(empty($javascript_myModal)){
     echo $javascript_myModal;
 }
 ?>
-<div id="page-wrapper">
+<div id="page-wrapper" style="margin-left:0px;">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">ทั่วไป</h1>
@@ -84,7 +84,7 @@ if(empty($javascript_myModal)){
         </div>
         <div class="col-lg-3 col-md-6">
             <a href="#">
-            <div class="panel panel-green">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -108,14 +108,14 @@ if(empty($javascript_myModal)){
 
     <div class="row">
         <div class="col-lg-16">
-         <div class="panel panel-default">
+           <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-file-text fa-fx"></i> project   all              
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-              <table class="table table-hover">
-                  <!-- <table class="table table-bordered table-hover table-striped"> -->
+              <!-- <table class="table table-hover"> -->
+              <table id="" class="display">
                   <thead>
                       <th>ที่</th>
                       <th>โปรเจ็ค</th>
@@ -126,24 +126,25 @@ if(empty($javascript_myModal)){
                       <th>ผู้ส่ง</th>
                       <th>สถานการตรวจ</th>
                   </thead>
-                  <?php 
-                  $checked = array();
-                  foreach ($get_committee_checkpaper as $key_get_committee_checkpaper => $value_get_committee_checkpaper) {
-                    if(!isset($checked[$value_get_committee_checkpaper->paper_id])){
-                        $checked[$value_get_committee_checkpaper->paper_id] = array();
+                  <tbody>
+                      <?php 
+                      $checked = array();
+                      foreach ($get_committee_checkpaper as $key_get_committee_checkpaper => $value_get_committee_checkpaper) {
+                        if(!isset($checked[$value_get_committee_checkpaper->paper_id])){
+                            $checked[$value_get_committee_checkpaper->paper_id] = array();
+                        }
+                        array_push($checked[$value_get_committee_checkpaper->paper_id],array('check_status' => $value_get_committee_checkpaper->check_status,'paper_id' => $value_get_committee_checkpaper->paper_id,'check_comment' => $value_get_committee_checkpaper->check_comment,'check_id' => $value_get_committee_checkpaper->check_id));
                     }
-                    array_push($checked[$value_get_committee_checkpaper->paper_id],array('check_status' => $value_get_committee_checkpaper->check_status,'paper_id' => $value_get_committee_checkpaper->paper_id,'check_comment' => $value_get_committee_checkpaper->check_comment,'check_id' => $value_get_committee_checkpaper->check_id));
-                }
                 // echo '--------------------';
                 // print_r($checked);
                 // echo '--------------------';
-                ?>
-                <?php
-                $number = count($check_paper);
-                foreach ($check_paper as $key_paper => $row_paper) {
-                  ?>
-                  <tbody>
-                    <tr>
+                    ?>
+                    <?php
+                    $number = count($check_paper);
+                    foreach ($check_paper as $key_paper => $row_paper) {
+                      ?>
+
+                      <tr>
                         <td><?php echo $number--;?></td>
                         <td><?php echo $row_paper->paper_inputProjectName_TH;?></td>
                         <td><?php echo $row_paper->group_name;?></td>                            
@@ -265,9 +266,9 @@ if(empty($javascript_myModal)){
                                     </div><!-- /.modal -->
                                     <?php 
                                 }elseif($checked[$row_paper->paper_id][0]['check_status'] === "reject"){
-                                 echo  "<button class='btn btn-danger'data-toggle='modal' data-target='#myModal".$row_paper->paper_id."'>ไม่ผ่าน</button>";  
-                                 ?>
-                                 <div class="row col-sm-12">
+                                   echo  "<button class='btn btn-danger'data-toggle='modal' data-target='#myModal".$row_paper->paper_id."'>ไม่ผ่าน</button>";  
+                                   ?>
+                                   <div class="row col-sm-12">
                                     <div id="myModal<?php echo $row_paper->paper_id;?>"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
                                         <!-- <div class="modal-dialog " style="width:60%" > -->
                                         <div class="modal-dialog modal-lg ">
@@ -376,8 +377,9 @@ if(empty($javascript_myModal)){
                     </div><!-- /.modal -->
                 </td>
             </tr>
+
+            <?php } ?> 
         </tbody>
-        <?php } ?>
     </table>
 
 </div>  <!-- ./panel body -->
