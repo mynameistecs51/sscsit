@@ -47,7 +47,7 @@
 <body >
     <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
         <div class="container">
-            <div class="navbar-header" style="margin-top:30px;margin-left: 0px;">
+            <div class="navbar-header" style="margin-top: 30px;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -58,10 +58,10 @@
                 <!-- <a class="navbar-brand" href="index.php/main"><img src="images/logo.png" alt="logo"></a> -->
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li ><?php echo anchor('main','หน้าหลัก');?></li>
-                    <li><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
-                    <li><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
+                <ul class="nav navbar-nav navbar-right" style="margin-top:30px; ">
+                    <li style="margin-top:20px;font-weight: bold; "><?php echo anchor('main','หน้าหลัก');?></li>
+                    <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
+                   <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
                     <li>
                         <?php 
                         if(empty($fb_data['me'])){
@@ -73,5 +73,6 @@
                     </li>                    
                 </ul>
             </div>
+
         </div>
     </header><!--/header-->
