@@ -48,7 +48,7 @@ if(empty($javascript_myModal)){
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge"><?php echo count($get_paper_committee);?></div>
-                                <div>ส่งให้กรรมการแล้ว</div>
+                                <div>โปรเจ็คที่ตรวจแล้ว</div>
                             </div>
                         </div>
                     </div>

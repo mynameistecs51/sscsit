@@ -270,7 +270,8 @@ public function committee_check_paper(){
 					'fb_data' => $fb_data,
 					'title' => "committee check paper",
 							'get_paper' => $this->m_main->get_paper(),  //all paper
-							'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+							//'get_paper_committee' => $this->db->where($fb_data['me']['id'])->get('committee')->group_by('paper_id')->result(),  //paper ที่ส่งแล้ว
+							'get_paper_committee' => $this->db->query('SELECT * FROM committee WHERE user_facebook_id ='.$fb_data['me']['id'].' ORDER BY paper_id')->result(),
 							'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
 							'get_committee_checkpaper' => $this->m_main->get_committee_checkpaper(),		 //paper ที่ตรวจแล้ว
 							'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY  paper_id')->result(),		//
