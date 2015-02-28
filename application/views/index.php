@@ -197,85 +197,26 @@
     <div class="container">
         <h4>คณะกรรมการ</h4>
         <div class="row">
-            <div class="col-md-3 col-sm-6  ">   
-                <div class="media thumbnail">
-                    <div class="pull-left">
-                        <img alt="" src="http://sci.udru.ac.th/sscsit/images/blog/thumb2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <span class="media-heading">
-                            <a href="#">Pellentesque habitant morbi tristique senectus</a>
-                        </span>
-                        <small class="muted">Posted 13 Sep 2013</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 ">   
-                <div class="media thumbnail">
-                    <div class="pull-left">
-                        <img alt="" src="http://sci.udru.ac.th/sscsit/images/blog/thumb2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <span class="media-heading">
-                            <a href="#">Pellentesque habitant morbi tristique senectus</a>
-                        </span>
-                        <small class="muted">Posted 13 Sep 2013</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 ">   
-                <div class="media thumbnail">
-                    <div class="pull-left">
-                        <img alt="" src="http://sci.udru.ac.th/sscsit/images/blog/thumb2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <span class="media-heading">
-                            <a href="#">Pellentesque habitant morbi tristique senectus</a>
-                        </span>
-                        <small class="muted">Posted 13 Sep 2013</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 ">   
-                <div class="media thumbnail">
-                    <div class="pull-left">
-                        <img alt="" src="http://sci.udru.ac.th/sscsit/images/blog/thumb2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <span class="media-heading">
-                            <a href="#">Pellentesque habitant morbi tristique senectus</a>
-                        </span>
-                        <small class="muted">Posted 13 Sep 2013</small>
-                    </div>
-                </div>
-            </div>
+            <?php 
+            foreach ($committee_profile as $commit_row) {
+                ?>
 
-            <div class="col-md-3 col-sm-6 ">   
-                <div class="media thumbnail">
-                    <div class="pull-left">
-                        <img alt="" src="http://sci.udru.ac.th/sscsit/images/blog/thumb2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <span class="media-heading">
-                            <a href="#">Pellentesque habitant morbi tristique senectus</a>
-                        </span>
-                        <small class="muted">Posted 13 Sep 2013</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 ">   
-                <div class="media thumbnail">
-                    <div class="pull-left">
-                        <img alt="" src="http://sci.udru.ac.th/sscsit/images/blog/thumb2.jpg">
-                    </div>
-                    <div class="media-body">
-                        <span class="media-heading">
-                            <a href="#">Pellentesque habitant morbi tristique senectus</a>
-                        </span>
-                        <small class="muted">Posted 13 Sep 2013</small>
+                <div class="col-md-3 col-sm-6 ">   
+                    <div class="media thumbnail">
+                        <div class="pull-left">
+                            <img src="https://graph.facebook.com/<?php echo $commit_row->user_facebook_id;?>/picture" alt="" class="pic" />
+                        </div>
+                        <div class="media-body">
+                            <span class="media-heading">
+                            <a href="#"><?php echo $commit_row->user_first_name ." ".$commit_row->user_last_name    ;?></a>
+                            </span>
+                            <span class="media-footer"><?php echo $commit_row->user_status;?></span> 
+                        </div>
                     </div>
                 </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>  <!-- /  .div row -->
     </div> <!--  / .div container -->
 </div>
