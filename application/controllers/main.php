@@ -76,6 +76,7 @@ class Main extends CI_Controller {
 			'fb_data' => $fb_data,
 			'get_paper' => $this->m_main->get_paper(),
 			'get_status_paper' => $this->m_main->get_status_paper(), 
+			'committee_profile' => $this->db->query('SELECT * FROM users WHERE user_status = "admin" OR user_status ="committee" ')->result(),
 			);
 		$this->load->view('index',$data);
 	}
@@ -381,28 +382,28 @@ public function committee_check_paper(){
 	} //end function
 
 
-		public function manage_status(){
-			$my_status = $this->input->post('my-checkbox');
+	public function manage_status(){
+		$my_status = $this->input->post('my-checkbox');
 
-			if($my_status === "on"){
-				$update_status = $this->m_main->update_user_status($status = "committee");
-				echo  $update_status;
-				print_r($update_status);
-			}else{
-				$update_status = $this->m_main->update_user_status($status = "user");
-				echo  $update_status;
-			}
+		if($my_status === "on"){
+			$update_status = $this->m_main->update_user_status($status = "committee");
+			echo  $update_status;
+			print_r($update_status);
+		}else{
+			$update_status = $this->m_main->update_user_status($status = "user");
+			echo  $update_status;
 		}
+	}
 
-		public function checked_paper(){
-			$fb_data = $this->session->userdata('fb_data');
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('checked_paper','checked_paper','required|callback_checked');
+	public function checked_paper(){
+		$fb_data = $this->session->userdata('fb_data');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('checked_paper','checked_paper','required|callback_checked');
 
-			if($this->form_validation->run() == FALSE){
-				$data = array(
-					'fb_data' => $fb_data,
-					'title' => "committee check paper",
+		if($this->form_validation->run() == FALSE){
+			$data = array(
+				'fb_data' => $fb_data,
+				'title' => "committee check paper",
 				'get_paper' => $this->m_main->get_paper(),  //all paper
 				'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 				'check_paper' =>$this->m_main->check_paper($fb_data),	//โครงงานที่ต้องตรวจ
@@ -411,25 +412,25 @@ public function committee_check_paper(){
 					$(window).load(function(){
 						$("#myModal").modal("show");
 					});
-			</script>',
-			);
-				$this->load->view('admin/committee_check_paper',$data);
-			}else{
-				$insert_check_paper =  $this->m_main->checked_paper();
-				redirect('main/committee_check_paper','refresh');
-			}
+		</script>',
+		);
+			$this->load->view('admin/committee_check_paper',$data);
+		}else{
+			$insert_check_paper =  $this->m_main->checked_paper();
+			redirect('main/committee_check_paper','refresh');
 		}
-
-
-		public function checked(){
-			if($this->input->post('checked_paper') != ''){
-				return true;
-			}else{
-				$this->form_validation->set_message('checked_paper', 'กรุณาเลือก');
-				echo "<script>alert('error');</script>";
-				return false;
-			}
-		}
-
 	}
-	?>
+
+
+	public function checked(){
+		if($this->input->post('checked_paper') != ''){
+			return true;
+		}else{
+			$this->form_validation->set_message('checked_paper', 'กรุณาเลือก');
+			echo "<script>alert('error');</script>";
+			return false;
+		}
+	}
+
+}
+?>
