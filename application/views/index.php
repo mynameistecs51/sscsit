@@ -200,25 +200,26 @@
             <?php 
             foreach ($committee_profile as $commit_row) {
                 ?>
-
-                <div class="col-md-3 col-sm-6 ">   
-                    <div class="media thumbnail">
-                        <div class="pull-left">
-                            <img src="https://graph.facebook.com/<?php echo $commit_row->user_facebook_id;?>/picture" alt="" class="pic" />
-                        </div>
-                        <div class="media-body">
-                            <span class="media-heading">
-                            <a href="#"><?php echo $commit_row->user_first_name ." ".$commit_row->user_last_name    ;?></a>
-                            </span>
-                            <span class="media-footer"><?php echo $commit_row->user_status;?></span> 
-                        </div>
-                    </div>
-                </div>
-                <?php
-            }
-            ?>
-        </div>  <!-- /  .div row -->
-    </div> <!--  / .div container -->
+                <a href="https://www.facebook.com/app_scoped_user_id/<?php echo $commit_row->user_facebook_id;?>/">
+                    <div class="col-md-3 col-sm-6 ">   
+                        <div class="media thumbnail">
+                            <div class="pull-left">
+                                <img src="https://graph.facebook.com/<?php echo $commit_row->user_facebook_id;?>/picture" alt="" class="pic" />
+                            </div>
+                            <div class="media-body">
+                                <span class="media-heading">
+                                 <?php echo $commit_row->user_first_name ." ".$commit_row->user_last_name    ;?>
+                             </span>
+                             <span class="media-footer"><?php echo $commit_row->user_status;?></span> 
+                         </div>
+                     </div>
+                 </div>
+             </a>
+             <?php
+         }
+         ?>
+     </div>  <!-- /  .div row -->
+ </div> <!--  / .div container -->
 </div>
 </section><!--/#bottom-->
 <?php $this->load->view('footer');?>

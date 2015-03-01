@@ -24,7 +24,7 @@ class Facebook_model extends CI_model{
         {
             try {
                 // Proceed knowing you have a logged in user who's authenticated.
-                $profile = $this->facebook->api('/me?fields=id,name,link,email,first_name,last_name,gender');
+                $profile = $this->facebook->api('/me?fields=id,name,link,email,first_name,last_name,gender'); 
             } catch (FacebookApiException $e) {
                 error_log($e);
                 $user = null;

@@ -70,7 +70,7 @@
                             echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'.$fb_data['me']['name']." ". anchor('main/logout','Logout');
                         }
                         ?>
-                    </li>                    
+                    </li>                  
                 </ul>
             </div>
 
