@@ -152,10 +152,7 @@
                                        if( !empty( $selected[$row_paper->paper_id])){       //join array $select = $row_paper->paper_id
                                        // echo join(",", $selected[$row_paper->paper_id])."----> ส่งแล้ว";           //ถ้า เท่ากัน ให้แสดง join(",", $selected[$row_paper->paper_id]); 
                                           foreach($selected[$row_paper->paper_id] as $key_selected => $value_selected){
-//echo "<button class='btn btn-success'>".$value_selected."</button>&nbsp;";
-//echo $selected[$row_paper->paper_id][1]['committee_name'];
                                              echo  "<button class='btn btn-success' data-toggle='modal' data-target='#myModal".$value_selected['committee_facebook_id'].$value_selected['comm_id']."'>".$value_selected['committee_name']."</button>&nbsp;";
-//."=".$value_selected['committee_facebook_id']."=".$value_selected['comm_id']."<br/>";
                                              ?>
                                              <!-- show modal dialog  -->
                                              <div id="myModal<?php echo $value_selected['committee_facebook_id'].$value_selected['comm_id'];?>"  class="modal fade bs-example-modal-lg " tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
@@ -223,8 +220,7 @@
                      </table>
                   </div>
                   <!-- /.table-responsive -->
-               </div>
-               
+               </div> 
             </div>
             <!-- /.row -->
          </div>

@@ -361,14 +361,14 @@ public function committee_check_paper(){
 						'title' => 'manage status',
 						'fb_data' => $fb_data,
 						'get_users' => $this->m_main->get_users(),
-			'get_paper' => $this->m_main->get_paper(),		//all paper
-			'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
-			'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
-			'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
-			//'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
-			'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
-			'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY paper_id')->result(),		//
-			);
+						'get_paper' => $this->m_main->get_paper(),		//all paper
+						'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
+						'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
+						'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
+						//'check_paper' => $this->db->group_by('user_facebook_id')->get('committee')->result(),	//โครงงานที่ต้องตรวจ
+						'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
+						'count_paper_check' => $this->db->query('SELECT * FROM `check_paper` GROUP BY paper_id')->result(),		//
+						);
 					$this->load->view('data',$data);
 				} // .. end if ..//
 			} //. end foreach..//
@@ -424,6 +424,15 @@ public function committee_check_paper(){
 			echo "<script>alert('error');</script>";
 			return false;
 		}
+	}
+
+	public function profile(){
+		$fb_data = $this->session->userdata('fb_data');
+		$data = array(
+			'title' => "Profile",
+			'fb_data' => $fb_data,
+		);
+		$this->load->view('profile',$data);
 	}
 
 }
