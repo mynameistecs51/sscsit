@@ -5,7 +5,7 @@
 class Main extends CI_Controller {
 	function __construct()
 	{
-// Call the controll constructor
+	// Call the controll constructor
 		parent::__construct();
 		date_default_timezone_set("Asia/Bangkok");
 		$this->load->model('m_main','',TRUE);
@@ -16,7 +16,7 @@ class Main extends CI_Controller {
 	public function index(){
 		$fb_data = $this->session->userdata('fb_data');
 
-		if(!$fb_data['me']){     
+		if(!$fb_data['me']){
 			$data = array(
 				'title' => "Student Symposium",
 				'fb_data' => $fb_data,
@@ -35,14 +35,26 @@ class Main extends CI_Controller {
 		} else{
 			foreach ($this->facebook_model->id_check($fb_data)->result() as $key_users => $row_users) {
 				switch ($row_users->user_status) {
-					case 'user':
-					$data = array(
-						'title' => "Student Symposium",
-						'fb_data' => $fb_data,
-						);
-					$this->load->view('index',$data);
+					case 'student_udru':
+					redirect('main/home','refresh');
 					break;
-					// --------------end status user ------------//
+					// --------------end status student udru ------------//
+					case 'student_paper':
+					redirect('main/home','refresh');
+					break;
+					// --------------end status student paper ------------//
+					case 'student_public':
+					redirect('main/home','refresh');
+					break;
+					// --------------end status student public ------------//
+					case 'teacher_public':
+					redirect('main/home','refresh');
+					break;
+					// --------------end status teacher public  ------------//
+					case 'people_public':
+					redirect('main/home','refresh');
+					break;
+					// --------------end status people public ------------//
 					case 'admin':
 					redirect('main/admin','refresh');
 					break;
@@ -66,7 +78,6 @@ class Main extends CI_Controller {
 				}
 			}
 		}
-
 	}
 
 	public function home(){
@@ -88,9 +99,17 @@ class Main extends CI_Controller {
 
 	public function send_page($error =''){
 		$fb_data = $this->session->userdata('fb_data');
-		if(isset($fb_data['me']['id'])){
+		if(!$fb_data['me']['id']){
+			$data = array(
+				'title'       => "Send paper",
+				'fb_data'     => $fb_data,
+				'paper_group' => $this->m_main->get_paper_group(),
+				'error'       => $error,
+				);
+			$this->load->view('send-paper',$data);
+			echo "3--";
+		}else{
 			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_facebook_id ='.$fb_data['me']['id'])->result();
-
 			foreach ($get_paper as $key_get_paper => $value_get_paper) {
 				if($value_get_paper->user_facebook_id === $fb_data['me']['id']){
 					$data = array(
@@ -100,49 +119,24 @@ class Main extends CI_Controller {
 						'get_paper_data' => $get_paper,
 						);
 					$this->load->view('paper_update',$data);
+					echo "1---";
 				}
-				// else{
-				// 	$data = array(
-				// 		'title' => "Send paper",
-				// 		'fb_data' => $fb_data,
-				// 	// 'paper_group' => $this->db->get('paper_group')->result(),
-				// 		'paper_group' => $this->m_main->get_paper_group(),
-				// 		);
-				// 	$this->load->view('send-paper',$data);
-				// }
 			}
 		}
-		else{
-			$data = array(
-				'title' => "Send paper",
-				'fb_data' => $fb_data,
-					// 'paper_group' => $this->db->get('paper_group')->result(),
-				'paper_group' => $this->m_main->get_paper_group(),
-				'error' => $error,
-				);
-			$this->load->view('send-paper',$data);
-		}
-		// $data = array(
-		// 	'title' => "Send paper",
-		// 	'fb_data' => $fb_data,
-		// 			// 'paper_group' => $this->db->get('paper_group')->result(),
-		// 	'paper_group' => $this->m_main->get_paper_group(),
-		// 	);
-		// $this->load->view('send-paper',$data);
 	}
 
 	public function add_project(){
 		$fb_data = $this->session->userdata('fb_data');
-// $rand = rand(1111,9999);
+		// $rand = rand(1111,9999);
 		$date = date("Y_m_d_H_i");
 		$file_project = "";
 		$file_pictrue ="";
 
-		if($_FILES['fileProject']['name'] != null && $fb_data['me']['id'] != null) 
+		if($_FILES['fileProject']['name'] != null && $fb_data['me']['id'] != null)
 		{
-			$file_project = $this->m_main->upload_fileproject();		//upload file 
+			$file_project = $this->m_main->upload_fileproject();		//upload file
 
-			$insert_paper = array(	
+			$insert_paper = array(
 				'paper_id' => '',
 				'paper_sex' => $this->input->post('sex'),
 				'paper_inputName1' => $this->input->post('inputName1'),
@@ -172,7 +166,7 @@ public function update_project(){
 	$date = date("Y_m_d_H_i");
 	$file_project = "";
 
-	if(!empty($_FILES['fileProject']['name']) ){			
+	if(!empty($_FILES['fileProject']['name']) ){
 		$paper_query = $this->db->query("SELECT * FROM paper WHERE user_facebook_id=".$fb_data['me']['id'])->result();
 		echo '<meta charset="UTF-8" /> ';
 		foreach ($paper_query as $key_paper => $value_paper) {
@@ -192,14 +186,14 @@ public function update_project(){
 			'paper_fileProject' => $file_project['file_name'],
 			'paper_filePictureProject' => "null",
 			'paper_date' => $date,
-			'user_facebook_id' => $fb_data['me']['id'],//facebook id 
+			'user_facebook_id' => $fb_data['me']['id'],//facebook id
 			);
 		$this->db->where('user_facebook_id',$fb_data['me']['id']);
 		$this->db->update('paper',$update_paper);
 
 		redirect('main','refresh');
 	}else{
-		echo "กรุณาเลือกไฟล์";	//ทำใหม่ให้มันดี ๆ 
+		echo "กรุณาเลือกไฟล์";	//ทำใหม่ให้มันดี ๆ
 	}
 
 }
@@ -211,7 +205,7 @@ public function status_page(){
 		'title' => 'Status Paper',
 		'fb_data' => $fb_data,
 		'get_paper' => $this->m_main->get_paper(),
-		'get_status_paper' => $this->m_main->get_status_paper(), 
+		'get_status_paper' => $this->m_main->get_status_paper(),
 		);
 	$this->load->view('status_paper',$data);
 		//print_r($data);
@@ -255,7 +249,7 @@ public function admin_status_paper(){
 		'get_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),  //paper ที่ส่งแล้ว
 		'check_paper' => $this->db->where('user_facebook_id' , $fb_data['me']['id'])->get('committee')->result(),	//โครงงานที่ต้องตรวจ
 		'get_paper' => $this->m_main->get_paper(),
-		'get_status_paper' => $this->m_main->get_status_paper(), 
+		'get_status_paper' => $this->m_main->get_status_paper(),
 		);
 
 	$this->load->view('admin/admin_status_paper',$data);
@@ -327,9 +321,9 @@ public function committee_check_paper(){
 
 	}
 
-	public function send_paper(){			//send project for committee reading 
+	public function send_paper(){			//send project for committee reading
 		$this->m_main->send_paper();
-		redirect('main/admin','refresh');  
+		redirect('main/admin','refresh');
 
 	}
 
@@ -344,7 +338,7 @@ public function committee_check_paper(){
 			'paper_id' => $paper_id,
 			);
 		$this->db->where('comm_id', $committee_id);
-		$this->db->update('committee', $data); 
+		$this->db->update('committee', $data);
 		redirect('main/admin','refresh');
 	}
 
@@ -366,7 +360,7 @@ public function committee_check_paper(){
 					$data = array(
 						'title' => 'manage status',
 						'fb_data' => $fb_data,
-						'get_users' => $this->m_main->get_users(), 			
+						'get_users' => $this->m_main->get_users(),
 			'get_paper' => $this->m_main->get_paper(),		//all paper
 			'get_user_committee' => $this->m_main->get_user_committee(),		//get user status committee
 			'get_send_committee' => $this->m_main->get_committee(),			//get data table committee
@@ -378,7 +372,7 @@ public function committee_check_paper(){
 					$this->load->view('data',$data);
 				} // .. end if ..//
 			} //. end foreach..//
-		}	// .end else 
+		}	// .end else
 	} //end function
 
 

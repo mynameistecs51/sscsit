@@ -3,7 +3,7 @@
 	* 
 	*/
 	class M_main extends CI_model
-	{		
+	{
 		function __construct()
 		{
         // Call the Model constructor
@@ -41,8 +41,7 @@
 			return true;
 		}
 
-		function upload_picture_project()
-		{
+		function upload_picture_project(){
 			$config['upload_path'] = 'images/file_project_picture';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$config['max_size'] = '5000';	//kb
@@ -115,7 +114,7 @@
 				'paper_id' => $paper_id,
 				);
 			$this->db->insert('committee',$data);
-		}		
+		}
 		return true;
 	}
 
@@ -127,7 +126,7 @@
 			'user_gender' => $this->input->post('inputGender'),
 			'user_first_name' => $this->input->post('inputFirst_name'),
 			'user_last_name' => $this->input->post('inputLast_name'),
-			'user_status' => 'user',
+			'user_status' => $this->input->post('status_user'),
 			);
 		$this->db->insert('users',$data);
 		return true;

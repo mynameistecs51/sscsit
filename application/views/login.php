@@ -24,7 +24,7 @@
 					<?php echo form_open('main/insert_users','class="form-horizontal" role="form"');?>
 					<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['me']['id'];?>">
 					<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['me']['name'];?>">
-					<input type="hidden" name="inputEmail" value="<?php echo $fb_data['me']['email'];?>"> 
+					<input type="hidden" name="inputEmail" value="<?php echo $fb_data['me']['email'];?>">
 					<input type="hidden" name="inputGender" value="<?php echo $fb_data['me']['gender'];?>">
 
 					<div class="form-group">
@@ -56,22 +56,15 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-10 ">
-							<div class="form-group row">
-								<label for="inputEmail" class="col-md-3 control-label">Login Detail</label>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
 						<div class="col-md-10">
 							<div class="form-group row">
 								<label for="inputFirst_name" class="col-md-3 control-label">First Name</label>
 								<div class="col-md-3">
-									<input type="text" class="form-control " id="inputFirst_name" name="inputFirst_name" placeholder="inputFirst_name">
+									<input type="text" class="form-control " id="inputFirst_name" name="inputFirst_name" placeholder="ชื่อ">
 								</div>
 								<label for="inputLast_name" class="col-md-3 control-label">Last name</label>
 								<div class="col-md-3">
-									<input type="text" class="form-control" id="inputLast_name" name="inputLast_name" placeholder="Value">
+									<input type="text" class="form-control" id="inputLast_name" name="inputLast_name" placeholder="นามสกุล">
 								</div>
 							</div>
 						</div>
@@ -80,7 +73,6 @@
 						<div class  ="col-md-10">
 							<div class="form-group row">
 								<label for="status_user" class="col-md-4 control-label">สถานะผู้เข้าร่วม</label>
-
 								<div class  ="input-group">
 									<div class="checkbox">
 										<label for  ="student_udru">
@@ -104,7 +96,7 @@
 									</div>
 									<div class="checkbox">
 										<label for  ="people_public">
-										<input type ="radio" value="people_public" name="status_user" id="people_public">  บุคคลทั่วไป
+											<input type ="radio" value="people_public" name="status_user" id="people_public">  บุคคลทั่วไป
 										</label>
 									</div>
 								</div>
