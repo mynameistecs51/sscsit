@@ -93,7 +93,7 @@ class Main extends CI_Controller {
 	}
 
 	public function insert_users(){
-		$this->m_main->insert_users();
+		$this->m_main->insert_users(); 
 		redirect('main','refresh');
 	}
 

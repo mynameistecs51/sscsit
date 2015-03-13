@@ -96,7 +96,7 @@
 									</div>
 									<div class="checkbox">
 										<label for  ="people_public">
-											<input type ="radio" value="people_public" name="status_user" id="people_public">  บุคคลทั่วไป
+											<input type ="radio" value="people_public" name="status_user" id="people_public" checked="true">  บุคคลทั่วไป
 										</label>
 									</div>
 								</div>
