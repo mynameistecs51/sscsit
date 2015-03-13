@@ -39,18 +39,18 @@
 								<input type="text" class="form-control" id="name" name="name" value="<?=$fb_data['uid'];?>">
 							</div>
 							<label for="lastname">นามสกุล:</label>
-							<div class="form-group">
+							<div class="form-group ">
 								<input type="text" class="form-control" id="lastname" name="lastname" value="<?=$fb_data['me']['name'];?>" >
 							</div>
 						</div>
 					</div>
 					<div class="form-inline col-md-offset-3">
-						<div class="form-group ">
+						<!-- <div class="form-group "> -->
 							<label for="project_name">โปรเจ็ค:</label>
-							<div class="form-group col-sm-19">
-								<input type="text" class="form-control" id="project_name" name="project_name" value="<?=$fb_data['uid'];?>">
+							<div class="form-group col-sm-8 ">
+								<input type="text" class="form-control" id="project_name" name="project_name" value="<?=$fb_data['me']['name'];?>" >
 							</div>
-						</div>
+						<!-- </div> -->
 					</div>
 				</div>
 			</div>
