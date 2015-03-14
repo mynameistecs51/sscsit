@@ -431,6 +431,7 @@ public function committee_check_paper(){
 		$data = array(
 			'title' => "Profile",
 			'fb_data' => $fb_data,
+			'data_profile' => $this->m_main->get_users_id($fb_data),
 		);
 		$this->load->view('profile',$data);
 	}

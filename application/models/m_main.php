@@ -65,11 +65,11 @@
 
 		public function get_paper(){
 			$query_paper = $this->db->query("SELECT
-			paper.*, paper_group.*, users.*
-			FROM (paper INNER JOIN paper_group ON  paper.paper_group = paper_group.group_id) 
-			INNER JOIN users ON(users.user_facebook_id = paper.user_facebook_id)
-			ORDER BY paper.paper_id DESC
-			");
+				paper.*, paper_group.*, users.*
+				FROM (paper INNER JOIN paper_group ON  paper.paper_group = paper_group.group_id) 
+				INNER JOIN users ON(users.user_facebook_id = paper.user_facebook_id)
+				ORDER BY paper.paper_id DESC
+				");
 			return $query_paper->result();
 		}
 
@@ -137,6 +137,17 @@
 		return $get_users->result();
 	}
 
+	public function get_users_id($fb_data){
+		$query_user_id = $this->db->query("SELECT
+			users.*,paper.*,paper_group.*
+			FROM `users`
+			INNER JOIN paper
+			ON users.user_facebook_id = paper.user_facebook_id
+			INNER JOIN paper_group 
+			ON paper_group.group_id = paper.paper_group 
+			WHERE users.user_facebook_id =".$fb_data['uid']);
+		return $query_user_id->result();
+	}
 	public function  get_committee(){
 		$query_table_committee = $this->db->query("SELECT
 			`users`.`user_fb_name`,
