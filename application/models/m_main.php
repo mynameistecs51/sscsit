@@ -145,7 +145,7 @@
 			ON users.user_facebook_id = paper.user_facebook_id
 			INNER JOIN paper_group 
 			ON paper_group.group_id = paper.paper_group 
-			WHERE users.user_facebook_id =".$fb_data['uid']);
+			WHERE users.user_facebook_id ='".$fb_data['uid']."'  ");
 		return $query_user_id->result();
 	}
 	public function  get_committee(){

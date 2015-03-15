@@ -3,14 +3,12 @@
 * 
 */
 class Main extends CI_Controller {
-	function __construct()
-	{
+	function __construct(){
 	// Call the controll constructor
 		parent::__construct();
 		date_default_timezone_set("Asia/Bangkok");
 		$this->load->model('m_main','',TRUE);
 		$this->load->model('facebook_model','',TRUE);
-
 	}
 
 	public function index(){
@@ -132,8 +130,7 @@ class Main extends CI_Controller {
 		$file_project = "";
 		$file_pictrue ="";
 
-		if($_FILES['fileProject']['name'] != null && $fb_data['me']['id'] != null)
-		{
+		if($_FILES['fileProject']['name'] != null && $fb_data['me']['id'] != null){
 			$file_project = $this->m_main->upload_fileproject();		//upload file
 
 			$insert_paper = array(
@@ -309,8 +306,9 @@ public function committee_check_paper(){
 			'user_name' => $this->m_main->get_users(),
 			);
 		$this->load->view('login',$data);
-//print_r($data['user_name'][0]);
+		//print_r($data['user_name'][0]);
 	}
+
 	public function logout() {
 		$this->facebook_model->logout();
 		redirect('main','refresh');
@@ -432,7 +430,7 @@ public function committee_check_paper(){
 			'title' => "Profile",
 			'fb_data' => $fb_data,
 			'data_profile' => $this->m_main->get_users_id($fb_data),
-		);
+			);
 		$this->load->view('profile',$data);
 	}
 
