@@ -42,7 +42,9 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>images/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>images/ico/apple-touch-icon-57-precomposed.png">
-
+<!-- bootstrap hover dropdown -->
+<script src="<?php echo base_url();?>js/bootstrap-hover-dropdown.min.js"></script>
+<!-- ./bootstrap hover dropdown ./ -->
 </head><!--/head-->
 <body >
    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
@@ -62,17 +64,27 @@
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor('main','หน้าหลัก');?></li>
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
-               <li style="margin-top:20px;font-weight: bold; ">
+               <li style="margin-top:20px;font-weight: bold;" class="form-inline text-center ">
                   <?php
                   if(empty($fb_data['me'])){
                      echo anchor($fb_data['loginUrl'],'Login');
                   }else{
-                     echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'.$fb_data['me']['name']." ". anchor('main/logout','Logout');
-                  }
-                  ?>
-               </li>
-            </ul>
-         </div>
+                     ?>
+                     <li style="margin-top:20px;font-weight: bold; ">
+                     <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                         <img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu">
+                         <li><a tabindex="-1" href="profile">My Account</a></li>
+                         <li><a tabindex="-1" href="logout">Log out</a></li>
+                      </ul>
+                   </li>
+                   <?php
+                }
+                ?>
+             </li>
+          </ul>
+       </div>
 
-      </div>
+    </div>
 </header><!--/header-->

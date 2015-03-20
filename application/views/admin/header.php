@@ -80,7 +80,7 @@
                 <div class="nav navbar-top-links navbar-right " style="margin-top:20px;">
                     <ul class="navbar-brand">
                         <li>
-                            <?php echo anchor('main/home','หลักหลัก',' class="navbar-brand "');?>
+                            <?php echo anchor('main/home','หน้าหลัก',' class="navbar-brand "');?>
                         </li>
                         <li>
                             <?php echo anchor('main/admin','ทั่วไป',' class="navbar-brand "');?>
@@ -88,7 +88,7 @@
                         <li>
                             <?php echo anchor('main/data_Table','จัดการสิทธิ์',' class="navbar-brand "');?>
                         </li>
-                        <li class="centered">
+                        <li class="text-center">
                             <?php
                             echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'. anchor('main/logout','Logout');
                             ?>

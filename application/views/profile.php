@@ -1,4 +1,24 @@
 <?php $this->load->view('header');?>
+
+<script type="text/javascript">
+/**
+ * show picture upload payment
+ */
+ function PreviewImage() {
+
+ 	var oFReader = new FileReader();
+
+ 	oFReader.readAsDataURL(document.getElementById("images[]").files[0]);
+
+ 	oFReader.onload = function (oFREvent) {
+
+ 		document.getElementById("show_pic").src = oFREvent.target.result;
+
+ 	};
+
+ } 
+
+</script>
 <section  class="well" style="margin-top:30px;">
 	<div class="container">
 		<hr/>
@@ -6,16 +26,14 @@
 			<!-- left column -->
 			<div class="col-md-3">
 				<div class="text-center">
-					<!-- <img src="https://graph.facebook.com/<?=$fb_data['uid'];?>/picture"  class="avatar img-circle" alt="avatar"> -->
 					<img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" class="thumbnail img-responsive col-md-offset-5"  alt="avatar" />
 
-					<h6>Upload a different photo...</h6>
+					<label class="control-label">สถานะ :<span class="label label-warning">รออนุมัติงานวิจัย</span></label>
 
-					<input type="file" class="form-control">
 				</div>
 			</div>
-
 			<!-- edit form column -->
+			
 			<div class="col-md-9 personal-info">
 				<form class="form-horizontal" role="form">
 					<?php 
@@ -75,9 +93,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label">Confirm password:</label>
+						<label class="col-md-3 control-label">Payment:</label>
 						<div class="col-md-8">
-							<input class="form-control" type="password" value="11111122333">
+							<img id="show_pic" name="show_pic" src="<?php echo base_url().'images/no-image.jpg';?>" alt="" style="width:130px; height:130px" /><br/><br/>
+							<input type="file" id="images"  name="images" size="20" onchange="PreviewImage();"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -91,7 +110,7 @@
 				<?php endforeach; ?>
 			</form>
 		</div>
-	</div>	
+	</div>
 </div>
 <hr/>
 </section>
