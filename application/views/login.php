@@ -107,10 +107,10 @@
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-success">Account Login</button>
 				</div>
-			</form>
-		</div>
-	</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+				<?php echo form_close(); ?>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </div>
 <?php $this->load->view('footer');?>

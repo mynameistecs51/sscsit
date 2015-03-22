@@ -45,6 +45,11 @@
 <!-- bootstrap hover dropdown -->
 <script src="<?php echo base_url();?>js/bootstrap-hover-dropdown.min.js"></script>
 <!-- ./bootstrap hover dropdown ./ -->
+
+<!-- /. bootstrap datetime picker-->
+<script src="<?php echo base_url();?>js/bootstrap-datetimepicker.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap-datetimepicker.min.css">
+<!-- ./ end bootstrap datetime picker-->
 </head><!--/head-->
 <body >
    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
