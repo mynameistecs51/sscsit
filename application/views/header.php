@@ -47,8 +47,8 @@
 <!-- ./bootstrap hover dropdown ./ -->
 
 <!-- /. bootstrap datetime picker-->
-<script type="text/javascript" language="javascript"  src="<?php echo base_url();?>js_datetimepicker/bootstrap-datetimepicker.min.js"></script>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css_datetimepicker/bootstrap-datetimepicker.min.css">
+<script type="text/javascript" language="javascript"  src="<?php echo base_url();?>datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>datetimepicker/css/bootstrap-datetimepicker.min.css" />
 <!-- ./ end bootstrap datetime picker-->
 </head><!--/head-->
 <body >

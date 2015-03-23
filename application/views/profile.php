@@ -50,20 +50,21 @@
 
 									<div class="form-group">
 										<label for="form_datetime" class="col-sm-2 control-label">วันที่แจ้ง</label>
-										<div class="col-sm-8 ">
-											<div class="form-group">
-												<div class='input-group date' id='datetimepicker1'>
-													<input type='text' class="form-control" />
-													<span class="input-group-addon">
-														<i class="glyphicon glyphicon-calendar"></i>
-													</span>
-												</div>
+										<div class="col-md-5">
+											<div id="datetimepicker1" class="input-append date">
+												<input  type="date" class="form-control"></input>
+												<span class="add-on">
+													<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+													</i>
+												</span>
 											</div>
 										</div>
-
 										<script type="text/javascript">
-											$(function () {
-												$('#datetimepicker1').datetimepicker();
+											$(function() {
+												$('#datetimepicker1').datetimepicker({
+													language: 'th-th',
+													formate:"dd/MMMM/yyyy hh:mm"
+												});
 											});
 										</script>
 									</div>
