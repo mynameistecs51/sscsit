@@ -47,9 +47,13 @@
 <!-- ./bootstrap hover dropdown ./ -->
 
 <!-- /. bootstrap datetime picker-->
-<script type="text/javascript" language="javascript"  src="<?php echo base_url();?>datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<script type="text/javascript" src="<?php echo base_url();?>datetimepicker/js/bootstrap-datepicker.js"></script>
+<!-- thai extension -->
+<script type="text/javascript" src="<?php echo base_url();?>datetimepicker/js/bootstrap-datepicker-thai.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>datetimepicker/js/locales/bootstrap-datepicker.th.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>datetimepicker/css/datepicker.css">
 <!-- ./ end bootstrap datetime picker-->
+
 </head><!--/head-->
 <body >
    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
