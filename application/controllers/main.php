@@ -434,6 +434,10 @@ public function committee_check_paper(){
 		$this->load->view('profile',$data);
 	}
 
+	public function send_pament(){
+		
+	}
+
 }
 
 
