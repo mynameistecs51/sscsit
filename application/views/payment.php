@@ -51,14 +51,14 @@
 									<div class="form-group">
 										<label for="form_datetime" class="col-sm-2 control-label">วันที่แจ้ง</label>
 										<!-- <div class='col-md-8'> -->
-											<div class="form-group col-md-8">
-												<div class="input-append date datepicker" >
-													<input size="16" type="text"  class="form-control " readonly>
-													<span class="add-on">
-														<i class="icon-th"></i>
-													</span>
-												</div>
+										<div class="form-group col-md-8">
+											<div class="input-append date datepicker" >
+												<input size="16" type="text"  class="form-control " readonly>
+												<span class="add-on">
+													<i class="icon-th"></i>
+												</span>
 											</div>
+										</div>
 										<!-- </div> -->
 										<script type="text/javascript">
 											$(function () {
@@ -99,12 +99,6 @@
 					</div>
 					<div class="form-group"></div> <!--- เว้นวรรค -->
 					<div class="form-group">
-						<label class="col-lg-3 control-label">Email:</label>
-						<div class="col-lg-8">
-							<input class="form-control" type="text" value="<?php echo $fb_data['me']['email'];?>">
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="col-lg-3 control-label">First name:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" value="<?php echo $profile_row->user_first_name;?>">
@@ -117,27 +111,15 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-3 control-label">Gender:</label>
-						<div class="col-lg-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->user_gender?>" />
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="col-lg-3 control-label">Project TH:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" value="<?php echo $profile_row->paper_inputProjectName_TH;?>" disabled="dissabled"/>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label">Project EN:</label>
-						<div class="col-md-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->paper_inputProjectName_EN;?>" disabled="dissabled"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label">Group:</label>
-						<div class="col-md-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->group_name;?>" disabled="dissabled"/>
+						<label class="col-lg-3 control-label">Payment:</label>
+						<div class="col-lg-8">
+							<input class="form-control" type="file" />
 						</div>
 					</div>
 					<div class="form-group">

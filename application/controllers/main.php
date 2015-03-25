@@ -435,7 +435,13 @@ public function committee_check_paper(){
 	}
 
 	public function send_pament(){
-		
+		$fb_data = $this->session->userdata('fb_data');
+		$data = array(
+			'title' => "Profile",
+			'fb_data' => $fb_data,
+			'data_profile' => $this->m_main->get_users_id($fb_data),
+			);
+		$this->load->view('payment',$data);
 	}
 
 }
