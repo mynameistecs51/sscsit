@@ -8,7 +8,7 @@
 
  	var oFReader = new FileReader();
 
- 	oFReader.readAsDataURL(document.getElementById("images[]").files[0]);
+ 	oFReader.readAsDataURL(document.getElementById("images").files[0]);
 
  	oFReader.onload = function (oFREvent) {
 
@@ -30,54 +30,6 @@
 
 					<label class="control-label">สถานะ :<span class="label label-warning">รออนุมัติงานวิจัย</span></label>
 					<br/>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-						แจ้งชำระเงิน
-					</button>
-					<div id="myModal"  class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-						<div class="modal-dialog modal-lg ">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-									<h4 class="modal-title">แจ้งชำเงินค่าลงทะเบียน</h4>
-									<hr/>
-								</div>
-								<div class="modal-body">
-									<?php echo form_open('main/send_pament','class="form-horizontal" role="form"');?>
-									<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['me']['id'];?>">
-									<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['me']['name'];?>">
-									<input type="hidden" name="inputEmail" value="<?php echo $fb_data['me']['email'];?>">
-									<input type="hidden" name="inputGender" value="<?php echo $fb_data['me']['gender'];?>">
-
-									<div class="form-group">
-										<label for="form_datetime" class="col-sm-2 control-label">วันที่แจ้ง</label>
-										<!-- <div class='col-md-8'> -->
-										<div class="form-group col-md-8">
-											<div class="input-append date datepicker" >
-												<input size="16" type="text"  class="form-control " readonly>
-												<span class="add-on">
-													<i class="icon-th"></i>
-												</span>
-											</div>
-										</div>
-										<!-- </div> -->
-										<script type="text/javascript">
-											$(function () {
-												$('.datepicker').datepicker({
-													language:'th',
-													default: true,
-													format: "dd-MM-yyyy",
-												});
-											});
-										</script>
-									</div>
-								</div>  <!-- /. <div class="modal-body">-->
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-success">Send</button>
-								</div>
-								<?php echo form_close(); ?>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
 				</div> <!-- /.<div class="text-center">-->
 			</div>	<!-- /. end <div class="row"> -->
 			<!-- edit form column -->
@@ -99,19 +51,40 @@
 					</div>
 					<div class="form-group"></div> <!--- เว้นวรรค -->
 					<div class="form-group">
-						<label class="col-lg-3 control-label">First name:</label>
+						<label class="col-lg-3 control-label">วันที่แจ้ง:</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->user_first_name;?>">
+							<div class="input-append date datepicker" >
+								<input size="16" type="text"  class="form-control " readonly>
+								<span class="add-on">
+									<i class="icon-th"></i>
+								</span>
+							</div>
+							<!-- </div> -->
+							<script type="text/javascript">
+								$(function () {
+									$('.datepicker').datepicker({
+										language:'th',
+										default: true,
+										format: "dd-mmm-yyyy",
+									});
+								});
+							</script>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-3 control-label">Last name:</label>
+						<label class="col-lg-3 control-label">ธนาคาร:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" value="<?php echo $profile_row->user_last_name;?>">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-lg-3 control-label">Project TH:</label>
+						<label class="col-lg-3 control-label">สาขา:</label>
+						<div class="col-lg-8">
+							<input class="form-control" type="text" value="<?php echo $profile_row->paper_inputProjectName_TH;?>" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">จำนวนเงิน:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" value="<?php echo $profile_row->paper_inputProjectName_TH;?>" disabled="dissabled"/>
 						</div>
@@ -119,7 +92,8 @@
 					<div class="form-group">
 						<label class="col-lg-3 control-label">Payment:</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="file" />
+							<img id="show_pic" src="<?php echo base_url().'images/no-image.jpg';?>" alt="" style="width:130px; height:130px" /><br/>
+							<input type="file" id="images" class="form-control" name="images" size="20" onchange="PreviewImage();" />
 						</div>
 					</div>
 					<div class="form-group">

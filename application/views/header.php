@@ -84,9 +84,9 @@
          <img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
        </a>
        <ul class="dropdown-menu">
-         <li><a tabindex="-1" href="profile">My Account</a></li>
-         <li><a tabindex="-1" href="send_pament">Payment</a></li>
-         <li><a tabindex="-1" href="logout">Log out</a></li>
+         <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
+         <li><a tabindex="-1" href="send_pament">แจ้งชำระเงิน</a></li>
+         <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li>
        </ul>
      </li>
      <?php
