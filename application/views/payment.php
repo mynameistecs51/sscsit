@@ -65,7 +65,7 @@
 									$('.datepicker').datepicker({
 										language:'th',
 										default: true,
-										format: "dd-mmm-yyyy",
+										format: "dd-mm-yyyy",
 									});
 								});
 							</script>
