@@ -7,6 +7,7 @@ class Facebook_model extends CI_model{
         $config = array(
             'appId'  => '454050584749305',
             'secret' => 'fe912f75101dae2d9f43dde78768f24c',
+             "facebook/php-sdk-v4" => "4.0.*",
             'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 

@@ -1,5 +1,6 @@
 <?php $this->load->view('admin/header');?>
-<?php 
+
+<?php
 if(empty($javascript_myModal)){
     echo "";
 }else{

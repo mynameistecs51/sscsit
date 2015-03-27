@@ -74,7 +74,13 @@
 					<div class="form-group">
 						<label class="col-lg-3 control-label">ธนาคาร:</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->user_last_name;?>">
+							<select class="selectpicker show-tick form-control "  data-live-search="true"  name="select_bank">
+								<?php
+								foreach ($data_bank as $bank_row) {
+									echo '<option value="'.$bank_row->bank_id.' >'.$bank_row->bank_name.'</option>';
+								}
+								?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
