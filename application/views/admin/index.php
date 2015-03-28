@@ -1,5 +1,5 @@
 <?php $this->load->view('admin/header');?>
-<div id="page-wrapper">
+<div id="page-wrapper" style="width:100%;margin-left:0px;">
    <div class="row">
       <div class="col-lg-12">
          <h1 class="page-header">ทั่วไป</h1>
@@ -102,7 +102,7 @@
       <div class="col-lg-16">
          <div class="panel panel-default">
             <div class="panel-heading">
-               <i class="fa fa-file-text fa-fx"></i> project                
+               <i class="fa fa-file-text fa-fx"></i> project
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">

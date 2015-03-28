@@ -75,9 +75,9 @@
 						<label class="col-lg-3 control-label">ธนาคาร:</label>
 						<div class="col-lg-8">
 							<select class="selectpicker show-tick form-control "  data-live-search="true"  name="select_bank">
-								<?php
+								<?php 
 								foreach ($data_bank as $bank_row) {
-									echo '<option value="'.$bank_row->bank_id.' >'.$bank_row->bank_name.'</option>';
+									echo '<option value="'.$bank_row->bank_id.' ">'.$bank_row->bank_name.'</option>';
 								}
 								?>
 							</select>
@@ -86,13 +86,13 @@
 					<div class="form-group">
 						<label class="col-lg-3 control-label">สาขา:</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->paper_inputProjectName_TH;?>" />
+							<input class="form-control" type="text" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label">จำนวนเงิน:</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="text" value="<?php echo $profile_row->paper_inputProjectName_TH;?>" disabled="dissabled"/>
+							<input class="form-control" type="text" />
 						</div>
 					</div>
 					<div class="form-group">

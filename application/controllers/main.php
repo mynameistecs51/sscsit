@@ -445,6 +445,15 @@ public function committee_check_paper(){
 		$this->load->view('payment',$data);
 	}
 
+	public function test(){
+		$fb_data = $this->session->userdata('fb_data');
+		$data = array(
+			'title' => "Profile",
+			'fb_data' => $fb_data,
+			);
+		$this->load->view('admin/user_payment',$data);
+	}
+
 }
 
 
