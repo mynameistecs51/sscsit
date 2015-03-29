@@ -434,15 +434,59 @@ public function committee_check_paper(){
 		$this->load->view('profile',$data);
 	}
 
-	public function send_pament(){
+	public function send_payment(){
 		$fb_data = $this->session->userdata('fb_data');
-		$data = array(
-			'title' => "Profile",
-			'fb_data' => $fb_data,
-			'data_profile' => $this->m_main->get_users_id($fb_data),
-			'data_bank' => $this->db->get('bank')->result(),
-			);
-		$this->load->view('payment',$data);
+		$get_payment = $this->db->get('payment')->result();
+		foreach ($get_payment as $payment_row) {
+			if($payment_row->user_facebook_id == $fb_data['uid']){
+
+				$data          = array(
+					'title'        => "Profile",
+					'fb_data'      => $fb_data,
+					'data_profile' => $this->m_main->get_users_id($fb_data),
+					'data_bank'    => $this->db->get('bank')->result(),
+					'get_payment' => $get_payment,
+					);
+			}else{
+				$data = array(
+					'title' => "Profile",
+					'fb_data' => $fb_data,
+					'data_profile' => $this->m_main->get_users_id($fb_data),
+					'data_bank' => $this->db->get('bank')->result(),
+					);
+			}
+			$this->load->view('payment',$data);
+		}
+	}
+
+	public function insert_payment(){
+		$fb_id = $this->input->post('fb_id');
+		$send_date = $this->input->post('send_date');
+		$select_bank = $this->input->post('select_bank');
+		$branch_bank = $this->input->post('branch_bank');
+		$amount = $this->input->post('amount');
+
+
+		if(!empty($_FILES['file_payment']['name']) ){
+			$upload_filepayment = $this->m_main->upload_picture_payment();
+
+			$insert_payment    = array(
+				'payment_id'       => '',
+				'user_facebook_id' => $fb_id,
+				'bank_id'          => $select_bank,
+				'branch_bank'      => $branch_bank,
+				'amount'           => $amount,
+				'send_date'        => $send_date,
+				'payment_fileName' =>$upload_filepayment['file_name'],
+				'status_payment' => "wait",
+				);
+			$this->db->insert('payment',$insert_payment);
+			redirect('main/send_payment');
+		}else{
+			echo "<meta charset='UTF-8'>";
+			echo "กรุณากรอกเอกสารยืนยันการจ่ายเงิน";
+		}
+
 	}
 
 	public function test(){
@@ -452,9 +496,7 @@ public function committee_check_paper(){
 			'fb_data' => $fb_data,
 			);
 		$this->load->view('admin/user_payment',$data);
-	}
+	} 
 
 }
-
-
 ?>

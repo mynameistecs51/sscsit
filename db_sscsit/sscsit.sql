@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 27, 2015 at 05:07 PM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Host: localhost
+-- Generation Time: Mar 29, 2015 at 07:31 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
 `bank_id` int(11) NOT NULL,
   `bank_code` char(3) NOT NULL,
   `bank_name` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bank`
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
   `paper_id` int(11) NOT NULL,
   `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_comment` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `check_paper`
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
   `user_facebook_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `committee`
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
   `user_facebook_id` char(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper`
@@ -155,7 +155,7 @@ INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, 
 CREATE TABLE IF NOT EXISTS `paper_group` (
 `group_id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper_group`
@@ -167,6 +167,30 @@ INSERT INTO `paper_group` (`group_id`, `group_name`) VALUES
 (5, 'โปรแกรมช่วยเหลือคนพิการและผู้สูงอายุ'),
 (6, 'โปรแกรมเพื่องานพัฒนาด้านวิทยาศาสตร์และเทคโนโลยี'),
 (7, 'โปรแกรมเพื่อประยุกต์ใช้งานสำหรับลินุกซ์');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE IF NOT EXISTS `payment` (
+`payment_id` int(11) NOT NULL,
+  `user_facebook_id` char(255) NOT NULL,
+  `bank_id` int(11) NOT NULL,
+  `branch_bank` text NOT NULL,
+  `amount` char(10) NOT NULL,
+  `send_date` text NOT NULL,
+  `payment_fileName` text NOT NULL,
+  `status_payment` enum('wait','accep','reject') NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `user_facebook_id`, `bank_id`, `branch_bank`, `amount`, `send_date`, `payment_fileName`, `status_payment`) VALUES
+(5, '895214977163448', 1, 'udru', '2', '27-03-2015', '8952149771634481.jpg', 'wait');
 
 -- --------------------------------------------------------
 
@@ -194,7 +218,7 @@ INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `use
 ('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin'),
 ('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'people_public'),
 ('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'committee'),
-('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'committee'),
+('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'admin'),
 ('921251517908263', 'ตาน้อย ตาน้อย', 'test', 'test', 'tanoi_chem@hotmail.com', 'female', 'teacher_public');
 
 --
@@ -232,6 +256,12 @@ ALTER TABLE `paper_group`
  ADD PRIMARY KEY (`group_id`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+ ADD PRIMARY KEY (`payment_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -266,6 +296,11 @@ MODIFY `paper_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 ALTER TABLE `paper_group`
 MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

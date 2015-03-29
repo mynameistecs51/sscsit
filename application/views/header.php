@@ -85,7 +85,7 @@
                         </a>
                         <ul class="dropdown-menu">
                            <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
-                           <li><a tabindex="-1" href="send_pament">แจ้งชำระเงิน</a></li>
+                           <li><a tabindex="-1" href="send_payment">แจ้งชำระเงิน</a></li>
                            <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li>
                         </ul>
                      </li>

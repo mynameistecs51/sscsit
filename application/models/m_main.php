@@ -63,6 +63,30 @@
 			return true;
 		}
 
+		public function upload_picture_payment(){
+
+			$config['upload_path'] = './images/file_payment';
+			$config['allowed_types'] = 'jpg|jpeg|png|';
+			$config['max_size'] = '7000';	// 7mb
+			$config['file_name'] = $this->input->post('fb_id');	//fiel_name
+			$config['remove_spaces'] = TRUE;
+			//$file_project = $config['file_name'];		//name file project
+
+			$this->load->library("upload",$config);		//library upload
+			if($this->upload->do_upload('file_payment'))	//ถ้า upload ไม่มีปัญหา
+			{
+				$data_fileProject = $this->upload->data();
+				 // print_r($data_fileProject);
+				return $data_fileProject;
+			}
+			else
+			{
+				echo $this->upload->display_errors()."picture payment error";
+			}
+
+			return true;
+		}
+
 		public function get_paper(){
 			$query_paper = $this->db->query("SELECT
 				paper.*, paper_group.*, users.*
