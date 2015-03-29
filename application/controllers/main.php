@@ -432,7 +432,7 @@ public function committee_check_paper(){
 			'data_profile' => $this->m_main->get_users_id($fb_data),
 			);
 		$this->load->view('profile',$data);
-	}
+	} 
 
 	public function send_payment(){
 		$fb_data = $this->session->userdata('fb_data');
@@ -443,15 +443,15 @@ public function committee_check_paper(){
 				$data          = array(
 					'title'        => "Profile",
 					'fb_data'      => $fb_data,
-					'data_profile' => $this->m_main->get_users_id($fb_data),
+					//'data_profile' => $this->m_main->get_users_id($fb_data),
 					'data_bank'    => $this->db->get('bank')->result(),
-					'get_payment' => $get_payment,
+					'get_payment' => $this->db->where('user_facebook_id',$fb_data['uid'])->get('payment')->result(),
 					);
 			}else{
 				$data = array(
 					'title' => "Profile",
 					'fb_data' => $fb_data,
-					'data_profile' => $this->m_main->get_users_id($fb_data),
+					//'data_profile' => $this->m_main->get_users_id($fb_data),
 					'data_bank' => $this->db->get('bank')->result(),
 					);
 			}

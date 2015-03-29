@@ -39,8 +39,9 @@
 
 				<?php 
 				echo form_open_multipart('main/insert_payment','class="form-horizontal" role="form"');
-				foreach ($data_profile as $profile_row) :
-					?>
+				//echo $get_payment[0]->payment_id;
+				//print_r($get_payment);
+				?>
 				<div class="form-group">
 					<label class="col-lg-3 control-label">FB ID:</label>
 					<div class="col-lg-3">
@@ -57,7 +58,7 @@
 					<label class="col-lg-3 control-label">วันที่แจ้ง:</label>
 					<div class="col-lg-8">
 						<div class="input-append date datepicker" >
-							<input size="16" type="text"  class="form-control " name="send_date" readonly/>
+							<input size="16" type="text"  class="form-control " name="send_date" value="<?php echo (!empty($get_payment) ? $get_payment[0]->send_date : '');?>" readonly/>
 							<span class="add-on">
 								<i class="icon-th"></i>
 							</span>
@@ -76,10 +77,13 @@
 				<div class="form-group">
 					<label class="col-lg-3 control-label">ธนาคาร:</label>
 					<div class="col-lg-8">
+						<?php //print_r($get_payment);?>
 						<select class="selectpicker show-tick form-control "  data-live-search="true"  name="select_bank">
 							<?php 
+
 							foreach ($data_bank as $bank_row) {
-								echo '<option value="'.$bank_row->bank_id.' ">'.$bank_row->bank_name.'</option>';
+								$selected =  (!empty($get_payment)?($get_payment[0]->bank_id === $bank_row->bank_id?"selected":''):'');
+								echo '<option value="'.$bank_row->bank_id.'" '.$selected.' >'.$bank_row->bank_name.'</option>';
 							}
 							?>
 						</select>
@@ -101,23 +105,22 @@
 					<label class="col-lg-3 control-label">Payment:</label>
 					<div class="col-lg-8">
 						<img id="show_pic" src="<?php echo base_url().'images/no-image.jpg';?>" alt="" style="width:130px; height:130px" /><br/>
-						 <input type="file" name="file_payment" id="file_payment"  size="20" onchange="PreviewImage();" />
+						<input type="file" name="file_payment" id="file_payment"  size="20" onchange="PreviewImage();" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 control-label"></label>
 					<div class="col-md-8">
-					<input type="submit" class="btn btn-primary" value="Save">
+						<input type="submit" class="btn btn-primary" value="Save">
 						<span></span>
 						<input type="reset" class="btn btn-default" value="Cancel">
 					</div>
 				</div>
-			<?php endforeach; ?>
-			<!-- </form> -->
-			<?php echo form_close();?>
+				<!-- </form> -->
+				<?php echo form_close();?>
+			</div>
 		</div>
 	</div>
-</div>
-<hr/>
+	<hr/>
 </section>
 <?php $this->load->view('footer');?>
