@@ -2,7 +2,7 @@
 <div id="page-wrapper" style="width:100%;margin-left:0px;">
    <div class="row">
       <div class="col-lg-12">
-         <h1 class="page-header">สมาชิกที่จ่ายเงินแล้ว</h1>
+         <h1 class="page-header">สมาชิกที่รอการอนุมัติ</h1>
       </div> <!-- /.col-lg-12 -->
    </div>
    <div class="row">
@@ -33,7 +33,7 @@
    <div class="row"> <!-- /. strat <div class="row"> -->
       <div class="col-lg-16"><!-- /. start <div class="col-lg-16">-->
          <div class="panel panel-primary"><!-- /. strat <div class="panel-default">-->
-           <div class="panel-heading">
+          <div class="panel-heading">
             <i class="fa fa-file-text fa-fx"></i>
          </div> <!-- ./end <div class='panel-heading'>-->
          <div class="panel-body"><!--/. <div class="panel-body">-->
@@ -43,38 +43,52 @@
                      <table id="" class="display" cellspacing="0" width="100%">
                         <thead >
                            <tr >
-                              <th width="40px">ที่</th>
-                              <th>โปรเจ็ค</th>
-                              <th>วันที่ส่ง</th>
-                              <th>สถานะ</th>
+                              <th class="col-sm-1">row</th>
+                              <th class="col-md-7">Project</th>
+                              <th>Payment</th>
+                              <th class="col-md-5">Status Payment</th>
                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                        <td>
-                          xxx
-                        </td>
-                        <td>
-                         xxx
+                           <?php 
+                           $i= 1;
+                           foreach ($data_payment as $data_payment_row) {
+                              ?>
+                           <tr>
+                              <td>
+                               <?php echo $i++;?> <!-- row number-->
+                            </td>
+                            <td>
+                             <?php 
+                             echo $data_payment_row->paper_inputProjectName_TH."<br/>".$data_payment_row->paper_inputName1;
+                             ?>
+                             <!-- ./ project name -->
+                          </td>
+                          <td>
+                            <img src="<?php echo base_url().'images/file_payment/'.$data_payment_row->payment_fileName;?>" width="120px" height="80px"/>
+                         </td>
+
+                         <td >
+                           <?php  
+                           if($data_payment_row->status_payment === "wait"){
+                              echo "<h3><label class='label label-warning'>รอการอนุมัติ</label>  <button class='btn btn-success'> ตอบรับ</button></h3>";
+                           }else{
+                              echo "<label class='label label-success'>ยอมรับ</label>";
+                           }
+
+                           ?>
                         </td>
 
-                        <td>
-                          xxx
-                        </td>
-
-                        <td>
-                        xx
-                        </td>
-
-                        </tr>
-                        </tbody>
-                     </table>
-                  </div><!-- /. <div class="table-responsive">-->
-               </div><!-- end div col-lg-12-->
-            </div> <!-- end div row-->
-         </div><!-- /. end <div class="panel-body">-->
-      </div><!-- ./end <div class="panel-defaut">-->
-   </div><!-- ./ end <div class="col-lg-16">-->
+                     </tr>
+                     <?php  } ?>
+                  </tbody>
+               </table>
+            </div><!-- /. <div class="table-responsive">-->
+         </div><!-- end div col-lg-12-->
+      </div> <!-- end div row-->
+   </div><!-- /. end <div class="panel-body">-->
+</div><!-- ./end <div class="panel-defaut">-->
+</div><!-- ./ end <div class="col-lg-16">-->
 </div> <!-- ./ end <div class="row">-->
 </div><!-- ./<div id="page-wrapper">-->
 
