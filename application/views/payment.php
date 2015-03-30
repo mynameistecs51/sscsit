@@ -92,19 +92,19 @@
 				<div class="form-group">
 					<label class="col-lg-3 control-label">สาขา:</label>
 					<div class="col-lg-8">
-						<input class="form-control" type="text" name="branch_bank" />
+						<input class="form-control" type="text" name="branch_bank" value="<?php echo (!empty($get_payment) ? $get_payment[0]->branch_bank : '');?> "/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-lg-3 control-label">จำนวนเงิน:</label>
 					<div class="col-lg-8">
-						<input class="form-control" type="text" name="amount" />
+						<input class="form-control" type="text" name="amount" value="<?php echo (!empty($get_payment) ? $get_payment[0]->amount : '');?>"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-lg-3 control-label">Payment:</label>
 					<div class="col-lg-8">
-						<img id="show_pic" src="<?php echo base_url().'images/no-image.jpg';?>" alt="" style="width:130px; height:130px" /><br/>
+						<img id="show_pic" src="<?php echo (!empty($get_payment)?base_url().'images/file_payment/'.$get_payment[0]->payment_fileName : base_url().'images/no-image.jpg');?>" alt="" style="width:130px; height:130px" /><br/>
 						<input type="file" name="file_payment" id="file_payment"  size="20" onchange="PreviewImage();" />
 					</div>
 				</div>
