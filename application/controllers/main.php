@@ -492,9 +492,11 @@ public function committee_check_paper(){
 	public function user_payment(){
 		$fb_data = $this->session->userdata('fb_data');
 		$data = array(
-			'title' => "user payment",
-			'fb_data' => $fb_data,
-			'data_payment' => $this->db->query("SELECT paper.*,payment.* From paper INNER JOIN payment ON paper.user_facebook_id = payment.user_facebook_id")->result(),
+			'title'                     => "user payment",
+			'fb_data'                   => $fb_data,
+			'data_payment'              => $this->db->query("SELECT paper.*,payment.* From paper INNER JOIN payment ON paper.user_facebook_id = payment.user_facebook_id")->result(), //โครงงานที่จ่ายเงินแล้ว
+			'get_paper'                 => $this->m_main->get_paper(),		//all paper
+			'get_count_paper_committee' => $this->db->group_by('paper_id')->get('committee')->result(),	//paper ที่ส่งแล้ว
 			);
 		$this->load->view('admin/user_payment',$data);
 	} 

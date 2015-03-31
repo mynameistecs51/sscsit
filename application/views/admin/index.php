@@ -8,127 +8,127 @@
    </div>
    <!-- /.row -->
    <div class="row">
-      <div class="col-lg-3 col-md-6">
-         <a href="admin_status_paper">
-            <div class="panel panel-primary">
-               <div class="panel-heading">
-                  <div class="row">
-                     <div class="col-xs-3">
-                        <i class="fa fa-file-text fa-5x"></i>
-                     </div>
-                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo count($get_paper);?></div>
-                        <div>โปรเจ็คทั้งหมด</div>
-                     </div>
-                  </div>
-               </div>
-               <div class="panel-footer">
-                  <span class="pull-left">View Details</span>
-                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                  <div class="clearfix"></div>
-               </div>
-            </div>
-         </a>
-      </div>
-      <div class="col-lg-3 col-md-6">
-         <a href="#">
-            <div class="panel panel-green">
-               <div class="panel-heading">
-                  <div class="row">
-                     <div class="col-xs-3">
-                        <i class="fa fa-share-square fa-5x"></i>
-                     </div>
-                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo count($get_count_paper_committee);?></div>
-                        <div>ส่งให้กรรมการแล้ว</div>
-                     </div>
-                  </div>
-               </div>
-               <div class="panel-footer">
-                  <span class="pull-left">View Details</span>
-                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                  <div class="clearfix"></div>
-               </div>
-            </div>
-         </a>
-      </div>
-      <div class="col-lg-3 col-md-6">
-         <a href="#">
-            <div class="panel panel-yellow">
-               <div class="panel-heading">
-                  <div class="row">
-                     <div class="col-xs-3">
-                        <i class="fa fa-shopping-cart fa-5x"></i>
-                     </div>
-                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo  count($get_paper) - count($get_count_paper_committee);?></div>
-                        <div>โครงงานที่ต้องส่ง</div>
-                     </div>
-                  </div>
-               </div>
-               <div class="panel-footer">
-                  <span class="pull-left">View Details</span>
-                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                  <div class="clearfix"></div>
-               </div>
-            </div>
-         </a>
-      </div>
-      <div class="col-lg-3 col-md-6">
-         <a href="#">
-            <div class="panel panel-red">
-               <div class="panel-heading">
-                  <div class="row">
-                     <div class="col-xs-3">
-                        <i class="fa fa-support fa-5x"></i>
-                     </div>
-                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo count($count_paper_check);?></div>
-                        <div>โครงงานที่ตรวจแล้ว</div>
-                     </div>
-                  </div>
-               </div>
-               <div class="panel-footer">
-                  <span class="pull-left">View Details</span>
-                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                  <div class="clearfix"></div>
-               </div>
-            </div>
-         </a>
-      </div>
-   </div>  <!-- /.row -->
-
-   <div class="row">
-      <div class="col-lg-16">
-         <div class="panel panel-default">
+    <div class=" col-lg-3 col-md-2">
+      <a href="admin_status_paper">
+         <div class="panel panel-primary ">
             <div class="panel-heading">
-               <i class="fa fa-file-text fa-fx"></i> project
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
                <div class="row">
-                  <div class="col-lg-12">
-                     <div class="table-responsive">
-                        <!-- <table class="table table-bordered table-hover table-striped"> -->
-                        <table id ="" class="display" cellspacing="0" width="100%">
-                           <thead>
-                              <tr>
-                                 <th>ที่</th>
-                                 <th>โปรเจ็ค</th>
-                                 <th>ประเภท</th>
-                                 <th>หัวหน้าโครงงาน</th>
-                                 <th>วันที่ส่ง</th>
-                                 <th>สถานะ</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <?php
-                              $selected = array();
-                              foreach ($get_send_committee as $key_committee => $value_committee) {
+                  <div class="col-xs-3">
+                     <i class="fa fa-file-text fa-5x"></i>
+                  </div>
+                  <div class="col-md-9 text-right">
+                     <div class="huge"><?php echo count($get_paper);?></div>
+                     <div>โปรเจ็คทั้งหมด</div>
+                  </div>
+               </div>
+            </div>
+            <div class="panel-footer">
+               <span class="pull-left">View Details</span>
+               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+      </a>
+   </div>
+   <div class=" col-lg-3 col-md-2">
+      <a href="#">
+         <div class="panel panel-green">
+            <div class="panel-heading">
+               <div class="row">
+                  <div class="col-xs-3">
+                     <i class="fa fa-share-square fa-5x"></i>
+                  </div>
+                  <div class="col-md-9 text-right">
+                     <div class="huge"><?php echo count($get_count_paper_committee);?></div>
+                     <div>ส่งให้กรรมการแล้ว</div>
+                  </div>
+               </div>
+            </div>
+            <div class="panel-footer">
+               <span class="pull-left">View Details</span>
+               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+      </a>
+   </div>
+   <div class=" col-lg-3 col-md-2">
+      <a href="#">
+         <div class="panel panel-yellow">
+            <div class="panel-heading">
+               <div class="row">
+                  <div class="col-xs-3">
+                     <i class="fa fa-shopping-cart fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                     <div class="huge"><?php echo  count($get_paper) - count($get_count_paper_committee);?></div>
+                     <div>โครงงานที่ต้องส่ง</div>
+                  </div>
+               </div>
+            </div>
+            <div class="panel-footer">
+               <span class="pull-left">View Details</span>
+               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+      </a>
+   </div>
+   <div class=" col-lg-3 col-md-2">
+      <a href="user_payment">
+         <div class="panel panel-red">
+            <div class="panel-heading">
+               <div class="row">
+                  <div class="col-xs-3">
+                     <i class="fa fa-support fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                     <div class="huge"><?php echo count($count_paper_check);?></div>
+                     <div>สถานะการจ่ายเงิน</div>
+                  </div>
+               </div>
+            </div>
+            <div class="panel-footer">
+               <span class="pull-left">View Details</span>
+               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+      </a>
+   </div>
+</div>  <!-- /.row -->
+
+<div class="row">
+   <div class="col-lg-16">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <i class="fa fa-file-text fa-fx"></i> project
+         </div>
+         <!-- /.panel-heading -->
+         <div class="panel-body">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="table-responsive">
+                     <!-- <table class="table table-bordered table-hover table-striped"> -->
+                     <table id ="" class="display" cellspacing="0" width="100%">
+                        <thead>
+                           <tr>
+                              <th>ที่</th>
+                              <th>โปรเจ็ค</th>
+                              <th>ประเภท</th>
+                              <th>หัวหน้าโครงงาน</th>
+                              <th>วันที่ส่ง</th>
+                              <th>สถานะ</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <?php
+                           $selected = array();
+                           foreach ($get_send_committee as $key_committee => $value_committee) {
                                  // echo $value_committee->user_first_name."  ".$value_committee->user_last_name."<br/>";
-                                 if( !isset($selected[$value_committee->paper_id])){
-                                    $selected[$value_committee->paper_id] = array();
-                                 }
+                              if( !isset($selected[$value_committee->paper_id])){
+                                 $selected[$value_committee->paper_id] = array();
+                              }
                                  array_push($selected[$value_committee->paper_id],array('committee_name' => $value_committee->user_first_name."  ".$value_committee->user_last_name,'committee_facebook_id' => $value_committee->user_facebook_id,'comm_id' => $value_committee->comm_id));     //แสดงชื่อกรรมการที่ตรวจโครงงาน
 
                               }

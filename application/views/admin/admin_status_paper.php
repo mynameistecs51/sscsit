@@ -8,7 +8,7 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-3 col-md-4">
             <a href="admin_status_paper">
                 <div class="panel panel-info">
                     <div class="panel-heading">
@@ -16,7 +16,7 @@
                             <div class="col-xs-3">
                                 <i class="fa fa-file-text fa-5x"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-5 text-right">
                                 <div class="huge"><?php echo count($get_paper);?></div>
                                 <div>โปรเจ็คทั้งหมด</div>  <!-- โปรเจ็ค ของแต่ล่ะคน form user_facebook_id -->
                             </div>
@@ -52,28 +52,28 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg-3 col-md-6">
-            <a href="#">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo count($get_paper)-count($get_paper_committee);?></div>
-                                <div>โครงงานที่ต้องตรวจ</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        <div class=" col-lg-3 col-md-2">
+         <a href="main">
+            <div class="panel panel-yellow">
+               <div class="panel-heading">
+                  <div class="row">
+                     <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                     </div>
+                     <div class="col-xs-9 text-right">
+                        <div class="huge"><?php echo  count($get_paper) - count($get_paper_committee);?></div>
+                        <div>โครงงานที่ต้องส่ง</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+               </div>
+            </div>
+         </a>
+      </div>
         <div class="col-lg-3 col-md-6">
             <a href="#">
                 <div class="panel panel-green">
