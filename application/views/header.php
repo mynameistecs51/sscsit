@@ -73,28 +73,44 @@
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor('main','หน้าหลัก');?></li>
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
-               <li style="margin-top:20px;font-weight: bold;" class="form-inline text-center ">
-                  <?php
-                  if(empty($fb_data['me'])){
-                     echo anchor($fb_data['loginUrl'],'Login');
-                  }else{
-                     ?>
-                     <li style="margin-top:20px;font-weight: bold; ">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
-                           <img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                           <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
-                           <li><a tabindex="-1" href="send_payment">แจ้งชำระเงิน</a></li>
-                           <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li>
-                        </ul>
-                     </li>
-                     <?php
-                  }
+               <li style="margin-top:20px;font-weight: bold; ">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                   รายละเอียด<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu ">
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/1','หลักการและเหตุผล','class="horizontal"');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/2','วัตถุประสงค์','class="horizontal"');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/3','ประโยชน์ที่จะได้รับ');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/4','รูปแบบของงาน');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/5','ผู้เข้าร่วมโครงงาน/กลุ่มเป้าหมาย');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/6','อาคาร/สถานที่/อุปกรณ์');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/7','ระยะเวลาดำเนินการ');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/8','กิจกรรมดำเนินการ');?></li>
+                  <li><a tabindex ="-1"><?php echo anchor('main/detail/9','ผู้รับผิดชอบโครงการ');?></li>
+               </ul>
+            </li>
+            <li style="margin-top:20px;font-weight: bold;" class="form-inline text-center ">
+               <?php
+               if(empty($fb_data['me'])){
+                  echo anchor($fb_data['loginUrl'],'Login');
+               }else{
                   ?>
-               </li>
-            </ul>
-         </div>
-
+                  <li style="margin-top:20px;font-weight: bold; ">
+                     <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                        <img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
+                     </a>
+                     <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
+                        <li><a tabindex="-1" href="send_payment">แจ้งชำระเงิน</a></li>
+                        <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li>
+                     </ul>
+                  </li>
+                  <?php
+               }
+               ?>
+            </li>
+         </ul>
       </div>
+
+   </div>
 </header><!--/header-->

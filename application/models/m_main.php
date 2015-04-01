@@ -236,5 +236,6 @@
 			');
 		return $get_status_paper->result();
 	}
+
 }
 ?>

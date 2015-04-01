@@ -501,5 +501,83 @@ public function committee_check_paper(){
 		$this->load->view('admin/user_payment',$data);
 	} 
 
+	public function detail($detail_number){
+		$this->load->model('m_detail','',TRUE);
+		$fb_data = $this->session->userdata('fb_data');
+		$data_detail = array(
+			'title' => "รายละเอียด",
+			'fb_data' => $fb_data,
+			);
+		switch ($detail_number) {
+
+			case '1':
+				# หลัการและเหตุผล
+			$data_detail['panel_header'] = "หลัการและเหตุผล";
+			$data_detail['panel_body_detail'] = $this->m_detail->retionale();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '2':
+				# วัตถุประสงค์
+			$data_detail['panel_header'] = "วัตถุประสงค์";
+			$data_detail['panel_body_detail'] = $this->m_detail->objective();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '3':
+				# ประโยชน์ที่จะได้รับ
+			$data_detail['panel_header'] = "ประโยชน์ที่จะได้รับ";
+			$data_detail['panel_body_detail'] = $this->m_detail->benefits();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '4':
+				# รูปแบบของงาน
+			$data_detail['panel_header'] = "รูปแบบของงาน";
+			$data_detail['panel_body_detail'] = $this->m_detail->form_of_work();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '5':
+				# ผู้เข้าร่วมโครงงาน/กลุ่มเป้าหมาย
+			$data_detail['panel_header'] = "ผู้เข้าร่วมโครงงาน/กลุ่มเป้าหมาย";
+			$data_detail['panel_body_detail'] = $this->m_detail->target_group();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '6':
+				# อาคาร/สถานที่/อุปกรณ์
+			$data_detail['panel_header'] = "อาคาร/สถานที่/อุปกรณ์";
+			$data_detail['panel_body_detail'] = $this->m_detail->location();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '7':
+				# ระยะเวลาดำเนินการ
+			$data_detail['panel_header'] = "ระยะเวลาดำเนินการ";
+			$data_detail['panel_body_detail'] = $this->m_detail->action_period();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '8':
+				# กิจกรรมดำเนินการ
+			$data_detail['panel_header'] = "กิจกรรมดำเนินการ";
+			$data_detail['panel_body_detail'] = $this->m_detail->activites_carried();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			case '9':
+				# ผู้รับผิดชอบโครงการ
+			$data_detail['panel_header'] = "ผู้รับผิดชอบโครงการ";
+			$data_detail['panel_body_detail'] = $this->m_detail->responsible();
+
+			$this->load->view('detail',$data_detail);
+			break;
+			default:
+				# code...
+			redirect('main/index','refresh');
+			break;
+		}
+	}
 }
 ?>

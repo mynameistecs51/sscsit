@@ -1,5 +1,5 @@
 <?php $this->load->view('admin/header');?>
-<div id="page-wrapper">
+<div id="page-wrapper" style="margin-left:0px;">
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">
@@ -126,7 +126,7 @@
 					foreach ($get_users as $key_users => $row_users) {
 						$user_status = ($row_users->user_status === 'committee'? "checked":"");
 
-						?>                  
+						?>
 						<tr>
 							<td><?php echo $number-- ;?></td>
 							<td><?php echo $row_users->user_first_name;?></td>
@@ -138,11 +138,10 @@
 
 									<input type="hidden" name="user_id" id="user_id" value="<?php echo $row_users->user_facebook_id;?>"/>
 									<input type="hidden" name="user" id="user" value="<?php echo $row_users->user_first_name;?>"/>
-									<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> />			
+									<input type="checkbox" id="my-checkbox" name="my-checkbox"  <?php echo $user_status;?> />
 								</form>
 							</td> 
-						</tr>      
-
+						</tr>
 						<?php }  ?> 
 					</tbody>
 				</table>

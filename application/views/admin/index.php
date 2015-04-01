@@ -135,8 +135,8 @@
                                  //  echo '--------------------';
                                  // print_r($selected);
                                  //  echo '--------------------';
-                              $number = count($get_paper);                               
-                              foreach ($get_paper as $key_papger => $row_paper) {                                        
+                              $number = count($get_paper);
+                              foreach ($get_paper as $key_papger => $row_paper) {
                                  ?>
                                  <tr>
                                     <td><?php echo $number--;?></td>

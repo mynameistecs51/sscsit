@@ -7,7 +7,7 @@
    </div>
    <div class="row">
       <div class="row">
-       <div class=" col-lg-3 col-md-2">
+        <div class=" col-lg-3 col-md-2">
          <a href="admin_status_paper">
             <div class="panel panel-primary ">
                <div class="panel-heading">
@@ -100,7 +100,7 @@
    <div class="row"> <!-- /. strat <div class="row"> -->
       <div class="col-lg-16"><!-- /. start <div class="col-lg-16">-->
          <div class="panel panel-primary"><!-- /. strat <div class="panel-default">-->
-           <div class="panel-heading">
+          <div class="panel-heading">
             <i class="fa fa-file-text fa-fx"></i>
          </div> <!-- ./end <div class='panel-heading'>-->
          <div class="panel-body"><!--/. <div class="panel-body">-->
@@ -123,19 +123,19 @@
                               ?>
                               <tr>
                                  <td>
-                                   <?php echo $i++;?> <!-- row number-->
-                                </td>
-                                <td>
-                                  <?php 
-                                  echo $data_payment_row->paper_inputProjectName_TH."<br/>".$data_payment_row->paper_inputName1;
-                                  ?>
-                                  <!-- ./ project name -->
+                                  <?php echo $i++;?> <!-- row number-->
                                </td>
                                <td>
-                                <img src="<?php echo base_url().'images/file_payment/'.$data_payment_row->payment_fileName;?>" width="120px" height="80px"/>
+                                <?php 
+                                echo $data_payment_row->paper_inputProjectName_TH."<br/>".$data_payment_row->paper_inputName1;
+                                ?>
+                                <!-- ./ project name -->
                              </td>
+                             <td>
+                               <img src="<?php echo base_url().'images/file_payment/'.$data_payment_row->payment_fileName;?>" width="120px" height="80px"/>
+                            </td>
 
-                             <td >
+                            <td >
                               <?php  
                               if($data_payment_row->status_payment === "wait"){
                                  echo "<h3><label class='label label-warning'>รอการอนุมัติ</label>  <button class='btn btn-success'> ตอบรับ</button></h3>";
