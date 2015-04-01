@@ -348,6 +348,14 @@ public function committee_check_paper(){
 		redirect('main/index','refresh');
 	}
 
+	public function download_file_template($file_name){
+		$this->load->helper('download');
+		$data = file_get_contents("images/file_download/".$file_name); // Read the file's contents
+		$name = $file_name;
+		echo force_download($name,$data);
+		redirect('index','refresh');
+	}
+
 	public function data_Table(){		//show status paper
 		$fb_data = $this->session->userdata('fb_data');
 		if(!($fb_data['me']['id'])){

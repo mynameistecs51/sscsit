@@ -42,8 +42,9 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>images/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>images/ico/apple-touch-icon-57-precomposed.png">
+
 <!-- bootstrap hover dropdown -->
-<script src="<?php echo base_url();?>js/bootstrap-hover-dropdown.min.js"></script>
+<!-- <script src="<?php echo base_url();?>js/bootstrap-hover-dropdown.min.js"></script>-->
 <!-- ./bootstrap hover dropdown ./ -->
 
 <!-- /. bootstrap datetime picker-->
@@ -78,7 +79,8 @@
                    รายละเอียด<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu ">
-                  <li><a tabindex ="-1"><?php echo anchor('main/detail/1','หลักการและเหตุผล','class="horizontal"');?></li>
+                   <li><a tabindex ="-1"><?php echo anchor('main/download_file_template/template_SSCSIT2014.doc','ดาว์นโหลด Template','class="horizontal"');?></li>
+                   <li><a tabindex ="-1"><?php echo anchor('main/detail/1','หลักการและเหตุผล','class="horizontal"');?></li>
                   <li><a tabindex ="-1"><?php echo anchor('main/detail/2','วัตถุประสงค์','class="horizontal"');?></li>
                   <li><a tabindex ="-1"><?php echo anchor('main/detail/3','ประโยชน์ที่จะได้รับ');?></li>
                   <li><a tabindex ="-1"><?php echo anchor('main/detail/4','รูปแบบของงาน');?></li>
