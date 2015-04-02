@@ -105,7 +105,6 @@ class Main extends CI_Controller {
 				'error'       => $error,
 				);
 			$this->load->view('send-paper',$data);
-			echo "3--";
 		}else{
 			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_facebook_id ='.$fb_data['me']['id'])->result();
 			foreach ($get_paper as $key_get_paper => $value_get_paper) {
@@ -117,7 +116,6 @@ class Main extends CI_Controller {
 						'get_paper_data' => $get_paper,
 						);
 					$this->load->view('paper_update',$data);
-					echo "1---";
 				}
 			}
 		}
