@@ -5,8 +5,8 @@ class Facebook_model extends CI_model{
     public function __construct() {
         parent::__construct();
         $config = array(
-            'appId'  => '1406166546366530',
-            'secret' => '5723b9dd2e20e2cd9d642f5b33adbae5',
+            'appId'  => '1406065179710000',
+            'secret' => 'fefcf1a2915761c46e84b6241bc26054',
             'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 
@@ -36,7 +36,7 @@ class Facebook_model extends CI_model{
             'uid' => $user,
             'loginUrl' => $this->facebook->getLoginUrl(
                 array(
-                        'scope' => 'public_profile,email', // app permissions
+                        'scope' => 'public_profile,email,user_friends', // app permissions
                         'redirect_uri' => base_url(), // URL where you want to redirect your users after a successful login
                         )
                 ),
