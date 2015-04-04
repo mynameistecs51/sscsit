@@ -7,7 +7,7 @@ class Facebook_model extends CI_model{
         $config = array(
             'appId'  => '1406065179710000',
             'secret' => 'fefcf1a2915761c46e84b6241bc26054',
-            'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
+            //'fileUpload' => true, // Indicates if the CURL based @ syntax for file uploads is enabled.
             );
 
         $this->load->library('facebook/facebook', $config);
