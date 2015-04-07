@@ -75,7 +75,7 @@
          </div>
          <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right" style="margin-top:30px; ">
-               <li style="margin-top:20px;font-weight: bold; "><?php echo anchor('main','หน้าหลัก');?></li>
+               <li style="margin-top:20px;font-weight: bold; "><?php echo anchor('main/index','หน้าหลัก');?></li>
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/send_page",'ส่งผลงาน');?></li>
                <li style="margin-top:20px;font-weight: bold; "><?php echo anchor("main/status_page",'สถานะโครงงาน');?></li>
                <li style="margin-top:20px;font-weight: bold; ">
@@ -97,18 +97,19 @@
             </li>
             <li style="margin-top:20px;font-weight: bold;" class="form-inline text-center ">
                <?php
-               if(empty($fb_data['me'])){
-                  echo anchor($fb_data['loginUrl'],'Login');
+               if(empty($fb_data)){
+                 echo anchor($this->facebook->login_url(),'login');
                }else{
                   ?>
                   <li style="margin-top:20px;font-weight: bold; ">
                      <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
-                        <img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
+                        <img src="https://graph.facebook.com/<?php echo $fb_data['id'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
                         <li><a tabindex="-1" href="send_payment">แจ้งชำระเงิน</a></li>
-                        <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li>
+                        <!-- <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li> -->
+                        <li><?php echo anchor($this->facebook->logout_url(),'ออกจากระบบ','tabindex="-1"');?></li>
                      </ul>
                   </li>
                   <?php

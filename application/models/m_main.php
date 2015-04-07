@@ -116,7 +116,7 @@
 				INNER JOIN `users` ON `users`.`user_facebook_id` =
 				`committee`.`user_facebook_id`
 				INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
-				WHERE `committee`.`user_facebook_id` ='".$fb_data['me']['id']."'
+				WHERE `committee`.`user_facebook_id` ='".$fb_data['id']."'
 				");
 			return $qery_check_paper->result();
 		}
@@ -169,7 +169,7 @@
 			ON users.user_facebook_id = paper.user_facebook_id
 			INNER JOIN paper_group 
 			ON paper_group.group_id = paper.paper_group 
-			WHERE users.user_facebook_id ='".$fb_data['uid']."'  ");
+			WHERE users.user_facebook_id ='".$fb_data['id']."'  ");
 		return $query_user_id->result();
 	}
 	public function  get_committee(){
@@ -205,7 +205,7 @@
 	public function checked_paper(){		//insert data กรรมการตรวจเอกสาร 
 		$fb_data = $this->session->userdata('fb_data');
 		$data = array(
-			'user_facebook_id' => $fb_data['me']['id'],
+			'user_facebook_id' => $fb_data['id'],
 			'check_status' => $this->input->post('checked_paper'),
 			'check_comment' => $this->input->post('comment'),
 			'paper_id' => $this->input->post('project_id')
@@ -217,7 +217,7 @@
 	public function get_committee_checkpaper(){
 		$fb_data = $this->session->userdata('fb_data');
 
-		$get_committee_checkpaper = $this->db->query('SELECT * FROM check_paper WHERE user_facebook_id = "'.$fb_data['me']['id'].'" GROUP BY paper_id'
+		$get_committee_checkpaper = $this->db->query('SELECT * FROM check_paper WHERE user_facebook_id = "'.$fb_data['id'].'" GROUP BY paper_id'
 			);
 		return $get_committee_checkpaper->result();
 	}

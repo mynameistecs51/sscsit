@@ -356,6 +356,13 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/**
+ * $config facebook api
+ */
+$config['facebook']['api_id'] = '1556056571324954';
+$config['facebook']['app_secret'] = 'f45adf8ded766a3367ea0db237d8756f';
+$config['facebook']['redirect_url'] = $config['base_url'] ;
+$config['facebook']['permissions'] = array(  'email',  'public_profile',  'user_friends');
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

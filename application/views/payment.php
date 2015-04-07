@@ -26,7 +26,7 @@
 			<!-- left column -->
 			<div class="col-md-3">
 				<div class="text-center">
-					<img src="https://graph.facebook.com/<?php echo $fb_data['uid'];?>/picture" class="thumbnail img-responsive col-md-offset-5"  alt="avatar" />
+					<img src="https://graph.facebook.com/<?php echo $fb_data['id'];?>/picture" class="thumbnail img-responsive col-md-offset-5"  alt="avatar" />
 
 					<label class="control-label">สถานะ :<span class="label label-warning">รออนุมัติงานวิจัย</span></label>
 					<br/>
@@ -45,12 +45,12 @@
 				<div class="form-group">
 					<label class="col-lg-3 control-label">FB ID:</label>
 					<div class="col-lg-3">
-						<input class="form-control" type="text" name="fb_id" value="<?php echo $fb_data['uid'];?>" readonly/>
+						<input class="form-control" type="text" name="fb_id" value="<?php echo $fb_data['id'];?>" readonly/>
 						<!-- <input type="hidden" name="f_id" value="<?php echo $profile_row->user_facebook_id;?>"> -->
 					</div>
 					<label class="col-lg-2 control-label ">FB NAME:</label>
 					<div class="col-lg-3">
-						<input class="form-control" type="text" name="fb_name" value="<?php echo $fb_data['me']['name'];?>" disabled="dissabled"/>
+						<input class="form-control" type="text" name="fb_name" value="<?php echo $fb_data['name'];?>" disabled="dissabled"/>
 					</div>
 				</div>
 				<div class="form-group"></div> <!--- เว้นวรรค -->

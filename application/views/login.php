@@ -22,21 +22,21 @@
 				</div>
 				<div class="modal-body">
 					<?php echo form_open('main/insert_users','class="form-horizontal" role="form"');?>
-					<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['me']['id'];?>">
-					<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['me']['name'];?>">
-					<input type="hidden" name="inputEmail" value="<?php echo $fb_data['me']['email'];?>">
-					<input type="hidden" name="inputGender" value="<?php echo $fb_data['me']['gender'];?>">
+					<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['id'];?>">
+					<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['name'];?>">
+					<input type="hidden" name="inputEmail" value="<?php echo $fb_data['email'];?>">
+					<input type="hidden" name="inputGender" value="<?php echo $fb_data['gender'];?>">
 
 					<div class="form-group">
 						<div class="col-md-12">
 							<div class="form-group row">
 								<label for="inputFB_ID" class="col-md-2 control-label">FB ID</label>
 								<div class="col-md-3">
-									<input type="text" class="form-control " id="inputFB_ID" name="inputFB_ID" value="<?php echo $fb_data['me']['id'];?>" disabled="true">
+									<input type="text" class="form-control " id="inputFB_ID" name="inputFB_ID" value="<?php echo $fb_data['id'];?>" disabled="true">
 								</div>
 								<label for="inputFB_name" class="col-md-2 control-label">FB NAME</label>
 								<div class="col-md-3">
-									<input type="text" class="form-control" id="inputFB_name" name="inputFB_name" value="<?php echo $fb_data['me']['name'];?>"  disabled="true">
+									<input type="text" class="form-control" id="inputFB_name" name="inputFB_name" value="<?php echo $fb_data['name'];?>"  disabled="true">
 								</div>
 							</div>
 						</div>
@@ -46,11 +46,11 @@
 							<div class="form-group row">
 								<label for="inputEmail" class="col-md-2 control-label">Email</label>
 								<div class="col-md-5">
-									<input type="email" class="form-control" id="inputEmail" name="inputEmail"value="<?php echo $fb_data['me']['email'];?>"  disabled="true">
+									<input type="email" class="form-control" id="inputEmail" name="inputEmail"value="<?php echo $fb_data['email'];?>"  disabled="true">
 								</div>
 								<label for="inputGender" class="col-md-1 control-label">Gender</label>
 								<div class="col-md-3">
-									<input type="email" class="form-control" id="inputGender" name="inputGender"value="<?php echo $fb_data['me']['gender'];?>"  disabled="true">
+									<input type="email" class="form-control" id="inputGender" name="inputGender"value="<?php echo $fb_data['gender'];?>"  disabled="true">
 								</div>
 							</div>
 						</div>

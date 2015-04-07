@@ -90,7 +90,7 @@
                         </li>
                         <li class="text-center">
                             <?php
-                            echo ' <img src="https://graph.facebook.com/'.$fb_data['uid'].'/picture" alt="" class="pic" /><br/>'. anchor('main/logout','Logout');
+                            echo ' <img src="https://graph.facebook.com/'.$fb_data['id'].'/picture" alt="" class="pic" /><br/>'. anchor('main/logout','Logout');
                             ?>
                         </li>
                     </ul>
