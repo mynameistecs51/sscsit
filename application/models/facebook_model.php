@@ -4,10 +4,6 @@ class Facebook_model extends CI_model{
 
     public function __construct() {
         parent::__construct();
-     
-
-        $this->load->library('facebook');
-
     }
 
     public function id_check($fb_data){

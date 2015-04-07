@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if ( session_status() == PHP_SESSION_NONE ) {
+// if ( session_status() === PHP_SESSION_NONE ) {
+//   session_start();
+// }
+ if ( session_status() === '' ) {
   session_start();
 }
 // Autoload the required files
@@ -84,8 +87,8 @@ class Facebook {
        * Retrieve User’s Profile Information
        */
       // Graph API to request user data
-      $request = ( new FacebookRequest( $this->session, 'GET', '/me' ) )->execute();
-
+      $request = new FacebookRequest( $this->session, 'GET', '/me' ) ;
+      $request->execute();
       // Get response as an array
       $user = $request->getGraphObject()->asArray();
 
