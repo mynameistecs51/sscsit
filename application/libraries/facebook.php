@@ -1,11 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// if ( session_status() === PHP_SESSION_NONE ) {
-//   session_start();
-// }
- if ( session_status() === '' ) {
-  session_start();
-}
+
+
 // Autoload the required files
 require_once( APPPATH . 'libraries/Facebook/autoload.php' );
 
@@ -22,6 +18,13 @@ class Facebook {
   var $permissions;
 
   public function __construct() {
+    /**
+     * session start
+     */
+    if ( session_status() === PHP_SESSION_NONE ) {
+      session_start();
+    }
+
     $this->ci =& get_instance();
     $this->permissions = $this->ci->config->item('permissions', 'facebook');
 
