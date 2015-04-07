@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://sci.udru.ac.th/sscsit/';
+$config['base_url']	= 'http://localhost/sscsit/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -359,8 +359,8 @@ $config['proxy_ips'] = '';
 /**
  * $config facebook api
  */
-$config['facebook']['api_id'] = '1556054367991841';
-$config['facebook']['app_secret'] = '34e7637cf4689c01d2aa38458791629f';
+$config['facebook']['api_id'] = '1556056571324954';
+$config['facebook']['app_secret'] = 'f45adf8ded766a3367ea0db237d8756f';
 $config['facebook']['redirect_url'] = $config['base_url'] ;
 $config['facebook']['permissions'] = array(  'email',  'public_profile',  'user_friends');
 

@@ -87,8 +87,8 @@ class Facebook {
        * Retrieve User’s Profile Information
        */
       // Graph API to request user data
-      $request = new FacebookRequest( $this->session, 'GET', '/me' ) ;
-      $request->execute();
+      $request = (new FacebookRequest( $this->session, 'GET', '/me' ) )->execute();
+      //$request->execute();
       // Get response as an array
       $user = $request->getGraphObject()->asArray();
 
