@@ -1,6 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ed27cc023f3ac1271dd37e42a1ff4c8354b50a0
 // Autoload the required files
 require_once( APPPATH . 'libraries/Facebook/autoload.php' );
 
@@ -18,7 +22,11 @@ class Facebook {
 
   public function __construct() {
     /**
+<<<<<<< HEAD
      *check session 
+=======
+     * session start
+>>>>>>> 5ed27cc023f3ac1271dd37e42a1ff4c8354b50a0
      */
     if ( session_status() === PHP_SESSION_NONE ) {
       session_start();
@@ -89,9 +97,16 @@ class Facebook {
        * Retrieve User’s Profile Information
        */
       // Graph API to request user data
+<<<<<<< HEAD
    //   $request = (new FacebookRequest( $this->session, 'GET', '/me' ) )->execute();
       $request_ = new FacebookRequest($this->session,'GET','/me');
       $request = $request_->execute();
+=======
+      $a = new FacebookRequest( $this->session, 'GET', '/me' );
+      $request =  $a->execute();
+      //$request->execute();
+      //$request->execute();
+>>>>>>> 5ed27cc023f3ac1271dd37e42a1ff4c8354b50a0
       // Get response as an array
       $user = $request->getGraphObject()->asArray();
 
