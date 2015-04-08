@@ -1,11 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// if ( session_status() === PHP_SESSION_NONE ) {
-//   session_start();
-// }
- if ( session_status() === '' ) {
-  session_start();
-}
+
 // Autoload the required files
 require_once( APPPATH . 'libraries/Facebook/autoload.php' );
 
@@ -22,6 +17,13 @@ class Facebook {
   var $permissions;
 
   public function __construct() {
+    /**
+     *check session 
+     */
+    if ( session_status() === PHP_SESSION_NONE ) {
+      session_start();
+    }
+
     $this->ci =& get_instance();
     $this->permissions = $this->ci->config->item('permissions', 'facebook');
 
@@ -87,8 +89,9 @@ class Facebook {
        * Retrieve User’s Profile Information
        */
       // Graph API to request user data
-      $request = new FacebookRequest( $this->session, 'GET', '/me' ) ;
-      $request->execute();
+   //   $request = (new FacebookRequest( $this->session, 'GET', '/me' ) )->execute();
+      $request_ = new FacebookRequest($this->session,'GET','/me');
+      $request = $request_->execute();
       // Get response as an array
       $user = $request->getGraphObject()->asArray();
 

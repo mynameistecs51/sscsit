@@ -10,6 +10,7 @@ class Main extends CI_Controller {
 		parent::__construct();
 		date_default_timezone_set("Asia/Bangkok");
 		$this->load->model('m_main','',TRUE);
+		$this->load->model('facebook_model','',TRUE);
 		$this->load->library('facebook');
 	}
 
