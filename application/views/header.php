@@ -98,7 +98,7 @@
             <li style="margin-top:20px;font-weight: bold;" class="form-inline text-center ">
                <?php
                if(empty($fb_data)){
-                 echo anchor($this->facebook->login_url(),'login');
+                 echo anchor('#','login');
                }else{
                   ?>
                   <li style="margin-top:20px;font-weight: bold; ">
@@ -109,7 +109,7 @@
                         <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
                         <li><a tabindex="-1" href="send_payment">แจ้งชำระเงิน</a></li>
                         <!-- <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li> -->
-                        <li><?php echo anchor($this->facebook->logout_url(),'ออกจากระบบ','tabindex="-1"');?></li>
+                        <li><?php echo anchor('#','ออกจากระบบ','tabindex="-1"');?></li>
                      </ul>
                   </li>
                   <?php
