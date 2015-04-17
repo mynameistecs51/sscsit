@@ -2,8 +2,8 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 29, 2015 at 07:31 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 17, 2015 at 12:16 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -79,7 +79,7 @@ INSERT INTO `bank` (`bank_id`, `bank_code`, `bank_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `check_paper` (
 `check_id` int(11) NOT NULL,
-  `user_facebook_id` char(255) NOT NULL,
+  `user_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL,
   `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_comment` text NOT NULL
@@ -89,10 +89,10 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
 -- Dumping data for table `check_paper`
 --
 
-INSERT INTO `check_paper` (`check_id`, `user_facebook_id`, `paper_id`, `check_status`, `check_comment`) VALUES
-(2, '895214977163448', 10, 'accept', 'asdf'),
+INSERT INTO `check_paper` (`check_id`, `user_id`, `paper_id`, `check_status`, `check_comment`) VALUES
+(2, '959020760782869', 10, 'accept', 'asdf'),
 (4, '921251517908263', 13, 'conditional_accept', 'แก้ไขเล็กน้อย'),
-(5, '895214977163448', 13, 'reject', 'แก้มาอีกเยอะเลย');
+(5, '959020760782869', 13, 'reject', 'แก้มาอีกเยอะเลย');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ INSERT INTO `check_paper` (`check_id`, `user_facebook_id`, `paper_id`, `check_st
 
 CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
-  `user_facebook_id` char(255) NOT NULL,
+  `user_id` char(255) NOT NULL,
   `paper_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
@@ -110,11 +110,11 @@ CREATE TABLE IF NOT EXISTS `committee` (
 -- Dumping data for table `committee`
 --
 
-INSERT INTO `committee` (`comm_id`, `user_facebook_id`, `paper_id`) VALUES
-(9, '895214977163448', 10),
-(10, '921251517908263', 10),
-(15, '895214977163448', 13),
-(16, '921251517908263', 13);
+INSERT INTO `committee` (`comm_id`, `user_id`, `paper_id`) VALUES
+(9, '05', 10),
+(10, '05', 10),
+(15, '01', 13),
+(16, '01', 13);
 
 -- --------------------------------------------------------
 
@@ -134,17 +134,17 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_fileProject` text NOT NULL,
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
-  `user_facebook_id` char(255) NOT NULL
+  `user_id` char(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paper`
 --
 
-INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `user_facebook_id`) VALUES
+INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `user_id`) VALUES
 (10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', '01'),
 (13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', '01'),
-(17, 'male', 'ไชยวัฒน์', 'female', 'หอมแสง', 'โปรเจ็ค', 'project_test', 2, 'project_test1.docx', 'null', '2015-02-03 16:52:00', '895214977163448');
+(17, 'male', 'ไชยวัฒน์', 'female', 'หอมแสง', 'โปรเจ็ค', 'project_test', 2, 'project_test1.docx', 'null', '2015-02-03 16:52:00', '5');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,7 @@ INSERT INTO `paper_group` (`group_id`, `group_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `payment` (
 `payment_id` int(11) NOT NULL,
-  `user_facebook_id` char(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
   `bank_id` int(11) NOT NULL,
   `branch_bank` text NOT NULL,
   `amount` char(10) NOT NULL,
@@ -189,8 +189,8 @@ CREATE TABLE IF NOT EXISTS `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`payment_id`, `user_facebook_id`, `bank_id`, `branch_bank`, `amount`, `send_date`, `payment_fileName`, `status_payment`) VALUES
-(5, '895214977163448', 1, 'udru', '2', '27-03-2015', '8952149771634481.jpg', 'wait');
+INSERT INTO `payment` (`payment_id`, `user_id`, `bank_id`, `branch_bank`, `amount`, `send_date`, `payment_fileName`, `status_payment`) VALUES
+(5, 5, 1, 'udru', '2', '27-03-2015', '8952149771634481.jpg', 'wait');
 
 -- --------------------------------------------------------
 
@@ -199,27 +199,25 @@ INSERT INTO `payment` (`payment_id`, `user_facebook_id`, `bank_id`, `branch_bank
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `user_facebook_id` char(255) NOT NULL,
-  `user_fb_name` char(255) NOT NULL,
+`user_id` int(11) NOT NULL,
   `user_first_name` varchar(100) NOT NULL,
   `user_last_name` varchar(100) NOT NULL,
   `user_email` varchar(100) NOT NULL,
   `user_gender` enum('male','female') NOT NULL,
-  `user_status` enum('supper_admin','admin','committee','student_udru','student_paper','student_public','teacher_public','people_public') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `user_status` enum('supper_admin','admin','committee','student_udru','student_paper','student_public','teacher_public','people_public') NOT NULL,
+  `user_password` char(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_facebook_id`, `user_fb_name`, `user_first_name`, `user_last_name`, `user_email`, `user_gender`, `user_status`) VALUES
-('01', 'te', 'te', 'te', 'te@hotmail.com', 'male', 'admin'),
-('02', 'ch', 'ch', 'ch', 'ch@hotmail.com', 'male', 'people_public'),
-('03', 'chaiwat', 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin'),
-('04', 'tete_subper', 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'people_public'),
-('05', 'homsang', 'homsang', 'homsang', 'homsang@example.com', 'male', 'committee'),
-('895214977163448', 'เต้ ไชยวัฒน์', 'ไชยวัฒน์', 'หอมแสง', 'mynameistecs51@gmail.com', 'male', 'admin'),
-('921251517908263', 'ตาน้อย ตาน้อย', 'test', 'test', 'tanoi_chem@hotmail.com', 'female', 'teacher_public');
+INSERT INTO `users` (`user_id`, `user_first_name`, `user_last_name`, `user_email`, `user_gender`, `user_status`, `user_password`) VALUES
+(1, 'te', 'te', 'te@hotmail.com', 'male', 'people_public', '1234'),
+(2, 'ch', 'ch', 'ch@hotmail.com', 'male', 'people_public', '1234'),
+(3, 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin', '1234'),
+(4, 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'people_public', '1234'),
+(5, 'homsang', 'homsang', 'homsang@example.com', 'male', 'people_public', '1234');
 
 --
 -- Indexes for dumped tables
@@ -265,7 +263,7 @@ ALTER TABLE `payment`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`user_facebook_id`);
+ ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -301,6 +299,11 @@ MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 ALTER TABLE `payment`
 MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

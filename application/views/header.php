@@ -98,18 +98,19 @@
             <li style="margin-top:20px;font-weight: bold;" class="form-inline text-center ">
                <?php
                if(empty($fb_data)){
-                 echo anchor('#','login');
+                 echo anchor('main/login_view','login');
                }else{
                   ?>
                   <li style="margin-top:20px;font-weight: bold; ">
                      <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
-                        <img src="https://graph.facebook.com/<?php echo $fb_data['id'];?>/picture" alt="" class="pic" /> <b class="caret"></b>
+                        <!-- <img src="https://graph.facebook.com/<?php echo $fb_data['id'];?>/picture" alt="" class="pic" /> <b class="caret"></b> ///--- picture profile---// -->
+                        <?php echo $fb_data['user_first_name'];?>
                      </a>
                      <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="profile">โปรไฟล์</a></li>
                         <li><a tabindex="-1" href="send_payment">แจ้งชำระเงิน</a></li>
                         <!-- <li><a tabindex="-1" href="logout">ออกจากระบบ</a></li> -->
-                        <li><?php echo anchor('#','ออกจากระบบ','tabindex="-1"');?></li>
+                        <li><?php echo anchor('main/logout','ออกจากระบบ','tabindex="-1"');?></li>
                      </ul>
                   </li>
                   <?php

@@ -22,8 +22,8 @@
 				</div>
 				<div class="modal-body">
 					<?php echo form_open('main/insert_users','class="form-horizontal" role="form"');?>
-					<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['id'];?>">
-					<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['name'];?>">
+					<input type="hidden" name="inputFB_ID" value="<?php echo $fb_data['user_id'];?>">
+					<input type="hidden" name="inputFB_name" value="<?php echo $fb_data['user_first_name'];?>">
 					<input type="hidden" name="inputEmail" value="<?php echo $fb_data['email'];?>">
 					<input type="hidden" name="inputGender" value="<?php echo $fb_data['gender'];?>">
 

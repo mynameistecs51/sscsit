@@ -2,7 +2,7 @@
 /**
 * check login users
 */
-class User extends CI_model
+class M_user extends CI_model
 {
 	function __construct()
 	{
@@ -11,10 +11,10 @@ class User extends CI_model
 	}
 
 	function login($useremail,$userpassword){
-		$this->db->select('id,username,password');
+		$this->db->select('*');
 		$this->db->from('users');
-		$this->db->where('useremail',$useremail);
-		$this->db->where('userpassword',md5($password));
+		$this->db->where('user_email',$useremail);
+		$this->db->where('user_password',$userpassword);
 
 		$query = $this->db->get();
 
@@ -23,6 +23,11 @@ class User extends CI_model
 		}else{
 			return false;
 		}
+	}
+
+	function check_user($fb_data){
+		$check_user = $this->db->query('SELECT * FROM users WHERE user_email = "'.$fb_data['user_email'].'"');
+		return $check_user;
 	}
 }
 ?>

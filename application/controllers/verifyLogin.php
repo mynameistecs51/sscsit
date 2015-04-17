@@ -8,7 +8,7 @@ class VerifyLogin extends CI_Controller {
 	function __construct(){
         // Call the Model constructor
 		parent::__construct();
-		$this->load->model('user','',TRUE);
+		$this->load->model('m_user','',TRUE);
 	}
 
 	function index(){
@@ -17,7 +17,11 @@ class VerifyLogin extends CI_Controller {
 		$this->form_validation->set_rules('userpassword','Userpassword','trim|required|xss_clean|callback_check_database');
 
 		if($this->form_validation->run() === FALSE){
-			redirect('main/login','refresh');
+			redirect('main/login_view','refresh');
+		}elseif($this->session->userdata('fb_data')){
+			$session_data = $this->session->userdata('fb_data');
+			//print_r($session_data);
+			redirect('main','refresh');
 		}else{
 			redirect('main','refresh');
 		}
@@ -26,15 +30,20 @@ class VerifyLogin extends CI_Controller {
 	function check_database(){
 		//field input email
 		$useremail = $this->input->post('useremail');
+		$userpassword = $this->input->post('userpassword');
 
-		$result = $this->user->login($useremail,$userpassword);
+		$result = $this->m_user->login($useremail,$userpassword);
 
 		if($result){
-			$sess_array();
+			$sess_array = array();
 			foreach ($result as $row_result) {
 					$sess_array = array(
-						'id' =>$row->id,
-						'username' => $row->username,
+						'user_id' =>$row_result->user_id,
+						'user_first_name' => $row_result->user_first_name,
+						'user_last_name' => $row_result->user_last_name,
+						'user_email' => $row_result->user_email,
+						'user_gender' => $row_result->user_gender,
+						'user_status' => $row_result->user_status,
 					);
 					$this->session->set_userdata('fb_data',$sess_array);
 			}
@@ -43,6 +52,12 @@ class VerifyLogin extends CI_Controller {
 			$this->form_validation->set_message('check_database','Invalid useremail && userpassword');
 			return FALSE;
 		}
+	}
+
+	public function logout(){
+		$this->session->unset_userdata('fb_data');
+		session_destroy();
+		redirect('main','refresh');
 	}
 }
 ?>
