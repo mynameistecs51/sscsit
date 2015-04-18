@@ -87,7 +87,7 @@ class Main extends CI_Controller {
 			'fb_data' => $fb_data ,
 			'get_paper' => $this->m_main->get_paper(),
 			'get_status_paper' => $this->m_main->get_status_paper(), 
-			'committee_profile' => $this->db->query('SELECT * FROM users WHERE user_status = "admin" OR user_status ="committee" ')->result(),
+			//'committee_profile' => $this->db->query('SELECT * FROM users WHERE user_status = "admin" OR user_status ="committee" ')->result(),
 			);
 		$this->load->view('index',$data);
 	}
@@ -99,7 +99,7 @@ class Main extends CI_Controller {
 
 	public function send_page($error =''){
 		$fb_data = $this->session->userdata('fb_data');
-		if(!$fb_data['id']){
+		if(!$fb_data['user_id']){
 			$data = array(
 				'title'       => "Send paper",
 				'fb_data'     => $fb_data,
@@ -108,9 +108,9 @@ class Main extends CI_Controller {
 				);
 			$this->load->view('send-paper',$data);
 		}else{
-			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_id  ='.$fb_data['id'])->result();
+			$get_paper = $this->db->query('SELECT * FROM paper WHERE user_id  ='.$fb_data['user_id'])->result();
 			foreach ($get_paper as $key_get_paper => $value_get_paper) {
-				if($value_get_paper->user_id  === $fb_data['id']){
+				if($value_get_paper->user_id  === $fb_data['user_id']){
 					$data = array(
 						'title' => "UPDATE PAPER",
 						'fb_data' => $fb_data,
@@ -211,10 +211,10 @@ public function status_page(){
 
 	public function  admin()	{		// admin page
 		$fb_data = $this->session->userdata('fb_data');
-		if(!($fb_data['id'])){
+		if(!($fb_data['user_id'])){
 			redirect('main','refresh');
 		}else{
-			foreach ($this->facebook_model->id_check($fb_data)->result() as $admin_row) {
+			foreach ($this->m_user->check_user($fb_data)->result() as $admin_row) {
 				if($admin_row->user_status === "admin" || $admin_row->user_status === "supper_admin"){
 
 					$data = array(

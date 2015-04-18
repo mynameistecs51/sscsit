@@ -116,7 +116,7 @@
 				INNER JOIN `users` ON `users`.`user_id` =
 				`committee`.`user_id`
 				INNER JOIN `paper_group` ON `paper`.`paper_group` = `paper_group`.`group_id`
-				WHERE `committee`.`user_id` ='".$fb_data['id']."'
+				WHERE `committee`.`user_id` ='".$fb_data['user_id']."'
 				");
 			return $qery_check_paper->result();
 		}
@@ -145,7 +145,7 @@
 	public function insert_users(){
 		$data = array(
 			'user_id' => $this->input->post('inputFB_ID'),
-			'user_fb_name' => $this->input->post('inputFB_name'),
+			'user_first_name' => $this->input->post('inputFB_name'),
 			'user_email' => $this->input->post('inputEmail'),
 			'user_gender' => $this->input->post('inputGender'),
 			'user_first_name' => $this->input->post('inputFirst_name'),
@@ -169,12 +169,11 @@
 			ON users.user_id = paper.user_id
 			INNER JOIN paper_group 
 			ON paper_group.group_id = paper.paper_group 
-			WHERE users.user_id ='".$fb_data['id']."'  ");
+			WHERE users.user_id ='".$fb_data['user_id']."'  ");
 		return $query_user_id->result();
 	}
 	public function  get_committee(){
 		$query_table_committee = $this->db->query("SELECT
-			`users`.`user_fb_name`,
 			`users`.`user_first_name`,
 			`users`.`user_last_name`,
 			`users`.`user_email`,
@@ -205,7 +204,7 @@
 	public function checked_paper(){		//insert data กรรมการตรวจเอกสาร 
 		$fb_data = $this->session->userdata('fb_data');
 		$data = array(
-			'user_id' => $fb_data['id'],
+			'user_id' => $fb_data['user_id'],
 			'check_status' => $this->input->post('checked_paper'),
 			'check_comment' => $this->input->post('comment'),
 			'paper_id' => $this->input->post('project_id')
@@ -217,7 +216,7 @@
 	public function get_committee_checkpaper(){
 		$fb_data = $this->session->userdata('fb_data');
 
-		$get_committee_checkpaper = $this->db->query('SELECT * FROM check_paper WHERE user_id = "'.$fb_data['id'].'" GROUP BY paper_id'
+		$get_committee_checkpaper = $this->db->query('SELECT * FROM check_paper WHERE user_id = "'.$fb_data['user_id'].'" GROUP BY paper_id'
 			);
 		return $get_committee_checkpaper->result();
 	}

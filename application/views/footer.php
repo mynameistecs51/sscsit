@@ -1,29 +1,30 @@
 
-    <footer id="footer" class="midnight-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-                </div>
-                <div class="col-sm-6">
-                    <ul class="pull-right">
-                        <li><a href="#">หน้าหลัก</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
-                    </ul>
-                </div>
+<footer id="footer" class="midnight-blue" >
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+            </div>
+            <div class="col-sm-6">
+                <ul class="pull-right">
+                    <li><a href="#">หน้าหลัก</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Faq</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
+                </ul>
             </div>
         </div>
-    </footer><!--/#footer-->
+    </div>
+</footer>
+<!--/#footer-->
 
-    <!-- end multi select -->
+<!-- end multi select -->
 
-    <!-- // <script  type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script> -->
-    <script  type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
-    <script  type="text/javascript" src="<?php echo base_url();?>js/jquery.prettyPhoto.js"></script>
-    <script  <type="text/javascript" src="<?php echo base_url();?>js/main.js"></script>    
+<!-- // <script  type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script> -->
+<script  type ="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
+<script  type ="text/javascript" src="<?php echo base_url();?>js/jquery.prettyPhoto.js"></script>
+<script  type ="text/javascript" src="<?php echo base_url();?>js/main.js"></script>    
 
 </body>
 </html>

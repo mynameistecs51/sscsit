@@ -129,7 +129,7 @@
                               if( !isset($selected[$value_committee->paper_id])){
                                  $selected[$value_committee->paper_id] = array();
                               }
-                                 array_push($selected[$value_committee->paper_id],array('committee_name' => $value_committee->user_first_name."  ".$value_committee->user_last_name,'committee_facebook_id' => $value_committee->user_facebook_id,'comm_id' => $value_committee->comm_id));     //แสดงชื่อกรรมการที่ตรวจโครงงาน
+                                 array_push($selected[$value_committee->paper_id],array('committee_name' => $value_committee->user_first_name."  ".$value_committee->user_last_name,'committee_facebook_id' => $value_committee->user_id,'comm_id' => $value_committee->comm_id));     //แสดงชื่อกรรมการที่ตรวจโครงงาน
 
                               }
                                  //  echo '--------------------';
@@ -179,8 +179,8 @@
                                                             echo '<input type="hidden" name="commit_id" value="'.$value_selected['comm_id'].'">';
                                                             echo ' <select class="selectpicker show-tick "  data-live-search="true"  name="select_committee[]" title="เลือกกรรมการ">';
                                                             foreach ($get_user_committee as $key_commt => $row_users) {
-                                                               $selected_option = ($row_users->user_facebook_id === $value_selected['committee_facebook_id'] ? "selected":"");
-                                                               echo '<option value="'.$row_users->user_facebook_id.'"'.$selected_option.' >'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
+                                                               $selected_option = ($row_users->user_id === $value_selected['committee_facebook_id'] ? "selected":"");
+                                                               echo '<option value="'.$row_users->user_id.'"'.$selected_option.' >'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
                                                             }
                                                             echo '</select>';
                                                             echo ' <button type="submit" class="btn btn-success">UPDATE</i></button>';
@@ -205,7 +205,7 @@
                                           echo '<input type="hidden" name="paper_id" value="'.$row_paper->paper_id.'">';
                                           echo ' <select class="selectpicker" multiple data-live-search="true" data-actions-box="true" name="select_committee[]" title="เลือกกรรมการ">';
                                           foreach ($get_user_committee as $key_commt => $row_users) {
-                                             echo '<option value="'.$row_users->user_facebook_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
+                                             echo '<option value="'.$row_users->user_id.'">'.$row_users->user_first_name."  ".$row_users->user_last_name.'</option>';
                                           }
                                           echo '</select>';
                                           echo ' <button type="submit" class="btn btn-success">ส่ง</i></button>';
