@@ -2,8 +2,8 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 17, 2015 at 12:16 PM
+-- Host: localhost
+-- Generation Time: Apr 19, 2015 at 07:20 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -79,7 +79,7 @@ INSERT INTO `bank` (`bank_id`, `bank_code`, `bank_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `check_paper` (
 `check_id` int(11) NOT NULL,
-  `user_id` char(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `paper_id` int(11) NOT NULL,
   `check_status` enum('accept','conditional_accept','reject') NOT NULL,
   `check_comment` text NOT NULL
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `check_paper` (
 --
 
 INSERT INTO `check_paper` (`check_id`, `user_id`, `paper_id`, `check_status`, `check_comment`) VALUES
-(2, '959020760782869', 10, 'accept', 'asdf'),
-(4, '921251517908263', 13, 'conditional_accept', 'แก้ไขเล็กน้อย'),
-(5, '959020760782869', 13, 'reject', 'แก้มาอีกเยอะเลย');
+(2, 1, 10, 'accept', 'asdf'),
+(4, 2147483647, 13, 'conditional_accept', 'แก้ไขเล็กน้อย'),
+(5, 2147483647, 13, 'reject', 'แก้มาอีกเยอะเลย');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ INSERT INTO `check_paper` (`check_id`, `user_id`, `paper_id`, `check_status`, `c
 
 CREATE TABLE IF NOT EXISTS `committee` (
 `comm_id` int(11) NOT NULL,
-  `user_id` char(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `paper_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
@@ -111,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `committee` (
 --
 
 INSERT INTO `committee` (`comm_id`, `user_id`, `paper_id`) VALUES
-(9, '05', 10),
-(10, '05', 10),
-(15, '01', 13),
-(16, '01', 13);
+(9, 5, 10),
+(10, 5, 10),
+(15, 1, 13),
+(16, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `paper` (
   `paper_fileProject` text NOT NULL,
   `paper_filePictureProject` text NOT NULL,
   `paper_date` datetime NOT NULL,
-  `user_id` char(255) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
@@ -142,9 +142,9 @@ CREATE TABLE IF NOT EXISTS `paper` (
 --
 
 INSERT INTO `paper` (`paper_id`, `paper_sex`, `paper_inputName1`, `paper_sex2`, `paper_inputName2`, `paper_inputProjectName_TH`, `paper_inputProjectName_EN`, `paper_group`, `paper_fileProject`, `paper_filePictureProject`, `paper_date`, `user_id`) VALUES
-(10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', '01'),
-(13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', '01'),
-(17, 'male', 'ไชยวัฒน์', 'female', 'หอมแสง', 'โปรเจ็ค', 'project_test', 2, 'project_test1.docx', 'null', '2015-02-03 16:52:00', '5');
+(10, 'male', 'ss', 'male', 'ss', 'ทดสอบ', 'test 1', 1, 'test_1.docx', 'null', '2014-12-18 10:53:00', 1),
+(13, 'male', 'tete', 'male', 'tete', 'โครงงานสัมนาทางวิชาการของนักศึกษา', 'student symposium', 2, 'student_symposium.doc', 'null', '2014-12-20 22:32:00', 2),
+(17, 'male', 'ไชยวัฒน์', 'female', 'หอมแสง', 'โปรเจ็ค', 'project_test', 2, 'project_test1.docx', 'null', '2015-02-03 16:52:00', 5);
 
 -- --------------------------------------------------------
 
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_first_name`, `user_last_name`, `user_email`, `user_gender`, `user_status`, `user_password`) VALUES
-(1, 'te', 'te', 'te@hotmail.com', 'male', 'people_public', '1234'),
+(1, 'te', 'te', 'te@hotmail.com', 'male', 'admin', '1234'),
 (2, 'ch', 'ch', 'ch@hotmail.com', 'male', 'people_public', '1234'),
 (3, 'chaiwat', 'chaiwat', 'chaiwat@exam.com', 'male', 'supper_admin', '1234'),
 (4, 'tete_subper', 'tete_subper', 'tete@example.com', 'male', 'people_public', '1234'),
