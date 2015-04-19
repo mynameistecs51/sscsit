@@ -9,7 +9,7 @@ class M_user extends CI_model
 	// Call the Model constructor
 		parent::__construct();
 	}
-
+	
 	function login($useremail,$userpassword){
 		$this->db->select('*');
 		$this->db->from('users');
